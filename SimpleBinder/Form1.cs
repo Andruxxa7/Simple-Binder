@@ -16,5 +16,25 @@ namespace SimpleBinder
         {
             InitializeComponent();
         }
+        
+        private void statusButton_Click(object sender, EventArgs e)
+        {
+            if (statusButton.Text == "Turn On")
+            {
+                statusButton.Text = "Turn Off";
+                statusLabel.BackColor = Color.Green;
+                /*
+                 тут логика включения биндера
+                 */
+            }
+            else
+            {
+                statusButton.Text = "Turn On";
+                statusLabel.BackColor = Color.Red;
+                /*
+                тут выключение биндера
+                */
+            }
+        }
     }
 }
