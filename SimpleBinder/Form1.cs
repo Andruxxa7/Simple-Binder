@@ -15,10 +15,35 @@ namespace SimpleBinder
         
         private List<TextBox> bindKeysArray;
         private List<TextBox> bindTextArray;
-        
+        private List<CheckBox> multi;
+        private List<CheckBox> enabled;
         public Form1()
         {
             InitializeComponent();
+
+            multi = new List<CheckBox>();
+            multi.Add(multi0);
+            multi.Add(multi1);
+            multi.Add(multi2);
+            multi.Add(multi3);
+            multi.Add(multi4);
+            multi.Add(multi5);
+            multi.Add(multi6);
+            multi.Add(multi7);
+            multi.Add(multi8);
+            multi.Add(multi9);
+            
+            enabled = new List<CheckBox>();
+            enabled.Add(enabled0);
+            enabled.Add(enabled1);
+            enabled.Add(enabled2);
+            enabled.Add(enabled3);
+            enabled.Add(enabled4);
+            enabled.Add(enabled5);
+            enabled.Add(enabled6);
+            enabled.Add(enabled7);
+            enabled.Add(enabled8);
+            enabled.Add(enabled9);
 
             bindKeysArray = new List<TextBox>();
             bindKeysArray.Add(bindKeys0);
