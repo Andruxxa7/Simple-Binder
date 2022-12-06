@@ -2,7 +2,7 @@
 
 namespace SimpleBinder
 {
-    partial class Form1
+    partial class SimpleBinder
     {
         /// <summary>
         /// Required designer variable. Тут какой-то п#зд@ц, не советую смотреть - страшно.
@@ -31,7 +31,7 @@ namespace SimpleBinder
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleBinder));
             this.multi0 = new System.Windows.Forms.CheckBox();
             this.multiLabel = new System.Windows.Forms.Label();
             this.enabledLabel = new System.Windows.Forms.Label();
@@ -565,7 +565,7 @@ namespace SimpleBinder
             this.defaultButton.UseVisualStyleBackColor = true;
             this.defaultButton.Click += new System.EventHandler(this.defaultButton_Click);
             // 
-            // Form1
+            // SimpleBinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -632,7 +632,7 @@ namespace SimpleBinder
             this.Controls.Add(this.multi0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "SimpleBinder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Binder";
             this.ResumeLayout(false);

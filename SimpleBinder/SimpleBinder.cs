@@ -7,13 +7,13 @@ using System.Text.Json;
 
 namespace SimpleBinder
 {
-    public partial class Form1 : Form
+    public partial class SimpleBinder : Form
     {
         /// <summary>
         /// Путь до файла .json, в который сохраняются значения, которые потом парсятся из этого же файла.
         /// </summary>
         private string pathToJson = "settings.json";
-        
+
         private List<TextBox> bindKeysArray;
         private List<TextBox> bindTextArray;
         private List<CheckBox> multiArray;
@@ -74,7 +74,7 @@ namespace SimpleBinder
             File.WriteAllText(path2Json, JsonSerializer.Serialize(Binds));
         }
 
-        public Form1()
+        public SimpleBinder()
         {
             InitializeComponent();
 
