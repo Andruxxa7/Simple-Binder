@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SimpleBinder
@@ -15,35 +10,35 @@ namespace SimpleBinder
         
         private List<TextBox> bindKeysArray;
         private List<TextBox> bindTextArray;
-        private List<CheckBox> multi;
-        private List<CheckBox> enabled;
+        private List<CheckBox> multiArray;
+        private List<CheckBox> enabledArray;
         public Form1()
         {
             InitializeComponent();
 
-            multi = new List<CheckBox>();
-            multi.Add(multi0);
-            multi.Add(multi1);
-            multi.Add(multi2);
-            multi.Add(multi3);
-            multi.Add(multi4);
-            multi.Add(multi5);
-            multi.Add(multi6);
-            multi.Add(multi7);
-            multi.Add(multi8);
-            multi.Add(multi9);
+            multiArray = new List<CheckBox>();
+            multiArray.Add(multi0);
+            multiArray.Add(multi1);
+            multiArray.Add(multi2);
+            multiArray.Add(multi3);
+            multiArray.Add(multi4);
+            multiArray.Add(multi5);
+            multiArray.Add(multi6);
+            multiArray.Add(multi7);
+            multiArray.Add(multi8);
+            multiArray.Add(multi9);
             
-            enabled = new List<CheckBox>();
-            enabled.Add(enabled0);
-            enabled.Add(enabled1);
-            enabled.Add(enabled2);
-            enabled.Add(enabled3);
-            enabled.Add(enabled4);
-            enabled.Add(enabled5);
-            enabled.Add(enabled6);
-            enabled.Add(enabled7);
-            enabled.Add(enabled8);
-            enabled.Add(enabled9);
+            enabledArray = new List<CheckBox>();
+            enabledArray.Add(enabled0);
+            enabledArray.Add(enabled1);
+            enabledArray.Add(enabled2);
+            enabledArray.Add(enabled3);
+            enabledArray.Add(enabled4);
+            enabledArray.Add(enabled5);
+            enabledArray.Add(enabled6);
+            enabledArray.Add(enabled7);
+            enabledArray.Add(enabled8);
+            enabledArray.Add(enabled9);
 
             bindKeysArray = new List<TextBox>();
             bindKeysArray.Add(bindKeys0);
@@ -78,6 +73,12 @@ namespace SimpleBinder
                 statusLabel.BackColor = Color.Green;
                 saveButton.Enabled = false;
                 cancelButton.Enabled = false;
+                for (int i = 0; i < bindKeysArray.Count; i++)
+                {
+                    bindKeysArray[i].Enabled = false;
+                    bindTextArray[i].Enabled = false;
+                    multiArray[i].Enabled = false;
+                }
                 /*
                  тут логика включения биндера
                  */
@@ -88,15 +89,17 @@ namespace SimpleBinder
                 statusLabel.BackColor = Color.Red;
                 saveButton.Enabled = true;
                 cancelButton.Enabled = true;
+                for (int i = 0; i < bindKeysArray.Count; i++)
+                {
+                    bindKeysArray[i].Enabled = true;
+                    bindTextArray[i].Enabled = true;
+                    multiArray[i].Enabled = true;
+                }
                 /*
                 тут выключение биндера
                 */
             }
         }
-
-        private void statusLabel_Click(object sender, EventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

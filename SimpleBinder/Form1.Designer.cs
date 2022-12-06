@@ -551,7 +551,6 @@ namespace SimpleBinder
             this.statusLabel.TabIndex = 59;
             this.statusLabel.Text = "  ";
             this.statusLabel.UseMnemonic = false;
-            this.statusLabel.Click += new System.EventHandler(this.statusLabel_Click);
             // 
             // Form1
             // 
