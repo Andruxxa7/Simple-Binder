@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
-
+using System.Text.Json;
 namespace SimpleBinder
 {
     public partial class Form1 : Form
     {
-        
+        private string pathToJson = "settings.json";
         private List<TextBox> bindKeysArray;
         private List<TextBox> bindTextArray;
         private List<CheckBox> multiArray;
         private List<CheckBox> enabledArray;
+        private List<Bind> Binds;
         public Form1()
         {
             InitializeComponent();
@@ -70,7 +72,7 @@ namespace SimpleBinder
             if (statusButton.Text == "Turn On")
             {
                 statusButton.Text = "Turn Off";
-                statusLabel.BackColor = Color.Green;
+                statusLabel.BackColor = Color.LawnGreen;
                 saveButton.Enabled = false;
                 cancelButton.Enabled = false;
                 for (int i = 0; i < bindKeysArray.Count; i++)
@@ -100,6 +102,20 @@ namespace SimpleBinder
                 */
             }
         }
-        
+
+        private void saveButton_Click(object sender, EventArgs e)//parse value from components
+        {
+            Binds = new List<Bind>();
+            for (var i = 0; i < bindKeysArray.Count; i++)
+            {
+                var tempKeys = bindKeysArray[i].Text;
+                var tempText = bindTextArray[i].Text;
+                var isenabled = enabledArray[i].Checked;
+                var ismulti = multiArray[i].Checked;
+                var bind = new Bind(tempKeys, tempText, isenabled, ismulti);
+                Binds.Add(bind);
+            } 
+            File.WriteAllText(pathToJson,JsonSerializer.Serialize(Binds));
+        }
     }
 }
