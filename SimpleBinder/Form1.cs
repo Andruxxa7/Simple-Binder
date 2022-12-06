@@ -65,6 +65,15 @@ namespace SimpleBinder
             bindTextArray.Add(bindText7);
             bindTextArray.Add(bindText8);
             bindTextArray.Add(bindText9);
+            Binds = JsonSerializer.Deserialize<List<Bind>>(File.ReadAllText(pathToJson));
+            for (var i = 0; i < bindKeysArray.Count; i++)
+            {
+                //переделать под ToArray()
+                bindKeysArray[i].Text = Binds[i].BindKeys??"";
+                bindTextArray[i].Text = Binds[i].BindText??"";
+                multiArray[i].Checked = Binds[i].IsMulti;
+                enabledArray[i].Checked = Binds[i].IsEnabled;
+            }
         }
 
         private void statusButton_Click(object sender, EventArgs e)

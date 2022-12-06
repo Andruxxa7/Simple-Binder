@@ -10,9 +10,17 @@
         private bool isEnabled; //вкл или выкл бинд на данный момент
         private bool isMulti; //мульти бинд или единичный
 
-        public bool IsMulti => isMulti;
+        public bool IsMulti
+        {
+            get;
+            set;
+        }
 
-        public bool IsEnabled=> isEnabled;
+        public bool IsEnabled
+        {
+            get;
+            set;
+        }
         
 
         public string BindKeys
@@ -50,8 +58,8 @@
         /// <param name="multi">является ли сочетанием клавиш или одиночная клавиша у бинда</param>
         public Bind(string keys, string text, bool enabled, bool multi)
         {
-            isEnabled = enabled;
-            isMulti = multi;
+            IsEnabled = enabled;
+            IsMulti = multi;
             BindKeys = keys;
             BindText = text;
         }
