@@ -10,36 +10,22 @@
         private bool isEnabled; //вкл или выкл бинд на данный момент
         private bool isMulti; //мульти бинд или единичный
 
-        public bool IsMulti
-        {
-            get;
-            set;
-        }
+        public bool IsMulti { get; set; }
 
-        public bool IsEnabled
-        {
-            get;
-            set;
-        }
-        
+        public bool IsEnabled { get; set; }
+
 
         public string BindKeys
         {
             get => bindKeys;
-            set //потом допилить
-            {
-                if (value == string.Empty) bindKeys = " "; //if(bindKeys==" ") - игнорирование 
-                else bindKeys = value;
-            }
+            set => bindKeys = (value == string.Empty) ? "" : value; //if(bindKeys==" ") - игнорирование //потом допилить
+            
         }
 
         public string BindText
         {
             get => bindText;
-            set //потом допилить
-            {
-                bindText = (value == string.Empty) ? " " : value; //if(bindText==" ") - игнорирование 
-            }
+            set => bindText = (value == string.Empty) ? "" : value; //if(bindText==" ") - игнорирование //потом допилить
         }
 
         /// <summary>
@@ -62,12 +48,6 @@
             IsMulti = multi;
             BindKeys = keys;
             BindText = text;
-        }
-
-        /// <returns>Возвращает массив объектов полей класса(полученных через открытые свойства)</returns>
-        public object[] ToArray()
-        {
-            return new object[] { IsEnabled, IsMulti, BindKeys, BindText };
         }
     }
 }

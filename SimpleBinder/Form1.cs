@@ -4,78 +4,143 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Text.Json;
+
 namespace SimpleBinder
 {
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// Путь до файла .json, в который сохраняются значения, которые потом парсятся из этого же файла.
+        /// </summary>
         private string pathToJson = "settings.json";
+        
         private List<TextBox> bindKeysArray;
         private List<TextBox> bindTextArray;
         private List<CheckBox> multiArray;
         private List<CheckBox> enabledArray;
         private List<Bind> Binds;
+
+        /// <summary>
+        /// Парсит значения из .json в поля WinForm'ы
+        /// </summary>
+        /// <param name="path2Json">- путь до файла .json, из которого берутся значения</param>
+        private void ParseFromJsonToWinForms(string path2Json)
+        {
+            if (!File.Exists(path2Json)) return;
+            Binds = JsonSerializer.Deserialize<List<Bind>>(File.ReadAllText(path2Json));
+            for (var i = 0; i < bindKeysArray.Count; i++)
+            {
+                if (Binds != null)
+                {
+                    bindKeysArray[i].Text = Binds[i].BindKeys ?? "";
+                    bindTextArray[i].Text = Binds[i].BindText ?? "";
+                    multiArray[i].Checked = Binds[i].IsMulti;
+                    enabledArray[i].Checked = Binds[i].IsEnabled;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Метод для обнуления значений в полях формы
+        /// </summary>
+        private void SetBackToDefault()
+        {
+            for (int i = 0; i < bindKeysArray.Count; i++)
+            {
+                bindKeysArray[i].Text = "";
+                bindTextArray[i].Text = "";
+                multiArray[i].Checked = false;
+                enabledArray[i].Checked = false;
+            }
+        }
+
+        /// <summary>
+        /// Парс значений из полей WinForm'ы в .json
+        /// </summary>
+        /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>
+        private void ParseToJson(string path2Json)
+        {
+            Binds = new List<Bind>();
+            for (var i = 0; i < bindKeysArray.Count; i++)
+            {
+                var tempKeys = bindKeysArray[i].Text;
+                var tempText = bindTextArray[i].Text;
+                var isenabled = enabledArray[i].Checked;
+                var ismulti = multiArray[i].Checked;
+                var bind = new Bind(tempKeys, tempText, isenabled, ismulti);
+                Binds.Add(bind);
+            }
+
+            File.WriteAllText(path2Json, JsonSerializer.Serialize(Binds));
+        }
+
         public Form1()
         {
             InitializeComponent();
 
-            multiArray = new List<CheckBox>();
-            multiArray.Add(multi0);
-            multiArray.Add(multi1);
-            multiArray.Add(multi2);
-            multiArray.Add(multi3);
-            multiArray.Add(multi4);
-            multiArray.Add(multi5);
-            multiArray.Add(multi6);
-            multiArray.Add(multi7);
-            multiArray.Add(multi8);
-            multiArray.Add(multi9);
-            
-            enabledArray = new List<CheckBox>();
-            enabledArray.Add(enabled0);
-            enabledArray.Add(enabled1);
-            enabledArray.Add(enabled2);
-            enabledArray.Add(enabled3);
-            enabledArray.Add(enabled4);
-            enabledArray.Add(enabled5);
-            enabledArray.Add(enabled6);
-            enabledArray.Add(enabled7);
-            enabledArray.Add(enabled8);
-            enabledArray.Add(enabled9);
-
-            bindKeysArray = new List<TextBox>();
-            bindKeysArray.Add(bindKeys0);
-            bindKeysArray.Add(bindKeys1);
-            bindKeysArray.Add(bindKeys2);
-            bindKeysArray.Add(bindKeys3);
-            bindKeysArray.Add(bindKeys4);
-            bindKeysArray.Add(bindKeys5);
-            bindKeysArray.Add(bindKeys6);
-            bindKeysArray.Add(bindKeys7);
-            bindKeysArray.Add(bindKeys8);
-            bindKeysArray.Add(bindKeys9);
-
-            bindTextArray = new List<TextBox>();
-            bindTextArray.Add(bindText0);
-            bindTextArray.Add(bindText1);
-            bindTextArray.Add(bindText2);
-            bindTextArray.Add(bindText3);
-            bindTextArray.Add(bindText4);
-            bindTextArray.Add(bindText5);
-            bindTextArray.Add(bindText6);
-            bindTextArray.Add(bindText7);
-            bindTextArray.Add(bindText8);
-            bindTextArray.Add(bindText9);
-            Binds = JsonSerializer.Deserialize<List<Bind>>(File.ReadAllText(pathToJson));
-            for (var i = 0; i < bindKeysArray.Count; i++)
+            multiArray = new List<CheckBox>
             {
-                //переделать под ToArray()
-                bindKeysArray[i].Text = Binds[i].BindKeys??"";
-                bindTextArray[i].Text = Binds[i].BindText??"";
-                multiArray[i].Checked = Binds[i].IsMulti;
-                enabledArray[i].Checked = Binds[i].IsEnabled;
-            }
+                multi0,
+                multi1,
+                multi2,
+                multi3,
+                multi4,
+                multi5,
+                multi6,
+                multi7,
+                multi8,
+                multi9
+            };
+
+            enabledArray = new List<CheckBox>
+            {
+                enabled0,
+                enabled1,
+                enabled2,
+                enabled3,
+                enabled4,
+                enabled5,
+                enabled6,
+                enabled7,
+                enabled8,
+                enabled9
+            };
+
+            bindKeysArray = new List<TextBox>
+            {
+                bindKeys0,
+                bindKeys1,
+                bindKeys2,
+                bindKeys3,
+                bindKeys4,
+                bindKeys5,
+                bindKeys6,
+                bindKeys7,
+                bindKeys8,
+                bindKeys9
+            };
+
+            bindTextArray = new List<TextBox>
+            {
+                bindText0,
+                bindText1,
+                bindText2,
+                bindText3,
+                bindText4,
+                bindText5,
+                bindText6,
+                bindText7,
+                bindText8,
+                bindText9
+            };
+            ParseFromJsonToWinForms(pathToJson);
         }
 
+        /// <summary>
+        /// Тут описывается логика переключателя состояния биндера
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void statusButton_Click(object sender, EventArgs e)
         {
             if (statusButton.Text == "Turn On")
@@ -84,11 +149,13 @@ namespace SimpleBinder
                 statusLabel.BackColor = Color.LawnGreen;
                 saveButton.Enabled = false;
                 cancelButton.Enabled = false;
+                defaultButton.Enabled = false;
                 for (int i = 0; i < bindKeysArray.Count; i++)
                 {
                     bindKeysArray[i].Enabled = false;
                     bindTextArray[i].Enabled = false;
                     multiArray[i].Enabled = false;
+                    enabledArray[i].Enabled = false;
                 }
                 /*
                  тут логика включения биндера
@@ -100,11 +167,13 @@ namespace SimpleBinder
                 statusLabel.BackColor = Color.Red;
                 saveButton.Enabled = true;
                 cancelButton.Enabled = true;
+                defaultButton.Enabled = true;
                 for (int i = 0; i < bindKeysArray.Count; i++)
                 {
                     bindKeysArray[i].Enabled = true;
                     bindTextArray[i].Enabled = true;
                     multiArray[i].Enabled = true;
+                    enabledArray[i].Enabled = true;
                 }
                 /*
                 тут выключение биндера
@@ -112,19 +181,19 @@ namespace SimpleBinder
             }
         }
 
-        private void saveButton_Click(object sender, EventArgs e)//parse value from components
+        private void saveButton_Click(object sender, EventArgs e) //parse value from components
         {
-            Binds = new List<Bind>();
-            for (var i = 0; i < bindKeysArray.Count; i++)
-            {
-                var tempKeys = bindKeysArray[i].Text;
-                var tempText = bindTextArray[i].Text;
-                var isenabled = enabledArray[i].Checked;
-                var ismulti = multiArray[i].Checked;
-                var bind = new Bind(tempKeys, tempText, isenabled, ismulti);
-                Binds.Add(bind);
-            } 
-            File.WriteAllText(pathToJson,JsonSerializer.Serialize(Binds));
+            ParseToJson(pathToJson);
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            ParseFromJsonToWinForms(pathToJson);
+        }
+
+        private void defaultButton_Click(object sender, EventArgs e)
+        {
+            SetBackToDefault();
         }
     }
 }

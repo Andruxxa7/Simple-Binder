@@ -5,7 +5,7 @@ namespace SimpleBinder
     partial class Form1
     {
         /// <summary>
-        /// Required designer variable.
+        /// Required designer variable. Тут какой-то п#зд@ц, не советую смотреть - страшно.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
@@ -91,6 +91,7 @@ namespace SimpleBinder
             this.cancelButton = new System.Windows.Forms.Button();
             this.statusButton = new System.Windows.Forms.Button();
             this.statusLabel = new System.Windows.Forms.Label();
+            this.defaultButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // multi0
@@ -531,6 +532,7 @@ namespace SimpleBinder
             this.cancelButton.TabIndex = 57;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // statusButton
             // 
@@ -553,11 +555,22 @@ namespace SimpleBinder
             this.statusLabel.Text = "  ";
             this.statusLabel.UseMnemonic = false;
             // 
+            // defaultButton
+            // 
+            this.defaultButton.Location = new System.Drawing.Point(382, 379);
+            this.defaultButton.Name = "defaultButton";
+            this.defaultButton.Size = new System.Drawing.Size(102, 23);
+            this.defaultButton.TabIndex = 60;
+            this.defaultButton.Text = "Default";
+            this.defaultButton.UseVisualStyleBackColor = true;
+            this.defaultButton.Click += new System.EventHandler(this.defaultButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
+            this.Controls.Add(this.defaultButton);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.statusButton);
             this.Controls.Add(this.cancelButton);
@@ -625,6 +638,8 @@ namespace SimpleBinder
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button defaultButton;
 
         private System.Windows.Forms.Label bindNumber0;
 
