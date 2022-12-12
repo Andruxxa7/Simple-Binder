@@ -21,17 +21,17 @@
             get => isMulti;
             set => isMulti = value;
         }
-        
+
         public string BindKeys
         {
             get => bindKeys;
-            private set => bindKeys = (value == string.Empty) ? "" : value; //if(bindKeys==" ") - игнорирование //потом допилить
+            set => bindKeys = (value.Replace(" ", "") == string.Empty) ? "" : value;
         }
 
         public string BindText
         {
             get => bindText;
-            private set => bindText = (value == string.Empty) ? "" : value; //if(bindText==" ") - игнорирование //потом допилить
+            set => bindText = (value.Replace(" ", "") == string.Empty) ? "" : value;
         }
 
         /// <summary>
@@ -50,8 +50,8 @@
         /// <param name="multi">является ли сочетанием клавиш или одиночная клавиша у бинда</param>
         public Bind(string keys, string text, bool enabled, bool multi)
         {
-            IsEnabled = enabled;
-            IsMulti = multi;
+            isEnabled = enabled;
+            isMulti = multi;
             BindKeys = keys;
             BindText = text;
         }

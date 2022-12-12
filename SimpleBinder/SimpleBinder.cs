@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace SimpleBinder
 {
@@ -13,12 +13,12 @@ namespace SimpleBinder
         /// Путь до файла .json, в который сохраняются значения, которые потом парсятся из этого же файла.
         /// </summary>
         private string pathToJson = "settings.json";
-
+        private bool isValueChanged;
         private List<TextBox> bindKeysArray;
         private List<TextBox> bindTextArray;
         private List<CheckBox> multiArray;
         private List<CheckBox> enabledArray;
-        private List<Bind> bindsArray;
+        private Bind[] bindsArray;
 
         /// <summary>
         /// Парсит значения из .json в поля WinForm'ы
@@ -27,7 +27,9 @@ namespace SimpleBinder
         private void ParseFromJsonToWinForms(string path2Json)
         {
             if (!File.Exists(path2Json)) return;
-            bindsArray = JsonSerializer.Deserialize<List<Bind>>(File.ReadAllText(path2Json));
+            var tempArray = JsonSerializer.Deserialize<Bind[]>(File.ReadAllText(path2Json));
+            Array.Resize(ref tempArray ,10);
+            bindsArray = tempArray;
             for (var i = 0; i < bindKeysArray.Count; i++)
             {
                 if (bindsArray != null)
@@ -38,6 +40,7 @@ namespace SimpleBinder
                     enabledArray[i].Checked = bindsArray[i].IsEnabled;
                 }
             }
+            
         }
 
         /// <summary>
@@ -55,12 +58,47 @@ namespace SimpleBinder
         }
 
         /// <summary>
+        /// Добавляет ивент ValueChangedEvent на TextBox'ы и  CheckBox'ы
+        /// </summary>
+        private void AddValueChangedEvent()
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is CheckBox)
+                {
+                    ((CheckBox)control).CheckedChanged += ValueIsChanged;
+                }
+                else if (control is TextBox)
+                {
+                    control.TextChanged += ValueIsChanged;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Удаляет ивент ValueChangedEvent c TextBox'ы и CheckBox'ы
+        /// </summary>
+        private void DeleteValueChangedEvent()
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is CheckBox)
+                {
+                    ((CheckBox)control).CheckedChanged -= ValueIsChanged;
+                }
+                else if (control is TextBox)
+                {
+                    control.TextChanged -= ValueIsChanged;
+                }
+            }
+        }
+
+        /// <summary>
         /// Парс значений из полей WinForm'ы в .json
         /// </summary>
         /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>
         private void ParseToJson(string path2Json)
         {
-            bindsArray = new List<Bind>();
             for (var i = 0; i < bindKeysArray.Count; i++)
             {
                 var tempKeys = bindKeysArray[i].Text;
@@ -68,16 +106,37 @@ namespace SimpleBinder
                 var isEnabled = enabledArray[i].Checked;
                 var isMulti = multiArray[i].Checked;
                 var bind = new Bind(tempKeys, tempText, isEnabled, isMulti);
-                bindsArray.Add(bind);
+                bindsArray[i] = bind;
             }
 
             File.WriteAllText(path2Json, JsonSerializer.Serialize(bindsArray));
         }
 
+        private void SwitchSaveAndCancelButtons()
+        {
+            if (!isValueChanged)
+            {
+                saveButton.Enabled = false;
+                cancelButton.Enabled = false;
+                
+                AddValueChangedEvent();
+            }
+            else
+            {
+                saveButton.Enabled = true;
+                cancelButton.Enabled = true;
+            }
+        }
+        private void ValueIsChanged(object sender, EventArgs e)
+        {
+            isValueChanged = true;
+            SwitchSaveAndCancelButtons();
+            DeleteValueChangedEvent();
+        }
+
         public SimpleBinder()
         {
             InitializeComponent();
-
             multiArray = new List<CheckBox>
             {
                 multi0,
@@ -134,6 +193,7 @@ namespace SimpleBinder
                 bindText9
             };
             ParseFromJsonToWinForms(pathToJson);
+            SwitchSaveAndCancelButtons();
         }
 
         /// <summary>
@@ -147,8 +207,6 @@ namespace SimpleBinder
             {
                 statusButton.Text = "Turn Off";
                 statusLabel.BackColor = Color.LawnGreen;
-                saveButton.Enabled = false;
-                cancelButton.Enabled = false;
                 defaultButton.Enabled = false;
                 for (int i = 0; i < bindKeysArray.Count; i++)
                 {
@@ -165,8 +223,6 @@ namespace SimpleBinder
             {
                 statusButton.Text = "Turn On";
                 statusLabel.BackColor = Color.Red;
-                saveButton.Enabled = true;
-                cancelButton.Enabled = true;
                 defaultButton.Enabled = true;
                 for (int i = 0; i < bindKeysArray.Count; i++)
                 {
@@ -184,11 +240,15 @@ namespace SimpleBinder
         private void saveButton_Click(object sender, EventArgs e) //parse value from components
         {
             ParseToJson(pathToJson);
+            isValueChanged = false;
+            SwitchSaveAndCancelButtons();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             ParseFromJsonToWinForms(pathToJson);
+            isValueChanged = false;
+            SwitchSaveAndCancelButtons();
         }
 
         private void defaultButton_Click(object sender, EventArgs e)
