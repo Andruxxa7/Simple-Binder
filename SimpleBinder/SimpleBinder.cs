@@ -18,7 +18,7 @@ namespace SimpleBinder
         private List<TextBox> bindTextArray;
         private List<CheckBox> multiArray;
         private List<CheckBox> enabledArray;
-        private List<Bind> Binds;
+        private List<Bind> bindsArray;
 
         /// <summary>
         /// Парсит значения из .json в поля WinForm'ы
@@ -27,15 +27,15 @@ namespace SimpleBinder
         private void ParseFromJsonToWinForms(string path2Json)
         {
             if (!File.Exists(path2Json)) return;
-            Binds = JsonSerializer.Deserialize<List<Bind>>(File.ReadAllText(path2Json));
+            bindsArray = JsonSerializer.Deserialize<List<Bind>>(File.ReadAllText(path2Json));
             for (var i = 0; i < bindKeysArray.Count; i++)
             {
-                if (Binds != null)
+                if (bindsArray != null)
                 {
-                    bindKeysArray[i].Text = Binds[i].BindKeys ?? "";
-                    bindTextArray[i].Text = Binds[i].BindText ?? "";
-                    multiArray[i].Checked = Binds[i].IsMulti;
-                    enabledArray[i].Checked = Binds[i].IsEnabled;
+                    bindKeysArray[i].Text = bindsArray[i].BindKeys ?? "";
+                    bindTextArray[i].Text = bindsArray[i].BindText ?? "";
+                    multiArray[i].Checked = bindsArray[i].IsMulti;
+                    enabledArray[i].Checked = bindsArray[i].IsEnabled;
                 }
             }
         }
@@ -60,18 +60,18 @@ namespace SimpleBinder
         /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>
         private void ParseToJson(string path2Json)
         {
-            Binds = new List<Bind>();
+            bindsArray = new List<Bind>();
             for (var i = 0; i < bindKeysArray.Count; i++)
             {
                 var tempKeys = bindKeysArray[i].Text;
                 var tempText = bindTextArray[i].Text;
-                var isenabled = enabledArray[i].Checked;
-                var ismulti = multiArray[i].Checked;
-                var bind = new Bind(tempKeys, tempText, isenabled, ismulti);
-                Binds.Add(bind);
+                var isEnabled = enabledArray[i].Checked;
+                var isMulti = multiArray[i].Checked;
+                var bind = new Bind(tempKeys, tempText, isEnabled, isMulti);
+                bindsArray.Add(bind);
             }
 
-            File.WriteAllText(path2Json, JsonSerializer.Serialize(Binds));
+            File.WriteAllText(path2Json, JsonSerializer.Serialize(bindsArray));
         }
 
         public SimpleBinder()

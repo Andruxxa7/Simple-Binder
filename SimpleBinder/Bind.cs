@@ -10,22 +10,28 @@
         private bool isEnabled; //вкл или выкл бинд на данный момент
         private bool isMulti; //мульти бинд или единичный
 
-        public bool IsMulti { get; set; }
+        public bool IsEnabled
+        {
+            get => isEnabled;
+            set => isEnabled = value;
+        }
 
-        public bool IsEnabled { get; set; }
-
-
+        public bool IsMulti
+        {
+            get => isMulti;
+            set => isMulti = value;
+        }
+        
         public string BindKeys
         {
             get => bindKeys;
-            set => bindKeys = (value == string.Empty) ? "" : value; //if(bindKeys==" ") - игнорирование //потом допилить
-            
+            private set => bindKeys = (value == string.Empty) ? "" : value; //if(bindKeys==" ") - игнорирование //потом допилить
         }
 
         public string BindText
         {
             get => bindText;
-            set => bindText = (value == string.Empty) ? "" : value; //if(bindText==" ") - игнорирование //потом допилить
+            private set => bindText = (value == string.Empty) ? "" : value; //if(bindText==" ") - игнорирование //потом допилить
         }
 
         /// <summary>
