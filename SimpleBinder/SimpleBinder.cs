@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text.Json;
@@ -14,10 +13,10 @@ namespace SimpleBinder
         /// </summary>
         private string pathToJson = "settings.json";
         private bool isValueChanged;
-        private List<TextBox> bindKeysArray;
-        private List<TextBox> bindTextArray;
-        private List<CheckBox> multiArray;
-        private List<CheckBox> enabledArray;
+        private TextBox[] bindKeysArray;
+        private TextBox[] bindTextArray;
+        private CheckBox[] multiArray;
+        private CheckBox[] enabledArray;
         private Bind[] bindsArray;
 
         /// <summary>
@@ -30,7 +29,7 @@ namespace SimpleBinder
             var tempArray = JsonSerializer.Deserialize<Bind[]>(File.ReadAllText(path2Json));
             Array.Resize(ref tempArray ,10);
             bindsArray = tempArray;
-            for (var i = 0; i < bindKeysArray.Count; i++)
+            for (var i = 0; i < bindKeysArray.Length; i++)
             {
                 if (bindsArray != null)
                 {
@@ -48,7 +47,7 @@ namespace SimpleBinder
         /// </summary>
         private void SetBackToDefault()
         {
-            for (int i = 0; i < bindKeysArray.Count; i++)
+            for (int i = 0; i < bindKeysArray.Length; i++)
             {
                 bindKeysArray[i].Text = "";
                 bindTextArray[i].Text = "";
@@ -99,7 +98,7 @@ namespace SimpleBinder
         /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>
         private void ParseToJson(string path2Json)
         {
-            for (var i = 0; i < bindKeysArray.Count; i++)
+            for (var i = 0; i < bindKeysArray.Length; i++)
             {
                 var tempKeys = bindKeysArray[i].Text;
                 var tempText = bindTextArray[i].Text;
@@ -137,7 +136,7 @@ namespace SimpleBinder
         public SimpleBinder()
         {
             InitializeComponent();
-            multiArray = new List<CheckBox>
+            multiArray = new[]
             {
                 multi0,
                 multi1,
@@ -151,7 +150,7 @@ namespace SimpleBinder
                 multi9
             };
 
-            enabledArray = new List<CheckBox>
+            enabledArray = new[]
             {
                 enabled0,
                 enabled1,
@@ -165,7 +164,7 @@ namespace SimpleBinder
                 enabled9
             };
 
-            bindKeysArray = new List<TextBox>
+            bindKeysArray = new[]
             {
                 bindKeys0,
                 bindKeys1,
@@ -179,7 +178,7 @@ namespace SimpleBinder
                 bindKeys9
             };
 
-            bindTextArray = new List<TextBox>
+            bindTextArray = new[]
             {
                 bindText0,
                 bindText1,
@@ -208,7 +207,8 @@ namespace SimpleBinder
                 statusButton.Text = "Turn Off";
                 statusLabel.BackColor = Color.LawnGreen;
                 defaultButton.Enabled = false;
-                for (int i = 0; i < bindKeysArray.Count; i++)
+                cancelButton_Click(null, null);
+                for (int i = 0; i < bindKeysArray.Length; i++)
                 {
                     bindKeysArray[i].Enabled = false;
                     bindTextArray[i].Enabled = false;
@@ -224,7 +224,7 @@ namespace SimpleBinder
                 statusButton.Text = "Turn On";
                 statusLabel.BackColor = Color.Red;
                 defaultButton.Enabled = true;
-                for (int i = 0; i < bindKeysArray.Count; i++)
+                for (int i = 0; i < bindKeysArray.Length; i++)
                 {
                     bindKeysArray[i].Enabled = true;
                     bindTextArray[i].Enabled = true;
