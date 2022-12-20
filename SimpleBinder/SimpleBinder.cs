@@ -12,6 +12,7 @@ namespace SimpleBinder
         /// Путь до файла .json, в который сохраняются значения, которые потом парсятся из этого же файла.
         /// </summary>
         private string pathToJson = "settings.json";
+
         private bool isValueChanged;
         private TextBox[] bindKeysArray;
         private TextBox[] bindTextArray;
@@ -27,7 +28,7 @@ namespace SimpleBinder
         {
             if (!File.Exists(path2Json)) return;
             var tempArray = JsonSerializer.Deserialize<Bind[]>(File.ReadAllText(path2Json));
-            Array.Resize(ref tempArray ,10);
+            Array.Resize(ref tempArray, 10);
             bindsArray = tempArray;
             for (var i = 0; i < bindKeysArray.Length; i++)
             {
@@ -39,7 +40,6 @@ namespace SimpleBinder
                     enabledArray[i].Checked = bindsArray[i].IsEnabled;
                 }
             }
-            
         }
 
         /// <summary>
@@ -63,9 +63,9 @@ namespace SimpleBinder
         {
             foreach (Control control in Controls)
             {
-                if (control is CheckBox)
+                if (control is CheckBox checkBox)
                 {
-                    ((CheckBox)control).CheckedChanged += ValueIsChanged;
+                    checkBox.CheckedChanged += ValueIsChanged;
                 }
                 else if (control is TextBox)
                 {
@@ -81,9 +81,9 @@ namespace SimpleBinder
         {
             foreach (Control control in Controls)
             {
-                if (control is CheckBox)
+                if (control is CheckBox checkBox)
                 {
-                    ((CheckBox)control).CheckedChanged -= ValueIsChanged;
+                    checkBox.CheckedChanged -= ValueIsChanged;
                 }
                 else if (control is TextBox)
                 {
@@ -117,7 +117,7 @@ namespace SimpleBinder
             {
                 saveButton.Enabled = false;
                 cancelButton.Enabled = false;
-                
+
                 AddValueChangedEvent();
             }
             else
@@ -126,11 +126,61 @@ namespace SimpleBinder
                 cancelButton.Enabled = true;
             }
         }
+
         private void ValueIsChanged(object sender, EventArgs e)
         {
             isValueChanged = true;
             SwitchSaveAndCancelButtons();
             DeleteValueChangedEvent();
+        }
+
+        private void bindKeysTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char temp;
+            if (e.KeyChar == (char)8)
+            {
+                Focus();
+                temp = e.KeyChar;
+            }
+
+            temp = e.KeyChar;
+            UpdateTextBox(currentBindTextBox, temp);
+        }
+
+        private TextBox currentBindTextBox;
+
+        private void UpdateTextBox(TextBox textBox, char newChar)
+        {
+            if (newChar == (char)8) return;
+            var indexOfBindKeysTextBox = Array.IndexOf(bindKeysArray, textBox);
+            if (multiArray[indexOfBindKeysTextBox].Checked)
+            {
+                if (textBox.Text == string.Empty) textBox.Text = newChar.ToString();
+                else
+                {
+                    //допилить логику
+                    if ((textBox.Text).IndexOf('+') == -1) textBox.Text += $" + {newChar}";
+                    else textBox.Text = string.Empty;
+                }
+            }
+            else
+            {
+                textBox.Text = newChar.ToString();
+            }
+        }
+
+        private void bindKeysTextBox_GotFocus(object obj,EventArgs args)
+        {
+            var textBox = (TextBox)obj;
+            textBox.Text = string.Empty;
+            currentBindTextBox = textBox;
+            textBox.KeyPress += bindKeysTextBox_KeyPress;
+        }
+
+        private void bindKeysTextBox_LostFocus(object obj,EventArgs args)
+        {
+            var textBox = (TextBox)obj;
+            textBox.KeyPress -= bindKeysTextBox_KeyPress;
         }
 
         public SimpleBinder()
@@ -193,6 +243,11 @@ namespace SimpleBinder
             };
             ParseFromJsonToWinForms(pathToJson);
             SwitchSaveAndCancelButtons();
+            foreach (var textBox in bindKeysArray)
+            {
+                textBox.GotFocus += bindKeysTextBox_GotFocus;
+                textBox.LostFocus += bindKeysTextBox_LostFocus;
+            }
         }
 
         /// <summary>
@@ -237,7 +292,12 @@ namespace SimpleBinder
             }
         }
 
-        private void saveButton_Click(object sender, EventArgs e) //parse value from components
+        /// <summary>
+        /// Parse value from components
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveButton_Click(object sender, EventArgs e)
         {
             ParseToJson(pathToJson);
             isValueChanged = false;

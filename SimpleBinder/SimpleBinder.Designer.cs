@@ -156,6 +156,7 @@ namespace SimpleBinder
             this.bindKeys0.Name = "bindKeys0";
             this.bindKeys0.Size = new System.Drawing.Size(152, 20);
             this.bindKeys0.TabIndex = 8;
+            this.bindKeys0.ReadOnly = true;
             // 
             // bindTextLabel
             // 
@@ -185,6 +186,7 @@ namespace SimpleBinder
             this.bindKeys1.Name = "bindKeys1";
             this.bindKeys1.Size = new System.Drawing.Size(152, 20);
             this.bindKeys1.TabIndex = 14;
+            this.bindKeys1.ReadOnly = true;
             // 
             // bindNumber1
             // 
@@ -223,6 +225,7 @@ namespace SimpleBinder
             this.bindKeys2.Name = "bindKeys2";
             this.bindKeys2.Size = new System.Drawing.Size(152, 20);
             this.bindKeys2.TabIndex = 19;
+            this.bindKeys2.ReadOnly = true;
             // 
             // bindNumber2
             // 
@@ -261,6 +264,7 @@ namespace SimpleBinder
             this.bindKeys3.Name = "bindKeys3";
             this.bindKeys3.Size = new System.Drawing.Size(152, 20);
             this.bindKeys3.TabIndex = 24;
+            this.bindKeys3.ReadOnly = true;
             // 
             // bindNumber3
             // 
@@ -299,6 +303,7 @@ namespace SimpleBinder
             this.bindKeys4.Name = "bindKeys4";
             this.bindKeys4.Size = new System.Drawing.Size(152, 20);
             this.bindKeys4.TabIndex = 29;
+            this.bindKeys4.ReadOnly = true;
             // 
             // bindNumber4
             // 
@@ -337,6 +342,7 @@ namespace SimpleBinder
             this.bindKeys5.Name = "bindKeys5";
             this.bindKeys5.Size = new System.Drawing.Size(152, 20);
             this.bindKeys5.TabIndex = 34;
+            this.bindKeys5.ReadOnly = true;
             // 
             // bindNumber5
             // 
@@ -375,6 +381,7 @@ namespace SimpleBinder
             this.bindKeys6.Name = "bindKeys6";
             this.bindKeys6.Size = new System.Drawing.Size(152, 20);
             this.bindKeys6.TabIndex = 39;
+            this.bindKeys6.ReadOnly = true;
             // 
             // bindNumber6
             // 
@@ -413,6 +420,7 @@ namespace SimpleBinder
             this.bindKeys7.Name = "bindKeys7";
             this.bindKeys7.Size = new System.Drawing.Size(152, 20);
             this.bindKeys7.TabIndex = 44;
+            this.bindKeys7.ReadOnly = true;
             // 
             // label8
             // 
@@ -451,6 +459,7 @@ namespace SimpleBinder
             this.bindKeys8.Name = "bindKeys8";
             this.bindKeys8.Size = new System.Drawing.Size(152, 20);
             this.bindKeys8.TabIndex = 49;
+            this.bindKeys8.ReadOnly = true;
             // 
             // bindNumber8
             // 
@@ -489,6 +498,7 @@ namespace SimpleBinder
             this.bindKeys9.Name = "bindKeys9";
             this.bindKeys9.Size = new System.Drawing.Size(152, 20);
             this.bindKeys9.TabIndex = 54;
+            this.bindKeys9.ReadOnly = true;
             // 
             // bindNumber9
             // 
