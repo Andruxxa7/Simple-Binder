@@ -9,6 +9,20 @@
         private string bindText; // текст, к-й будет будеть "набираться"
         private bool isEnabled; //вкл или выкл бинд на данный момент
         private bool isMulti; //мульти бинд или единичный
+        private int indexOfSelectedModifier;
+        private string selectedModifier;
+
+        public int IndexOfSelectedModifier
+        {
+            get => indexOfSelectedModifier;
+            set => indexOfSelectedModifier = value;
+        }
+
+        public string SelectedModifier
+        {
+            get => selectedModifier;
+            set => selectedModifier = value;
+        }
 
         public bool IsEnabled
         {
@@ -48,12 +62,16 @@
         /// <param name="text">текст, к-й будет набран данным биндом</param>
         /// <param name="enabled">включен ли данный бинд</param>
         /// <param name="multi">является ли сочетанием клавиш или одиночная клавиша у бинда</param>
-        public Bind(string keys, string text, bool enabled, bool multi)
+        /// <param name="indexOfModifier">Индекс модификатора</param>
+        /// <param name="modifier">Модификатор бинда</param>
+        public Bind(string keys, string text, bool enabled, bool multi, int indexOfModifier, string modifier)
         {
             isEnabled = enabled;
             isMulti = multi;
             BindKeys = keys;
             BindText = text;
+            indexOfSelectedModifier = indexOfModifier;
+            selectedModifier = modifier;
         }
     }
 }

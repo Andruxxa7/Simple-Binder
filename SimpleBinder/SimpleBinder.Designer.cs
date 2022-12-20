@@ -92,6 +92,17 @@ namespace SimpleBinder
             this.statusButton = new System.Windows.Forms.Button();
             this.statusLabel = new System.Windows.Forms.Label();
             this.defaultButton = new System.Windows.Forms.Button();
+            this.modifierLabel = new System.Windows.Forms.Label();
+            this.modifierListBox0 = new System.Windows.Forms.ListBox();
+            this.modifierListBox1 = new System.Windows.Forms.ListBox();
+            this.modifierListBox2 = new System.Windows.Forms.ListBox();
+            this.modifierListBox3 = new System.Windows.Forms.ListBox();
+            this.modifierListBox4 = new System.Windows.Forms.ListBox();
+            this.modifierListBox5 = new System.Windows.Forms.ListBox();
+            this.modifierListBox6 = new System.Windows.Forms.ListBox();
+            this.modifierListBox7 = new System.Windows.Forms.ListBox();
+            this.modifierListBox8 = new System.Windows.Forms.ListBox();
+            this.modifierListBox9 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // multi0
@@ -136,7 +147,7 @@ namespace SimpleBinder
             // 
             // bindNumber0
             // 
-            this.bindNumber0.Location = new System.Drawing.Point(12, 40);
+            this.bindNumber0.Location = new System.Drawing.Point(12, 37);
             this.bindNumber0.Name = "bindNumber0";
             this.bindNumber0.Size = new System.Drawing.Size(21, 16);
             this.bindNumber0.TabIndex = 6;
@@ -144,19 +155,19 @@ namespace SimpleBinder
             // 
             // bindKeysLabel
             // 
-            this.bindKeysLabel.Location = new System.Drawing.Point(49, 17);
+            this.bindKeysLabel.Location = new System.Drawing.Point(97, 17);
             this.bindKeysLabel.Name = "bindKeysLabel";
-            this.bindKeysLabel.Size = new System.Drawing.Size(118, 14);
+            this.bindKeysLabel.Size = new System.Drawing.Size(70, 14);
             this.bindKeysLabel.TabIndex = 7;
             this.bindKeysLabel.Text = "Bind";
             // 
             // bindKeys0
             // 
-            this.bindKeys0.Location = new System.Drawing.Point(24, 34);
+            this.bindKeys0.Location = new System.Drawing.Point(97, 34);
             this.bindKeys0.Name = "bindKeys0";
-            this.bindKeys0.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys0.TabIndex = 8;
             this.bindKeys0.ReadOnly = true;
+            this.bindKeys0.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys0.TabIndex = 8;
             // 
             // bindTextLabel
             // 
@@ -182,11 +193,11 @@ namespace SimpleBinder
             // 
             // bindKeys1
             // 
-            this.bindKeys1.Location = new System.Drawing.Point(24, 60);
+            this.bindKeys1.Location = new System.Drawing.Point(97, 60);
             this.bindKeys1.Name = "bindKeys1";
-            this.bindKeys1.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys1.TabIndex = 14;
             this.bindKeys1.ReadOnly = true;
+            this.bindKeys1.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys1.TabIndex = 14;
             // 
             // bindNumber1
             // 
@@ -221,11 +232,11 @@ namespace SimpleBinder
             // 
             // bindKeys2
             // 
-            this.bindKeys2.Location = new System.Drawing.Point(24, 95);
+            this.bindKeys2.Location = new System.Drawing.Point(97, 95);
             this.bindKeys2.Name = "bindKeys2";
-            this.bindKeys2.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys2.TabIndex = 19;
             this.bindKeys2.ReadOnly = true;
+            this.bindKeys2.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys2.TabIndex = 19;
             // 
             // bindNumber2
             // 
@@ -260,11 +271,11 @@ namespace SimpleBinder
             // 
             // bindKeys3
             // 
-            this.bindKeys3.Location = new System.Drawing.Point(24, 130);
+            this.bindKeys3.Location = new System.Drawing.Point(97, 130);
             this.bindKeys3.Name = "bindKeys3";
-            this.bindKeys3.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys3.TabIndex = 24;
             this.bindKeys3.ReadOnly = true;
+            this.bindKeys3.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys3.TabIndex = 24;
             // 
             // bindNumber3
             // 
@@ -299,11 +310,11 @@ namespace SimpleBinder
             // 
             // bindKeys4
             // 
-            this.bindKeys4.Location = new System.Drawing.Point(24, 165);
+            this.bindKeys4.Location = new System.Drawing.Point(97, 165);
             this.bindKeys4.Name = "bindKeys4";
-            this.bindKeys4.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys4.TabIndex = 29;
             this.bindKeys4.ReadOnly = true;
+            this.bindKeys4.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys4.TabIndex = 29;
             // 
             // bindNumber4
             // 
@@ -338,11 +349,11 @@ namespace SimpleBinder
             // 
             // bindKeys5
             // 
-            this.bindKeys5.Location = new System.Drawing.Point(24, 203);
+            this.bindKeys5.Location = new System.Drawing.Point(97, 203);
             this.bindKeys5.Name = "bindKeys5";
-            this.bindKeys5.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys5.TabIndex = 34;
             this.bindKeys5.ReadOnly = true;
+            this.bindKeys5.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys5.TabIndex = 34;
             // 
             // bindNumber5
             // 
@@ -377,11 +388,11 @@ namespace SimpleBinder
             // 
             // bindKeys6
             // 
-            this.bindKeys6.Location = new System.Drawing.Point(24, 241);
+            this.bindKeys6.Location = new System.Drawing.Point(97, 241);
             this.bindKeys6.Name = "bindKeys6";
-            this.bindKeys6.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys6.TabIndex = 39;
             this.bindKeys6.ReadOnly = true;
+            this.bindKeys6.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys6.TabIndex = 39;
             // 
             // bindNumber6
             // 
@@ -416,11 +427,11 @@ namespace SimpleBinder
             // 
             // bindKeys7
             // 
-            this.bindKeys7.Location = new System.Drawing.Point(24, 277);
+            this.bindKeys7.Location = new System.Drawing.Point(97, 277);
             this.bindKeys7.Name = "bindKeys7";
-            this.bindKeys7.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys7.TabIndex = 44;
             this.bindKeys7.ReadOnly = true;
+            this.bindKeys7.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys7.TabIndex = 44;
             // 
             // label8
             // 
@@ -455,11 +466,11 @@ namespace SimpleBinder
             // 
             // bindKeys8
             // 
-            this.bindKeys8.Location = new System.Drawing.Point(24, 313);
+            this.bindKeys8.Location = new System.Drawing.Point(97, 313);
             this.bindKeys8.Name = "bindKeys8";
-            this.bindKeys8.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys8.TabIndex = 49;
             this.bindKeys8.ReadOnly = true;
+            this.bindKeys8.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys8.TabIndex = 49;
             // 
             // bindNumber8
             // 
@@ -494,11 +505,11 @@ namespace SimpleBinder
             // 
             // bindKeys9
             // 
-            this.bindKeys9.Location = new System.Drawing.Point(24, 353);
+            this.bindKeys9.Location = new System.Drawing.Point(97, 353);
             this.bindKeys9.Name = "bindKeys9";
-            this.bindKeys9.Size = new System.Drawing.Size(152, 20);
-            this.bindKeys9.TabIndex = 54;
             this.bindKeys9.ReadOnly = true;
+            this.bindKeys9.Size = new System.Drawing.Size(79, 20);
+            this.bindKeys9.TabIndex = 54;
             // 
             // bindNumber9
             // 
@@ -575,11 +586,130 @@ namespace SimpleBinder
             this.defaultButton.UseVisualStyleBackColor = true;
             this.defaultButton.Click += new System.EventHandler(this.defaultButton_Click);
             // 
+            // modifierLabel
+            // 
+            this.modifierLabel.Location = new System.Drawing.Point(39, 17);
+            this.modifierLabel.Name = "modifierLabel";
+            this.modifierLabel.Size = new System.Drawing.Size(52, 14);
+            this.modifierLabel.TabIndex = 61;
+            this.modifierLabel.Text = "Modif.";
+            // 
+            // modifierListBox0
+            // 
+            this.modifierListBox0.FormattingEnabled = true;
+            this.modifierListBox0.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox0.Location = new System.Drawing.Point(32, 37);
+            this.modifierListBox0.Name = "modifierListBox0";
+            this.modifierListBox0.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox0.TabIndex = 62;
+            this.modifierListBox0.SelectedIndex = 0;
+            // 
+            // modifierListBox1
+            // 
+            this.modifierListBox1.FormattingEnabled = true;
+            this.modifierListBox1.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox1.Location = new System.Drawing.Point(32, 63);
+            this.modifierListBox1.Name = "modifierListBox1";
+            this.modifierListBox1.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox1.TabIndex = 63;
+            this.modifierListBox1.SelectedIndex = 0;
+            // 
+            // modifierListBox2
+            // 
+            this.modifierListBox2.FormattingEnabled = true;
+            this.modifierListBox2.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox2.Location = new System.Drawing.Point(32, 98);
+            this.modifierListBox2.Name = "modifierListBox2";
+            this.modifierListBox2.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox2.TabIndex = 64;
+            this.modifierListBox2.SelectedIndex = 0;
+            // 
+            // modifierListBox3
+            // 
+            this.modifierListBox3.FormattingEnabled = true;
+            this.modifierListBox3.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox3.Location = new System.Drawing.Point(32, 133);
+            this.modifierListBox3.Name = "modifierListBox3";
+            this.modifierListBox3.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox3.TabIndex = 65;
+            this.modifierListBox3.SelectedIndex = 0;
+            // 
+            // modifierListBox4
+            // 
+            this.modifierListBox4.FormattingEnabled = true;
+            this.modifierListBox4.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox4.Location = new System.Drawing.Point(32, 168);
+            this.modifierListBox4.Name = "modifierListBox4";
+            this.modifierListBox4.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox4.TabIndex = 66;
+            this.modifierListBox4.SelectedIndex = 0;
+            // 
+            // modifierListBox5
+            // 
+            this.modifierListBox5.FormattingEnabled = true;
+            this.modifierListBox5.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox5.Location = new System.Drawing.Point(32, 206);
+            this.modifierListBox5.Name = "modifierListBox5";
+            this.modifierListBox5.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox5.TabIndex = 67;
+            this.modifierListBox5.SelectedIndex = 0;
+            // 
+            // modifierListBox6
+            // 
+            this.modifierListBox6.FormattingEnabled = true;
+            this.modifierListBox6.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox6.Location = new System.Drawing.Point(32, 241);
+            this.modifierListBox6.Name = "modifierListBox6";
+            this.modifierListBox6.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox6.TabIndex = 68;
+            this.modifierListBox6.SelectedIndex = 0;
+            // 
+            // modifierListBox7
+            // 
+            this.modifierListBox7.FormattingEnabled = true;
+            this.modifierListBox7.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox7.Location = new System.Drawing.Point(32, 280);
+            this.modifierListBox7.Name = "modifierListBox7";
+            this.modifierListBox7.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox7.TabIndex = 69;
+            this.modifierListBox7.SelectedIndex = 0;
+            // 
+            // modifierListBox8
+            // 
+            this.modifierListBox8.FormattingEnabled = true;
+            this.modifierListBox8.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox8.Location = new System.Drawing.Point(32, 316);
+            this.modifierListBox8.Name = "modifierListBox8";
+            this.modifierListBox8.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox8.TabIndex = 70;
+            this.modifierListBox8.SelectedIndex = 0;
+            // 
+            // modifierListBox9
+            // 
+            this.modifierListBox9.FormattingEnabled = true;
+            this.modifierListBox9.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox9.Location = new System.Drawing.Point(32, 356);
+            this.modifierListBox9.Name = "modifierListBox9";
+            this.modifierListBox9.Size = new System.Drawing.Size(60, 17);
+            this.modifierListBox9.TabIndex = 71;
+            this.modifierListBox9.SelectedIndex = 0;
+            // 
             // SimpleBinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
+            this.Controls.Add(this.modifierListBox9);
+            this.Controls.Add(this.modifierListBox8);
+            this.Controls.Add(this.modifierListBox7);
+            this.Controls.Add(this.modifierListBox6);
+            this.Controls.Add(this.modifierListBox5);
+            this.Controls.Add(this.modifierListBox4);
+            this.Controls.Add(this.modifierListBox3);
+            this.Controls.Add(this.modifierListBox2);
+            this.Controls.Add(this.modifierListBox1);
+            this.Controls.Add(this.modifierListBox0);
+            this.Controls.Add(this.modifierLabel);
             this.Controls.Add(this.defaultButton);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.statusButton);
@@ -649,6 +779,21 @@ namespace SimpleBinder
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.ListBox modifierListBox7;
+
+        private System.Windows.Forms.ListBox modifierListBox9;
+
+        private System.Windows.Forms.ListBox modifierListBox1;
+        private System.Windows.Forms.ListBox modifierListBox2;
+        private System.Windows.Forms.ListBox modifierListBox3;
+        private System.Windows.Forms.ListBox modifierListBox4;
+        private System.Windows.Forms.ListBox modifierListBox5;
+        private System.Windows.Forms.ListBox modifierListBox6;
+        private System.Windows.Forms.ListBox modifierListBox8;
+        private System.Windows.Forms.ListBox modifierListBox0;
+
+        private System.Windows.Forms.Label modifierLabel;
+
         private System.Windows.Forms.Button defaultButton;
 
         private System.Windows.Forms.Label bindNumber0;
@@ -675,7 +820,6 @@ namespace SimpleBinder
         private System.Windows.Forms.Label bindNumber9;
         private System.Windows.Forms.CheckBox enabled9;
         private System.Windows.Forms.CheckBox multi9;
-
         private System.Windows.Forms.TextBox bindKeys1;
         private System.Windows.Forms.Label bindNumber1;
         private System.Windows.Forms.Label bindNumber2;
@@ -698,7 +842,6 @@ namespace SimpleBinder
         private System.Windows.Forms.TextBox bindKeys5;
         private System.Windows.Forms.TextBox bindText6;
         private System.Windows.Forms.TextBox bindKeys6;
-
         private System.Windows.Forms.TextBox bindKeys0;
         private System.Windows.Forms.TextBox bindText1;
         private System.Windows.Forms.CheckBox multi0;
@@ -714,8 +857,6 @@ namespace SimpleBinder
         private System.Windows.Forms.Label bindTextLabel;
         private System.Windows.Forms.Label multiLabel;
         private System.Windows.Forms.Label enabledLabel;
-        
-
         #endregion
     }
 }
