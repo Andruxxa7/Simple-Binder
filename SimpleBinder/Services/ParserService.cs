@@ -37,9 +37,9 @@ namespace SimpleBinder
         {
             for (var i = 0; i < bindKeysArray.Length; i++)
             {
-                var bind = new Bind(bindKeysArray[i].Text, bindTextArray[i].Text, enabledArray[i].Checked,
+                bindsArray[i] = new Bind(bindKeysArray[i].Text, bindTextArray[i].Text, enabledArray[i].Checked,
                     multiArray[i].Checked, modifierArray[i].SelectedIndex, (string)modifierArray[i].SelectedItem);
-                bindsArray[i] = bind;
+                enabledArray[i].Checked = bindsArray[i].IsEnabled;
             }
 
             File.WriteAllText(path2Json, JsonSerializer.Serialize(bindsArray));

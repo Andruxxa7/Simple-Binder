@@ -10,7 +10,7 @@
         }
 
         private string bindKeys; //временное, потом если чё переделать
-        private string bindText; // текст, к-й будет будеть "набираться"
+        protected string bindText; // текст, к-й будет будеть "набираться"
 
         public bool IsEnabled { get; set; }
 
@@ -43,7 +43,8 @@
         /// <param name="modifier">Модификатор бинда</param>
         public Bind(string keys, string text, bool enabled, bool multi, int indexOfModifier, string modifier)
         {
-            IsEnabled = (text != string.Empty && keys != string.Empty) && enabled;
+            var temp = (GenerateKeyString()??"") != string.Empty;
+            IsEnabled = temp && enabled; //ес
             IsMulti = multi;
             BindKeys = keys;
             BindText = text;
@@ -53,11 +54,15 @@
 
         public string GenerateKeyString()
         {
-            string hotkey;
+            var hotkey = string.Empty;
             if (IndexOfSelectedModifier == 0) //Без модификаторов
-                hotkey = BindKeys;
+                hotkey =(BindKeys != string.Empty) ? BindKeys:string.Empty;
             else //C модификатором
-                hotkey = SelectedModifier + " + " + BindKeys;
+            {
+                hotkey = SelectedModifier;
+                hotkey = (BindKeys != string.Empty) ? hotkey + " + " + BindKeys : hotkey;
+            }
+
             return hotkey;
         }
     }
