@@ -5,36 +5,16 @@
     /// </summary>
     public class Bind
     {
+        public Bind()
+        {
+        }
+
         private string bindKeys; //временное, потом если чё переделать
         private string bindText; // текст, к-й будет будеть "набираться"
-        private bool isEnabled; //вкл или выкл бинд на данный момент
-        private bool isMulti; //мульти бинд или единичный
-        private int indexOfSelectedModifier;
-        private string selectedModifier;
 
-        public int IndexOfSelectedModifier
-        {
-            get => indexOfSelectedModifier;
-            set => indexOfSelectedModifier = value;
-        }
+        public bool IsEnabled { get; set; }
 
-        public string SelectedModifier
-        {
-            get => selectedModifier;
-            set => selectedModifier = value;
-        }
-
-        public bool IsEnabled
-        {
-            get => isEnabled;
-            set => isEnabled = value;
-        }
-
-        public bool IsMulti
-        {
-            get => isMulti;
-            set => isMulti = value;
-        }
+        public bool IsMulti { get; set; }
 
         public string BindKeys
         {
@@ -48,12 +28,9 @@
             set => bindText = (value.Replace(" ", "") == string.Empty) ? "" : value;
         }
 
-        /// <summary>
-        /// Конструктор класса Bind по умолчанию(без параметров)
-        /// </summary>
-        public Bind()
-        {
-        }
+        public int IndexOfSelectedModifier { get; set; }
+
+        public string SelectedModifier { get; set; }
 
         /// <summary>
         /// Конструктор класса Bind с параметрами
@@ -66,12 +43,22 @@
         /// <param name="modifier">Модификатор бинда</param>
         public Bind(string keys, string text, bool enabled, bool multi, int indexOfModifier, string modifier)
         {
-            isEnabled = enabled;
-            isMulti = multi;
+            IsEnabled = (text != string.Empty && keys != string.Empty) && enabled;
+            IsMulti = multi;
             BindKeys = keys;
             BindText = text;
-            indexOfSelectedModifier = indexOfModifier;
-            selectedModifier = modifier;
+            IndexOfSelectedModifier = indexOfModifier;
+            SelectedModifier = (modifier == "Ctrl") ? "Control" : modifier;
+        }
+
+        public string GenerateKeyString()
+        {
+            string hotkey;
+            if (IndexOfSelectedModifier == 0) //Без модификаторов
+                hotkey = BindKeys;
+            else //C модификатором
+                hotkey = SelectedModifier + " + " + BindKeys;
+            return hotkey;
         }
     }
 }

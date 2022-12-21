@@ -1,4 +1,5 @@
-﻿using Microsoft.CSharp.RuntimeBinder;
+﻿using System;
+using Microsoft.CSharp.RuntimeBinder;
 
 namespace SimpleBinder
 {

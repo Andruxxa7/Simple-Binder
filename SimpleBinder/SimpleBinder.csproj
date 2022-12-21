@@ -75,7 +75,10 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Bind.cs" />
+        <Compile Include="Handlers\bindKeyTextBoxHandler.cs" />
+        <Compile Include="Handlers\ControlsValueChangedHandler.cs" />
+        <Compile Include="Models\Bind.cs" />
+        <Compile Include="Services\ParserService.cs" />
         <Compile Include="SimpleBinder.cs">
             <SubType>Form</SubType>
         </Compile>
