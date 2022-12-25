@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using WindowsInput;
+using WindowsInput.Native;
 namespace SimpleBinder
 {
     static class Program

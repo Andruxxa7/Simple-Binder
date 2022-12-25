@@ -594,11 +594,15 @@ namespace SimpleBinder
             this.modifierLabel.Size = new System.Drawing.Size(52, 14);
             this.modifierLabel.TabIndex = 61;
             this.modifierLabel.Text = "Modif.";
+            //
+            //modifierListValues
+            //
+            this.values = new object[] { "None", "Ctrl", "Alt", "Shift", "Win" };
             // 
             // modifierListBox0
             // 
             this.modifierListBox0.FormattingEnabled = true;
-            this.modifierListBox0.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox0.Items.AddRange(this.values);
             this.modifierListBox0.Location = new System.Drawing.Point(32, 37);
             this.modifierListBox0.Name = "modifierListBox0";
             this.modifierListBox0.Size = new System.Drawing.Size(60, 17);
@@ -608,7 +612,7 @@ namespace SimpleBinder
             // modifierListBox1
             // 
             this.modifierListBox1.FormattingEnabled = true;
-            this.modifierListBox1.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox1.Items.AddRange(this.values);
             this.modifierListBox1.Location = new System.Drawing.Point(32, 63);
             this.modifierListBox1.Name = "modifierListBox1";
             this.modifierListBox1.Size = new System.Drawing.Size(60, 17);
@@ -618,7 +622,7 @@ namespace SimpleBinder
             // modifierListBox2
             // 
             this.modifierListBox2.FormattingEnabled = true;
-            this.modifierListBox2.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox2.Items.AddRange(this.values);
             this.modifierListBox2.Location = new System.Drawing.Point(32, 98);
             this.modifierListBox2.Name = "modifierListBox2";
             this.modifierListBox2.Size = new System.Drawing.Size(60, 17);
@@ -628,7 +632,7 @@ namespace SimpleBinder
             // modifierListBox3
             // 
             this.modifierListBox3.FormattingEnabled = true;
-            this.modifierListBox3.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox3.Items.AddRange(this.values);
             this.modifierListBox3.Location = new System.Drawing.Point(32, 133);
             this.modifierListBox3.Name = "modifierListBox3";
             this.modifierListBox3.Size = new System.Drawing.Size(60, 17);
@@ -638,7 +642,7 @@ namespace SimpleBinder
             // modifierListBox4
             // 
             this.modifierListBox4.FormattingEnabled = true;
-            this.modifierListBox4.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox4.Items.AddRange(this.values);
             this.modifierListBox4.Location = new System.Drawing.Point(32, 168);
             this.modifierListBox4.Name = "modifierListBox4";
             this.modifierListBox4.Size = new System.Drawing.Size(60, 17);
@@ -648,7 +652,7 @@ namespace SimpleBinder
             // modifierListBox5
             // 
             this.modifierListBox5.FormattingEnabled = true;
-            this.modifierListBox5.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox5.Items.AddRange(this.values);
             this.modifierListBox5.Location = new System.Drawing.Point(32, 206);
             this.modifierListBox5.Name = "modifierListBox5";
             this.modifierListBox5.Size = new System.Drawing.Size(60, 17);
@@ -658,7 +662,7 @@ namespace SimpleBinder
             // modifierListBox6
             // 
             this.modifierListBox6.FormattingEnabled = true;
-            this.modifierListBox6.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox6.Items.AddRange(this.values);
             this.modifierListBox6.Location = new System.Drawing.Point(32, 241);
             this.modifierListBox6.Name = "modifierListBox6";
             this.modifierListBox6.Size = new System.Drawing.Size(60, 17);
@@ -668,7 +672,7 @@ namespace SimpleBinder
             // modifierListBox7
             // 
             this.modifierListBox7.FormattingEnabled = true;
-            this.modifierListBox7.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox7.Items.AddRange(this.values);
             this.modifierListBox7.Location = new System.Drawing.Point(32, 280);
             this.modifierListBox7.Name = "modifierListBox7";
             this.modifierListBox7.Size = new System.Drawing.Size(60, 17);
@@ -678,7 +682,7 @@ namespace SimpleBinder
             // modifierListBox8
             // 
             this.modifierListBox8.FormattingEnabled = true;
-            this.modifierListBox8.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox8.Items.AddRange(this.values);
             this.modifierListBox8.Location = new System.Drawing.Point(32, 316);
             this.modifierListBox8.Name = "modifierListBox8";
             this.modifierListBox8.Size = new System.Drawing.Size(60, 17);
@@ -688,7 +692,7 @@ namespace SimpleBinder
             // modifierListBox9
             // 
             this.modifierListBox9.FormattingEnabled = true;
-            this.modifierListBox9.Items.AddRange(new object[] { "None", "Ctrl", "Alt", "Shift" });
+            this.modifierListBox9.Items.AddRange(this.values);
             this.modifierListBox9.Location = new System.Drawing.Point(32, 356);
             this.modifierListBox9.Name = "modifierListBox9";
             this.modifierListBox9.Size = new System.Drawing.Size(60, 17);
@@ -858,6 +862,7 @@ namespace SimpleBinder
         private System.Windows.Forms.Label bindTextLabel;
         private System.Windows.Forms.Label multiLabel;
         private System.Windows.Forms.Label enabledLabel;
+        private object[] values;
         #endregion
     }
 }

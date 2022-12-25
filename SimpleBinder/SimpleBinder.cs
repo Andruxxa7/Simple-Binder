@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Text.Json;
 using System.Windows.Forms;
+using WindowsInput;
 
 namespace SimpleBinder
 {
@@ -12,7 +13,7 @@ namespace SimpleBinder
         /// Путь до файла .json, в который сохраняются значения, которые потом парсятся из этого же файла.
         /// </summary>
         private const string PathToJson = "settings.json";
-
+        public static InputSimulator inputSimulator = new InputSimulator();
         private bool isValueChanged;
         private TextBox[] bindKeysArray;
         private TextBox[] bindTextArray;
@@ -20,7 +21,6 @@ namespace SimpleBinder
         private CheckBox[] enabledArray;
         private ListBox[] modifierArray;
         private Bind[] bindsArray;
-        
         public SimpleBinder()
         {
             InitializeComponent();

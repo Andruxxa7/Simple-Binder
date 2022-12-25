@@ -1,4 +1,6 @@
-﻿namespace SimpleBinder
+﻿using System.Windows.Forms;
+
+namespace SimpleBinder
 {
     /// <summary>
     /// Класс с данными бинда
@@ -10,7 +12,7 @@
         }
 
         private string bindKeys; //временное, потом если чё переделать
-        protected string bindText; // текст, к-й будет будеть "набираться"
+        private string bindText; // текст, к-й будет будеть "набираться"
 
         public bool IsEnabled { get; set; }
 
