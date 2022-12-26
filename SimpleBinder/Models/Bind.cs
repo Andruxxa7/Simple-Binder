@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace SimpleBinder
+﻿namespace SimpleBinder
 {
     /// <summary>
     /// Класс с данными бинда
@@ -21,13 +19,13 @@ namespace SimpleBinder
         public string BindKeys
         {
             get => bindKeys;
-            set => bindKeys = (value.Replace(" ", "") == string.Empty) ? "" : value;
+            set => bindKeys = value;
         }
 
         public string BindText
         {
             get => bindText;
-            set => bindText = (value.Replace(" ", "") == string.Empty) ? "" : value;
+            set => bindText = value;
         }
 
         public int IndexOfSelectedModifier { get; set; }
@@ -45,11 +43,10 @@ namespace SimpleBinder
         /// <param name="modifier">Модификатор бинда</param>
         public Bind(string keys, string text, bool enabled, bool multi, int indexOfModifier, string modifier)
         {
-            var temp = (GenerateKeyString()??"") != string.Empty;
-            IsEnabled = temp && enabled; //ес
-            IsMulti = multi;
             BindKeys = keys;
             BindText = text;
+            IsEnabled = (((GenerateKeyString()) != string.Empty) && (text != string.Empty)) && enabled; //если кл
+            IsMulti = multi;
             IndexOfSelectedModifier = indexOfModifier;
             SelectedModifier = (modifier == "Ctrl") ? "Control" : modifier;
         }
@@ -58,7 +55,7 @@ namespace SimpleBinder
         {
             var hotkey = string.Empty;
             if (IndexOfSelectedModifier == 0) //Без модификаторов
-                hotkey =(BindKeys != string.Empty) ? BindKeys:string.Empty;
+                hotkey = (BindKeys != string.Empty) ? BindKeys : string.Empty;
             else //C модификатором
             {
                 hotkey = SelectedModifier;

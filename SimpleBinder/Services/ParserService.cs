@@ -1,11 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
-using System.Windows.Forms;
 
 namespace SimpleBinder
 {
-    public partial class SimpleBinder : Form
+    public partial class SimpleBinder
     {
         /// <summary>
         /// Парсит значения из .json в поля WinForm'ы
@@ -32,7 +30,7 @@ namespace SimpleBinder
         /// <summary>
         /// Парс значений из полей WinForm'ы в .json
         /// </summary>
-        /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>
+        /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>   
         private void ParseToJson(string path2Json)
         {
             for (var i = 0; i < bindKeysArray.Length; i++)

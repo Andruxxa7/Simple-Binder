@@ -1,19 +1,13 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Text.Json;
-using System.Windows.Forms;
 using WindowsInput;
 
 namespace SimpleBinder
 {
     public partial class SimpleBinder : Form
     {
-        /// <summary>
-        /// Путь до файла .json, в который сохраняются значения, которые потом парсятся из этого же файла.
-        /// </summary>
         private const string PathToJson = "settings.json";
-        public static InputSimulator inputSimulator = new InputSimulator();
+        public static InputSimulator inputSimulator =new InputSimulator();
         private bool isValueChanged;
         private TextBox[] bindKeysArray;
         private TextBox[] bindTextArray;
@@ -21,9 +15,11 @@ namespace SimpleBinder
         private CheckBox[] enabledArray;
         private ListBox[] modifierArray;
         private Bind[] bindsArray;
+        private List<ActiveBind> activeBindsArray;
         public SimpleBinder()
         {
             InitializeComponent();
+            activeBindsArray = new List<ActiveBind>();
             multiArray = new[]
             {
                 multi0, multi1, multi2, multi3, multi4, 
@@ -75,7 +71,7 @@ namespace SimpleBinder
                 statusLabel.BackColor = Color.LawnGreen;
                 defaultButton.Enabled = false;
                 saveButton_Click(null, null);
-                for (int i = 0; i < bindKeysArray.Length; i++)
+                for (var i = 0; i < bindKeysArray.Length; i++)
                 {
                     bindKeysArray[i].Enabled = false;
                     bindTextArray[i].Enabled = false;
@@ -83,16 +79,14 @@ namespace SimpleBinder
                     enabledArray[i].Enabled = false;
                     modifierArray[i].Enabled = false;
                 }
-                /*
-                 тут логика включения биндера
-                 */
+                TurnOnBinder();
             }
             else
             {
                 statusButton.Text = "Turn On";
                 statusLabel.BackColor = Color.Red;
-                defaultButton.Enabled = true;
-                for (int i = 0; i < bindKeysArray.Length; i++)
+                defaultButton.Enabled = true;   
+                for (var i = 0; i < bindKeysArray.Length; i++)
                 {
                     bindKeysArray[i].Enabled = true;
                     bindTextArray[i].Enabled = true;
@@ -100,9 +94,7 @@ namespace SimpleBinder
                     enabledArray[i].Enabled = true;
                     modifierArray[i].Enabled = true;
                 }
-                /*
-                тут выключение биндера
-                */
+                TurnOffBinder();
             }
         }
         

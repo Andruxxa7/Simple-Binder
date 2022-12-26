@@ -1,17 +1,11 @@
-using System;
-using System.Windows.Forms;
-using WindowsInput.Native;
 using System.Windows.Input;
-using mrousavy;
-using WindowsInput;
-
 namespace SimpleBinder
 {
     public partial class ActiveBind
     {
-        private Keys ConvertFromStringToKey(string str)
+        private Key ConvertFromStringToKey(string str)
         {
-            Keys result = Keys.Clear;
+            var result = Key.Clear;
             if (str.Length == 1)
             {
                 switch (str)
@@ -19,154 +13,154 @@ namespace SimpleBinder
                     #region Letters(Qwerty and йцукен)
 
                     case "Q" or "Й":
-                        result = Keys.Q;
+                        result = Key.Q;
                         break;
                     case "W" or "Ц":
-                        result = Keys.W;
+                        result = Key.W;
                         break;
                     case "E" or "У":
-                        result = Keys.E;
+                        result = Key.E;
                         break;
                     case "R" or "К":
-                        result = Keys.R;
+                        result = Key.R;
                         break;
                     case "T" or "Е":
-                        result = Keys.T;
+                        result = Key.T;
                         break;
                     case "Y" or "Н":
-                        result = Keys.Y;
+                        result = Key.Y;
                         break;
                     case "U" or "Г":
-                        result = Keys.U;
+                        result = Key.U;
                         break;
                     case "I" or "Ш":
-                        result = Keys.I;
+                        result = Key.I;
                         break;
                     case "O" or "Щ":
-                        result = Keys.O;
+                        result = Key.O;
                         break;
                     case "P" or "З":
-                        result = Keys.P;
+                        result = Key.P;
                         break;
                     case "[" or "Х":
-                        result = (Keys)char.ToUpper('[');
+                        result = (Key)char.ToUpper('[');
                         break;
                     case "]" or "Ъ":
-                        result = (Keys)char.ToUpper(']');
+                        result = (Key)char.ToUpper(']');
                         break;
                     case "A" or "Ф":
-                        result = Keys.A;
+                        result = Key.A;
                         break;
                     case "S" or "Ы":
-                        result = Keys.S;
+                        result = Key.S;
                         break;
                     case "D" or "В":
-                        result = Keys.D;
+                        result = Key.D;
                         break;
                     case "F" or "А":
-                        result = Keys.F;
+                        result = Key.F;
                         break;
                     case "G" or "П":
-                        result = Keys.G;
+                        result = Key.G;
                         break;
                     case "H" or "Р":
-                        result = Keys.H;
+                        result = Key.H;
                         break;
                     case "J" or "О":
-                        result = Keys.J;
+                        result = Key.J;
                         break;
                     case "K" or "Л":
-                        result = Keys.K;
+                        result = Key.K;
                         break;
                     case "L" or "Д":
-                        result = Keys.L;
+                        result = Key.L;
                         break;
                     case ";" or "Ж":
-                        result = (Keys)char.ToUpper('.');
+                        result = (Key)char.ToUpper('.');
                         break;
                     case "'" or "Э":
-                        result = (Keys)char.ToUpper('\'');
+                        result = (Key)char.ToUpper('\'');
                         break;
                     case "\\":
-                        result = (Keys)char.ToUpper('\\');
+                        result = (Key)char.ToUpper('\\');
                         break;
                     case "Z" or "Я":
-                        result = Keys.Z;
+                        result = Key.Z;
                         break;
                     case "X" or "Ч":
-                        result = Keys.X;
+                        result = Key.X;
                         break;
                     case "C" or "С":
-                        result = Keys.C;
+                        result = Key.C;
                         break;
                     case "V" or "М":
-                        result = Keys.V;
+                        result = Key.V;
                         break;
                     case "B" or "И":
-                        result = Keys.B;
+                        result = Key.B;
                         break;
                     case "N" or "Т":
-                        result = Keys.N;
+                        result = Key.N;
                         break;
                     case "M" or "Ь":
-                        result = Keys.M;
+                        result = Key.M;
                         break;
                     case "," or "Б":
-                        result = (Keys)char.ToUpper(',');
+                        result = (Key)char.ToUpper(',');
                         break;
                     case "." or "Ю":
-                        result = (Keys)char.ToUpper('.');
+                        result = (Key)char.ToUpper('.');
                         break;
                     case "/" or ".":
-                        result = (Keys)char.ToUpper('/');
-                        break;
+                        result = (Key)char.ToUpper('/');
+                        break;  
 
                     #endregion
 
                     #region Digits
 
                     case "1":
-                        result = (Keys)'1';
+                        result = (Key)'1';
                         break;
 
                     case "2":
-                        result = (Keys)'2';
+                        result = (Key)'2';
                         break;
 
                     case "3":
-                        result = (Keys)'3';
+                        result = (Key)'3';
                         break;
 
                     case "4":
-                        result = (Keys)'4';
+                        result = (Key)'4';
                         break;
 
                     case "5":
-                        result = (Keys)'5';
+                        result = (Key)'5';
                         break;
 
                     case "6":
-                        result = (Keys)'6';
+                        result = (Key)'6';
                         break;
 
                     case "7":
-                        result = (Keys)'7';
+                        result = (Key)'7';
                         break;
 
                     case "8":
-                        result = (Keys)'8';
+                        result = (Key)'8';
                         break;
 
                     case "9":
-                        result = (Keys)'9';
+                        result = (Key)'9';
                         break;
 
                     case "=":
-                        result = (Keys)'=';
+                        result = (Key)'=';
                         break;
 
                     case "-":
-                        result = (Keys)'-';
+                        result = (Key)'-';
                         break;
 
                     #endregion
@@ -178,10 +172,10 @@ namespace SimpleBinder
 
                 result = str switch
                 {
-                    "Control" => Keys.Control,
-                    "Alt" => Keys.Alt,
-                    "Win" => Keys.LWin,
-                    "Shift" => Keys.Shift,
+                    "Control" => Key.LeftCtrl,
+                    "Alt" => Key.LeftAlt,
+                    "Win" => Key.LWin,
+                    "Shift" => Key.LeftShift,
                     _ => result
                 };
 
@@ -191,11 +185,11 @@ namespace SimpleBinder
             return result;
         }
 
-        private Keys[] ConvertFromStringToKeys()
+        private Key[] ConvertFromStringToKeys()
         {
             
-            var arrayOfKeyStrings = keys.Replace(" + ", " ").Split(' ');
-            var result = new Keys[arrayOfKeyStrings.Length];
+            var arrayOfKeyStrings = Keys.Replace(" + ", " ").Split(' ');
+            var result = new Key[arrayOfKeyStrings.Length];
             for (var i = 0; i < result.Length; i++)
             {
                 result[i] = ConvertFromStringToKey(arrayOfKeyStrings[i]);

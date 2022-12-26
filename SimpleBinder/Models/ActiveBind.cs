@@ -1,46 +1,78 @@
-using System;
-using System.Windows.Forms;
-using WindowsInput.Native;
-using System.Windows.Input;
-using mrousavy;
 using WindowsInput;
+using mrousavy;
 
 namespace SimpleBinder
 {
     public partial class ActiveBind //Part of class is in ConvertStringToKeys.cs
     {
-        public string Text { get; set; }
-        public string keys { get; set; }
-        public bool IsMulti { get; set; }
+        private string Text { get; set; }
+        private string Keys { get; set; }
+        private bool IsMulti { get; set; }
         private HotKey hotKey;
-        private bool isAdded = false;
+        private bool isAdded;
 
-        public ActiveBind(bool isAdded, string text, string keys, bool isMulti)
+        public ActiveBind(string text, string keys, bool isMulti)
         {
-            this.isAdded = isAdded;
+            isAdded = false;
             Text = text;
-            this.keys = keys;
+            Keys = keys;
             IsMulti = isMulti;
         }
 
-        private void SimulateTyping() => SimpleBinder.inputSimulator.Keyboard.TextEntry(Text);
+        public ActiveBind(Bind bind)
+        {
+            isAdded = false;
+            Text = bind.BindText;
+            Keys = bind.BindKeys;
+            IsMulti = bind.IsMulti;
+        }
 
-        public void RegisterBind()
+        private Action<HotKey> SimulateTyping()
+        {
+            return (key) => SimpleBinder.inputSimulator.Keyboard.TextEntry(Text);
+        }
+
+        public void RegisterBind(int numberOfBind)//TODO тут какая-то хуйня в onKeyAction, отфиксить и всё збс будет
         {
             if (isAdded) return;
-            var keys = ConvertFromStringToKeys();
-            //TODO сделать регистрацию бинда(пример ниже)
-            /*{
-                var key = new HotKey(
-                    (ModifierKeys.Control | ModifierKeys.Alt), 
-                    Key.S, 
-                    this, 
-                    (hotkey) => {
-                        MessageBox.Show("Ctrl + Alt + S was pressed!");
+            var convertedKeys = ConvertFromStringToKeys();
+            var currentForm = Application.OpenForms[0].Handle;
+            switch (convertedKeys.Length)
+            {
+                case 1:
+                {
+                    hotKey = new HotKey(ModifierKeys.None, convertedKeys[0], currentForm, 
+                        SimulateTyping());
+                }
+                    break;
+                case 2:
+                {
+                    if (!IsMulti)
+                    {
+                        hotKey = new HotKey(ModifierKeys.None, (convertedKeys[0] | convertedKeys[1]), currentForm,
+                            SimulateTyping());
                     }
-                );    
-            }*/
+                    else
+                    {
+                        hotKey = new HotKey(((ModifierKeys)convertedKeys[0]), convertedKeys[1], currentForm,
+                            SimulateTyping());
+                    }
+                }
+                    break;
+                case 3:
+                {
+                    hotKey = new HotKey(((ModifierKeys)convertedKeys[0]), (convertedKeys[1] | convertedKeys[2]),
+                        currentForm,
+                        SimulateTyping());
+                }
+                    break;
+                default:
+                    MessageBox.Show("Something gone wrong, this bind wasn't registered");
+                    break;
+            }
+
             isAdded = true;
+            
         }
 
         public void UnregisterBind()

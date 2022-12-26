@@ -1,9 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using WindowsInput;
-using WindowsInput.Native;
+﻿// compile with: /reference:Hotkeys.dll  
 namespace SimpleBinder
 {
+    
     static class Program
     {
         /// <summary>

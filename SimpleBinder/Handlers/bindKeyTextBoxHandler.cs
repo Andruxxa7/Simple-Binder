@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace SimpleBinder
+﻿namespace SimpleBinder
 {
     public partial class SimpleBinder
     {
