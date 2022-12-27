@@ -32,8 +32,6 @@ namespace SimpleBinder
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleBinder));
-            this.multi0 = new System.Windows.Forms.CheckBox();
-            this.multiLabel = new System.Windows.Forms.Label();
             this.enabledLabel = new System.Windows.Forms.Label();
             this.enabled0 = new System.Windows.Forms.CheckBox();
             this.bindNumberLabel = new System.Windows.Forms.Label();
@@ -46,47 +44,38 @@ namespace SimpleBinder
             this.bindKeys1 = new System.Windows.Forms.TextBox();
             this.bindNumber1 = new System.Windows.Forms.Label();
             this.enabled1 = new System.Windows.Forms.CheckBox();
-            this.multi1 = new System.Windows.Forms.CheckBox();
             this.bindText2 = new System.Windows.Forms.TextBox();
             this.bindKeys2 = new System.Windows.Forms.TextBox();
             this.bindNumber2 = new System.Windows.Forms.Label();
             this.enabled2 = new System.Windows.Forms.CheckBox();
-            this.multi2 = new System.Windows.Forms.CheckBox();
             this.bindText3 = new System.Windows.Forms.TextBox();
             this.bindKeys3 = new System.Windows.Forms.TextBox();
             this.bindNumber3 = new System.Windows.Forms.Label();
             this.enabled3 = new System.Windows.Forms.CheckBox();
-            this.multi3 = new System.Windows.Forms.CheckBox();
             this.bindText4 = new System.Windows.Forms.TextBox();
             this.bindKeys4 = new System.Windows.Forms.TextBox();
             this.bindNumber4 = new System.Windows.Forms.Label();
             this.enabled4 = new System.Windows.Forms.CheckBox();
-            this.multi4 = new System.Windows.Forms.CheckBox();
             this.bindText5 = new System.Windows.Forms.TextBox();
             this.bindKeys5 = new System.Windows.Forms.TextBox();
             this.bindNumber5 = new System.Windows.Forms.Label();
             this.enabled5 = new System.Windows.Forms.CheckBox();
-            this.multi5 = new System.Windows.Forms.CheckBox();
             this.bindText6 = new System.Windows.Forms.TextBox();
             this.bindKeys6 = new System.Windows.Forms.TextBox();
             this.bindNumber6 = new System.Windows.Forms.Label();
             this.enabled6 = new System.Windows.Forms.CheckBox();
-            this.multi6 = new System.Windows.Forms.CheckBox();
             this.bindText7 = new System.Windows.Forms.TextBox();
             this.bindKeys7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.enabled7 = new System.Windows.Forms.CheckBox();
-            this.multi7 = new System.Windows.Forms.CheckBox();
             this.bindText8 = new System.Windows.Forms.TextBox();
             this.bindKeys8 = new System.Windows.Forms.TextBox();
             this.bindNumber8 = new System.Windows.Forms.Label();
             this.enabled8 = new System.Windows.Forms.CheckBox();
-            this.multi8 = new System.Windows.Forms.CheckBox();
             this.bindText9 = new System.Windows.Forms.TextBox();
             this.bindKeys9 = new System.Windows.Forms.TextBox();
             this.bindNumber9 = new System.Windows.Forms.Label();
             this.enabled9 = new System.Windows.Forms.CheckBox();
-            this.multi9 = new System.Windows.Forms.CheckBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.statusButton = new System.Windows.Forms.Button();
@@ -105,22 +94,6 @@ namespace SimpleBinder
             this.modifierListBox9 = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // multi0
-            // 
-            this.multi0.Location = new System.Drawing.Point(182, 34);
-            this.multi0.Name = "multi0";
-            this.multi0.Size = new System.Drawing.Size(18, 22);
-            this.multi0.TabIndex = 1;
-            this.multi0.UseVisualStyleBackColor = true;
-            // 
-            // multiLabel
-            // 
-            this.multiLabel.Location = new System.Drawing.Point(173, 15);
-            this.multiLabel.Name = "multiLabel";
-            this.multiLabel.Size = new System.Drawing.Size(40, 16);
-            this.multiLabel.TabIndex = 2;
-            this.multiLabel.Text = "Multi";
             // 
             // enabledLabel
             // 
@@ -216,14 +189,6 @@ namespace SimpleBinder
             this.enabled1.TabIndex = 12;
             this.enabled1.UseVisualStyleBackColor = true;
             // 
-            // multi1
-            // 
-            this.multi1.Location = new System.Drawing.Point(182, 60);
-            this.multi1.Name = "multi1";
-            this.multi1.Size = new System.Drawing.Size(18, 22);
-            this.multi1.TabIndex = 11;
-            this.multi1.UseVisualStyleBackColor = true;
-            // 
             // bindText2
             // 
             this.bindText2.Location = new System.Drawing.Point(260, 95);
@@ -254,14 +219,6 @@ namespace SimpleBinder
             this.enabled2.Size = new System.Drawing.Size(18, 22);
             this.enabled2.TabIndex = 17;
             this.enabled2.UseVisualStyleBackColor = true;
-            // 
-            // multi2
-            // 
-            this.multi2.Location = new System.Drawing.Point(182, 95);
-            this.multi2.Name = "multi2";
-            this.multi2.Size = new System.Drawing.Size(18, 22);
-            this.multi2.TabIndex = 16;
-            this.multi2.UseVisualStyleBackColor = true;
             // 
             // bindText3
             // 
@@ -294,14 +251,6 @@ namespace SimpleBinder
             this.enabled3.TabIndex = 22;
             this.enabled3.UseVisualStyleBackColor = true;
             // 
-            // multi3
-            // 
-            this.multi3.Location = new System.Drawing.Point(182, 130);
-            this.multi3.Name = "multi3";
-            this.multi3.Size = new System.Drawing.Size(18, 22);
-            this.multi3.TabIndex = 21;
-            this.multi3.UseVisualStyleBackColor = true;
-            // 
             // bindText4
             // 
             this.bindText4.Location = new System.Drawing.Point(260, 165);
@@ -332,14 +281,6 @@ namespace SimpleBinder
             this.enabled4.Size = new System.Drawing.Size(18, 22);
             this.enabled4.TabIndex = 27;
             this.enabled4.UseVisualStyleBackColor = true;
-            // 
-            // multi4
-            // 
-            this.multi4.Location = new System.Drawing.Point(182, 165);
-            this.multi4.Name = "multi4";
-            this.multi4.Size = new System.Drawing.Size(18, 22);
-            this.multi4.TabIndex = 26;
-            this.multi4.UseVisualStyleBackColor = true;
             // 
             // bindText5
             // 
@@ -372,14 +313,6 @@ namespace SimpleBinder
             this.enabled5.TabIndex = 32;
             this.enabled5.UseVisualStyleBackColor = true;
             // 
-            // multi5
-            // 
-            this.multi5.Location = new System.Drawing.Point(182, 203);
-            this.multi5.Name = "multi5";
-            this.multi5.Size = new System.Drawing.Size(18, 22);
-            this.multi5.TabIndex = 31;
-            this.multi5.UseVisualStyleBackColor = true;
-            // 
             // bindText6
             // 
             this.bindText6.Location = new System.Drawing.Point(260, 241);
@@ -410,14 +343,6 @@ namespace SimpleBinder
             this.enabled6.Size = new System.Drawing.Size(18, 22);
             this.enabled6.TabIndex = 37;
             this.enabled6.UseVisualStyleBackColor = true;
-            // 
-            // multi6
-            // 
-            this.multi6.Location = new System.Drawing.Point(182, 241);
-            this.multi6.Name = "multi6";
-            this.multi6.Size = new System.Drawing.Size(18, 22);
-            this.multi6.TabIndex = 36;
-            this.multi6.UseVisualStyleBackColor = true;
             // 
             // bindText7
             // 
@@ -450,14 +375,6 @@ namespace SimpleBinder
             this.enabled7.TabIndex = 42;
             this.enabled7.UseVisualStyleBackColor = true;
             // 
-            // multi7
-            // 
-            this.multi7.Location = new System.Drawing.Point(182, 277);
-            this.multi7.Name = "multi7";
-            this.multi7.Size = new System.Drawing.Size(18, 22);
-            this.multi7.TabIndex = 41;
-            this.multi7.UseVisualStyleBackColor = true;
-            // 
             // bindText8
             // 
             this.bindText8.Location = new System.Drawing.Point(260, 313);
@@ -489,14 +406,6 @@ namespace SimpleBinder
             this.enabled8.TabIndex = 47;
             this.enabled8.UseVisualStyleBackColor = true;
             // 
-            // multi8
-            // 
-            this.multi8.Location = new System.Drawing.Point(182, 313);
-            this.multi8.Name = "multi8";
-            this.multi8.Size = new System.Drawing.Size(18, 22);
-            this.multi8.TabIndex = 46;
-            this.multi8.UseVisualStyleBackColor = true;
-            // 
             // bindText9
             // 
             this.bindText9.Location = new System.Drawing.Point(260, 353);
@@ -527,14 +436,6 @@ namespace SimpleBinder
             this.enabled9.Size = new System.Drawing.Size(18, 22);
             this.enabled9.TabIndex = 52;
             this.enabled9.UseVisualStyleBackColor = true;
-            // 
-            // multi9
-            // 
-            this.multi9.Location = new System.Drawing.Point(182, 353);
-            this.multi9.Name = "multi9";
-            this.multi9.Size = new System.Drawing.Size(18, 22);
-            this.multi9.TabIndex = 51;
-            this.multi9.UseVisualStyleBackColor = true;
             // 
             // saveButton
             // 
@@ -718,47 +619,38 @@ namespace SimpleBinder
             this.Controls.Add(this.bindKeys9);
             this.Controls.Add(this.bindNumber9);
             this.Controls.Add(this.enabled9);
-            this.Controls.Add(this.multi9);
             this.Controls.Add(this.bindText8);
             this.Controls.Add(this.bindKeys8);
             this.Controls.Add(this.bindNumber8);
             this.Controls.Add(this.enabled8);
-            this.Controls.Add(this.multi8);
             this.Controls.Add(this.bindText7);
             this.Controls.Add(this.bindKeys7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.enabled7);
-            this.Controls.Add(this.multi7);
             this.Controls.Add(this.bindText6);
             this.Controls.Add(this.bindKeys6);
             this.Controls.Add(this.bindNumber6);
             this.Controls.Add(this.enabled6);
-            this.Controls.Add(this.multi6);
             this.Controls.Add(this.bindText5);
             this.Controls.Add(this.bindKeys5);
             this.Controls.Add(this.bindNumber5);
             this.Controls.Add(this.enabled5);
-            this.Controls.Add(this.multi5);
             this.Controls.Add(this.bindText4);
             this.Controls.Add(this.bindKeys4);
             this.Controls.Add(this.bindNumber4);
             this.Controls.Add(this.enabled4);
-            this.Controls.Add(this.multi4);
             this.Controls.Add(this.bindText3);
             this.Controls.Add(this.bindKeys3);
             this.Controls.Add(this.bindNumber3);
             this.Controls.Add(this.enabled3);
-            this.Controls.Add(this.multi3);
             this.Controls.Add(this.bindText2);
             this.Controls.Add(this.bindKeys2);
             this.Controls.Add(this.bindNumber2);
             this.Controls.Add(this.enabled2);
-            this.Controls.Add(this.multi2);
             this.Controls.Add(this.bindText1);
             this.Controls.Add(this.bindKeys1);
             this.Controls.Add(this.bindNumber1);
             this.Controls.Add(this.enabled1);
-            this.Controls.Add(this.multi1);
             this.Controls.Add(this.bindText0);
             this.Controls.Add(this.bindTextLabel);
             this.Controls.Add(this.bindKeys0);
@@ -767,8 +659,6 @@ namespace SimpleBinder
             this.Controls.Add(this.bindNumberLabel);
             this.Controls.Add(this.enabledLabel);
             this.Controls.Add(this.enabled0);
-            this.Controls.Add(this.multiLabel);
-            this.Controls.Add(this.multi0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SimpleBinder";
@@ -804,16 +694,13 @@ namespace SimpleBinder
         private System.Windows.Forms.TextBox bindText0;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox enabled7;
-        private System.Windows.Forms.CheckBox multi7;
         private System.Windows.Forms.TextBox bindText8;
         private System.Windows.Forms.TextBox bindKeys8;
         private System.Windows.Forms.CheckBox enabled8;
-        private System.Windows.Forms.CheckBox multi8;
         private System.Windows.Forms.TextBox bindText9;
         private System.Windows.Forms.TextBox bindKeys9;
         private System.Windows.Forms.Label bindNumber9;
         private System.Windows.Forms.CheckBox enabled9;
-        private System.Windows.Forms.CheckBox multi9;
         private System.Windows.Forms.TextBox bindKeys1;
         private System.Windows.Forms.Label bindNumber1;
         private System.Windows.Forms.Label bindNumber2;
@@ -825,11 +712,9 @@ namespace SimpleBinder
         private System.Windows.Forms.TextBox bindText2;
         private System.Windows.Forms.TextBox bindKeys2;
         private System.Windows.Forms.CheckBox enabled2;
-        private System.Windows.Forms.CheckBox multi2;
         private System.Windows.Forms.TextBox bindText3;
         private System.Windows.Forms.TextBox bindKeys3;
         private System.Windows.Forms.CheckBox enabled3;
-        private System.Windows.Forms.CheckBox multi4;
         private System.Windows.Forms.TextBox bindText4;
         private System.Windows.Forms.TextBox bindKeys4;
         private System.Windows.Forms.TextBox bindText5;
@@ -838,20 +723,14 @@ namespace SimpleBinder
         private System.Windows.Forms.TextBox bindKeys6;
         private System.Windows.Forms.TextBox bindKeys0;
         private System.Windows.Forms.TextBox bindText1;
-        private System.Windows.Forms.CheckBox multi0;
-        private System.Windows.Forms.CheckBox multi1;
-        private System.Windows.Forms.CheckBox multi6;
-        private System.Windows.Forms.CheckBox multi3;
-        private System.Windows.Forms.CheckBox multi5;
         private System.Windows.Forms.CheckBox enabled0;
         private System.Windows.Forms.CheckBox enabled4;
         private System.Windows.Forms.CheckBox enabled5;
         private System.Windows.Forms.CheckBox enabled6;
         private System.Windows.Forms.Label bindKeysLabel;
         private System.Windows.Forms.Label bindTextLabel;
-        private System.Windows.Forms.Label multiLabel;
         private System.Windows.Forms.Label enabledLabel;
-        private object[] values;
+        private object[] values = { "None", "Ctrl", "Alt", "Shift", "Win" };
         #endregion
     }
 }

@@ -1,85 +1,53 @@
+using System.Threading;
 using WindowsInput;
-using mrousavy;
+using WindowsInput.Native;
+using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
 
 namespace SimpleBinder
 {
     public partial class ActiveBind //Part of class is in ConvertStringToKeys.cs
     {
         private string Text { get; set; }
-        private string Keys { get; set; }
-        private bool IsMulti { get; set; }
-        private HotKey hotKey;
+        private string keys { get; set; }
+        private string Modifier { get; set; }
         private bool isAdded;
-
-        public ActiveBind(string text, string keys, bool isMulti)
-        {
-            isAdded = false;
-            Text = text;
-            Keys = keys;
-            IsMulti = isMulti;
-        }
+        private Guid hotKey;
 
         public ActiveBind(Bind bind)
         {
             isAdded = false;
             Text = bind.BindText;
-            Keys = bind.BindKeys;
-            IsMulti = bind.IsMulti;
+            keys = bind.GenerateKeyString();
+            Modifier = bind.SelectedModifier;
         }
 
-        private Action<HotKey> SimulateTyping()
+
+        public static void SimulateTyping(string text)
         {
-            return (key) => SimpleBinder.inputSimulator.Keyboard.TextEntry(Text);
+            Thread.Sleep(1); //да-да, я говноед
+            SimpleBinder.inputSimulator.Keyboard.KeyPress(VirtualKeyCode.BACK);
+            SimpleBinder.inputSimulator.Keyboard.TextEntry(text);
         }
 
-        public void RegisterBind(int numberOfBind)//TODO тут какая-то хуйня в onKeyAction, отфиксить и всё збс будет
+        public void RegisterBind()
         {
             if (isAdded) return;
+            var IsWithModifier = Modifier != "None";
             var convertedKeys = ConvertFromStringToKeys();
-            var currentForm = Application.OpenForms[0].Handle;
-            switch (convertedKeys.Length)
+            if (!IsWithModifier)
             {
-                case 1:
-                {
-                    hotKey = new HotKey(ModifierKeys.None, convertedKeys[0], currentForm, 
-                        SimulateTyping());
-                }
-                    break;
-                case 2:
-                {
-                    if (!IsMulti)
-                    {
-                        hotKey = new HotKey(ModifierKeys.None, (convertedKeys[0] | convertedKeys[1]), currentForm,
-                            SimulateTyping());
-                    }
-                    else
-                    {
-                        hotKey = new HotKey(((ModifierKeys)convertedKeys[0]), convertedKeys[1], currentForm,
-                            SimulateTyping());
-                    }
-                }
-                    break;
-                case 3:
-                {
-                    hotKey = new HotKey(((ModifierKeys)convertedKeys[0]), (convertedKeys[1] | convertedKeys[2]),
-                        currentForm,
-                        SimulateTyping());
-                }
-                    break;
-                default:
-                    MessageBox.Show("Something gone wrong, this bind wasn't registered");
-                    break;
+                hotKey = SimpleBinder.keyboardHookManager.RegisterHotkey(
+                    KeyInterop.VirtualKeyFromKey((Key)convertedKeys[0]),
+                    () => SimulateTyping(Text));
+            }
+            else
+            {
+                hotKey = SimpleBinder.keyboardHookManager.RegisterHotkey((ModifierKeys)(convertedKeys[0]),
+                    KeyInterop.VirtualKeyFromKey((Key)convertedKeys[1]),
+                    () => SimulateTyping(Text));
             }
 
             isAdded = true;
-            
-        }
-
-        public void UnregisterBind()
-        {
-            if (!isAdded) return;
-            isAdded = false;
-            hotKey.Dispose();
         }
     }
 }

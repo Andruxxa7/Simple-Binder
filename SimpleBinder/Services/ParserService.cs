@@ -20,7 +20,6 @@ namespace SimpleBinder
                 if (bindsArray == null) break;
                 bindKeysArray[i].Text = bindsArray[i].BindKeys ?? "";
                 bindTextArray[i].Text = bindsArray[i].BindText ?? "";
-                multiArray[i].Checked = bindsArray[i].IsMulti;
                 enabledArray[i].Checked = bindsArray[i].IsEnabled;
                 modifierArray[i].SelectedIndex = bindsArray[i].IndexOfSelectedModifier;
             }
@@ -36,7 +35,7 @@ namespace SimpleBinder
             for (var i = 0; i < bindKeysArray.Length; i++)
             {
                 bindsArray[i] = new Bind(bindKeysArray[i].Text, bindTextArray[i].Text, enabledArray[i].Checked,
-                    multiArray[i].Checked, modifierArray[i].SelectedIndex, (string)modifierArray[i].SelectedItem);
+                   modifierArray[i].SelectedIndex, (string)modifierArray[i].SelectedItem);
                 enabledArray[i].Checked = bindsArray[i].IsEnabled;
             }
 

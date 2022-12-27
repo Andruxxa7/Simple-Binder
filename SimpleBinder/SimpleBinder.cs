@@ -8,10 +8,10 @@ namespace SimpleBinder
     {
         private const string PathToJson = "settings.json";
         public static InputSimulator inputSimulator =new InputSimulator();
+        public static  KeyboardHookManager keyboardHookManager = new KeyboardHookManager();
         private bool isValueChanged;
         private TextBox[] bindKeysArray;
         private TextBox[] bindTextArray;
-        private CheckBox[] multiArray;
         private CheckBox[] enabledArray;
         private ListBox[] modifierArray;
         private Bind[] bindsArray;
@@ -20,11 +20,7 @@ namespace SimpleBinder
         {
             InitializeComponent();
             activeBindsArray = new List<ActiveBind>();
-            multiArray = new[]
-            {
-                multi0, multi1, multi2, multi3, multi4, 
-                multi5, multi6, multi7, multi8, multi9
-            };
+            
 
             enabledArray = new[]
             {
@@ -75,7 +71,6 @@ namespace SimpleBinder
                 {
                     bindKeysArray[i].Enabled = false;
                     bindTextArray[i].Enabled = false;
-                    multiArray[i].Enabled = false;
                     enabledArray[i].Enabled = false;
                     modifierArray[i].Enabled = false;
                 }
@@ -90,7 +85,6 @@ namespace SimpleBinder
                 {
                     bindKeysArray[i].Enabled = true;
                     bindTextArray[i].Enabled = true;
-                    multiArray[i].Enabled = true;
                     enabledArray[i].Enabled = true;
                     modifierArray[i].Enabled = true;
                 }
@@ -118,10 +112,14 @@ namespace SimpleBinder
             {
                 bindKeysArray[i].Text = "";
                 bindTextArray[i].Text = "";
-                multiArray[i].Checked = false;
                 enabledArray[i].Checked = false;
                 modifierArray[i].SelectedIndex = 0;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

@@ -1,11 +1,13 @@
 using System.Windows.Input;
+using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
+
 namespace SimpleBinder
 {
     public partial class ActiveBind
     {
-        private Key ConvertFromStringToKey(string str)
+        private object ConvertFromStringToKey(string str)
         {
-            var result = Key.Clear;
+            object result = Key.Clear;
             if (str.Length == 1)
             {
                 switch (str)
@@ -172,10 +174,10 @@ namespace SimpleBinder
 
                 result = str switch
                 {
-                    "Control" => Key.LeftCtrl,
-                    "Alt" => Key.LeftAlt,
-                    "Win" => Key.LWin,
-                    "Shift" => Key.LeftShift,
+                    "Control" => ModifierKeys.Control,
+                    "Alt" => ModifierKeys.Alt,
+                    "Win" => ModifierKeys.WindowsKey,
+                    "Shift" => ModifierKeys.Shift,
                     _ => result
                 };
 
@@ -185,11 +187,11 @@ namespace SimpleBinder
             return result;
         }
 
-        private Key[] ConvertFromStringToKeys()
+        private object[] ConvertFromStringToKeys()
         {
             
-            var arrayOfKeyStrings = Keys.Replace(" + ", " ").Split(' ');
-            var result = new Key[arrayOfKeyStrings.Length];
+            var arrayOfKeyStrings = keys.Replace(" + ", " ").Split(' ');
+            var result = new object[arrayOfKeyStrings.Length];
             for (var i = 0; i < result.Length; i++)
             {
                 result[i] = ConvertFromStringToKey(arrayOfKeyStrings[i]);

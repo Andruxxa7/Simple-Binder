@@ -13,28 +13,13 @@
 
             temp = e.KeyChar;
             UpdateTextBox(currentBindTextBox, temp);
+            
         }
 
         private void UpdateTextBox(TextBox textBox, char newKey)
         {
             if (newKey == ((char)8)) return;
-            var indexOfBindKeysTextBox = Array.IndexOf(bindKeysArray, textBox);
-            if (multiArray[indexOfBindKeysTextBox].Checked)
-            {
-                if (textBox.Text == string.Empty) textBox.Text = newKey.ToString();
-                else
-                {
-                    //допилить логику
-                    if ((textBox.Text).IndexOf('+') == -1) textBox.Text += $" + {newKey}";
-                    else textBox.Text = string.Empty;
-                }
-            }
-            else
-            {
-                textBox.Text = newKey.ToString();
-            }
-
-            textBox.Text = textBox.Text.ToUpper();
+            textBox.Text = newKey.ToString().ToUpper();
         }
 
 

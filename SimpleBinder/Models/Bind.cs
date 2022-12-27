@@ -13,21 +13,19 @@
         private string bindText; // текст, к-й будет будеть "набираться"
 
         public bool IsEnabled { get; set; }
-
-        public bool IsMulti { get; set; }
-
+        
         public string BindKeys
         {
             get => bindKeys;
             set => bindKeys = value;
         }
-
         public string BindText
         {
             get => bindText;
             set => bindText = value;
         }
 
+        
         public int IndexOfSelectedModifier { get; set; }
 
         public string SelectedModifier { get; set; }
@@ -38,15 +36,13 @@
         /// <param name="keys">сочетание клавиш или клавиша бинда</param>
         /// <param name="text">текст, к-й будет набран данным биндом</param>
         /// <param name="enabled">включен ли данный бинд</param>
-        /// <param name="multi">является ли сочетанием клавиш или одиночная клавиша у бинда</param>
         /// <param name="indexOfModifier">Индекс модификатора</param>
         /// <param name="modifier">Модификатор бинда</param>
-        public Bind(string keys, string text, bool enabled, bool multi, int indexOfModifier, string modifier)
+        public Bind(string keys, string text, bool enabled, int indexOfModifier, string modifier)
         {
             BindKeys = keys;
             BindText = text;
             IsEnabled = (((GenerateKeyString()) != string.Empty) && (text != string.Empty)) && enabled; //если кл
-            IsMulti = multi;
             IndexOfSelectedModifier = indexOfModifier;
             SelectedModifier = (modifier == "Ctrl") ? "Control" : modifier;
         }
