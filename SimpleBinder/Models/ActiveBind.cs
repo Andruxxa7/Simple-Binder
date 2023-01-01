@@ -1,5 +1,4 @@
 using System.Threading;
-using WindowsInput;
 using WindowsInput.Native;
 using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
 
@@ -22,7 +21,7 @@ namespace SimpleBinder
         }
 
 
-        public static void SimulateTyping(string text)
+        private void SimulateTyping(string text)
         {
             Thread.Sleep(1); //да-да, я говноед
             SimpleBinder.inputSimulator.Keyboard.KeyPress(VirtualKeyCode.BACK);

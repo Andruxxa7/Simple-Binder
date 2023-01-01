@@ -1,4 +1,3 @@
-using System.Windows.Input;
 using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
 
 namespace SimpleBinder
@@ -45,10 +44,10 @@ namespace SimpleBinder
                         result = Key.P;
                         break;
                     case "[" or "Х":
-                        result = (Key)char.ToUpper('[');
+                        result = Key.Oem4;
                         break;
                     case "]" or "Ъ":
-                        result = (Key)char.ToUpper(']');
+                        result = Key.Oem6;
                         break;
                     case "A" or "Ф":
                         result = Key.A;
@@ -78,13 +77,13 @@ namespace SimpleBinder
                         result = Key.L;
                         break;
                     case ";" or "Ж":
-                        result = (Key)char.ToUpper('.');
+                        result = Key.Oem1;
                         break;
                     case "'" or "Э":
-                        result = (Key)char.ToUpper('\'');
+                        result = Key.Oem7;
                         break;
                     case "\\":
-                        result = (Key)char.ToUpper('\\');
+                        result = Key.Oem5;
                         break;
                     case "Z" or "Я":
                         result = Key.Z;
@@ -108,61 +107,64 @@ namespace SimpleBinder
                         result = Key.M;
                         break;
                     case "," or "Б":
-                        result = (Key)char.ToUpper(',');
+                        result = Key.OemComma;
                         break;
                     case "." or "Ю":
-                        result = (Key)char.ToUpper('.');
+                        result = Key.OemPeriod;
                         break;
                     case "/" or ".":
-                        result = (Key)char.ToUpper('/');
+                        result = Key.Oem2;
                         break;  
 
                     #endregion
 
                     #region Digits
-
+ 
                     case "1":
-                        result = (Key)'1';
+                        result = Key.D1;
                         break;
 
                     case "2":
-                        result = (Key)'2';
+                        result = Key.D2;
                         break;
 
                     case "3":
-                        result = (Key)'3';
+                        result = Key.D3;
                         break;
 
                     case "4":
-                        result = (Key)'4';
+                        result = Key.D4;
                         break;
 
                     case "5":
-                        result = (Key)'5';
+                        result = Key.D5;
                         break;
 
                     case "6":
-                        result = (Key)'6';
+                        result = Key.D6;
                         break;
 
                     case "7":
-                        result = (Key)'7';
+                        result = Key.D7;
                         break;
 
                     case "8":
-                        result = (Key)'8';
+                        result = Key.D8;
                         break;
 
                     case "9":
-                        result = (Key)'9';
+                        result = Key.D9;
                         break;
 
+                    case "0":
+                        result = Key.D0;
+                        break;
                     case "=":
-                        result = (Key)'=';
+                        result = Key.OemPlus;
                         break;
 
                     case "-":
-                        result = (Key)'-';
+                        result = Key.OemMinus;
                         break;
 
                     #endregion
