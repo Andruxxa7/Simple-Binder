@@ -56,7 +56,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Handlers\bindKeyTextBoxHandler.cs" />
+        <Compile Include="Handlers\BindKeyTextBoxHandler.cs" />
         <Compile Include="Handlers\ControlsValueChangedHandler.cs" />
         <Compile Include="Models\ActiveBind.cs" />
         <Compile Include="Models\Bind.cs" />

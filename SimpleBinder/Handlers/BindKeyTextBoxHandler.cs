@@ -18,7 +18,7 @@
 
         private void UpdateTextBox(TextBox textBox, char newKey)
         {
-            if (newKey == ((char)8)) return;
+            if (newKey == (char)8) return;
             textBox.Text = newKey.ToString().ToUpper();
         }
 

@@ -9,19 +9,20 @@
         /// </summary>
         private void AddValueChangedEvent()
         {
-            foreach (Control control in Controls)
+            for (var controlIndex = 0; controlIndex < Controls.Count; controlIndex++)
             {
-                if (control is CheckBox checkBox)
+                var control = Controls[controlIndex];
+                switch (control)
                 {
-                    checkBox.CheckedChanged += ValueIsChanged;
-                }
-                else if (control is TextBox textBox)
-                {
-                    textBox.TextChanged += ValueIsChanged;
-                }
-                else if (control is ListBox listBox)
-                {
-                    listBox.SelectedIndexChanged += ValueIsChanged;
+                    case CheckBox checkBox:
+                        checkBox.CheckedChanged += ValueIsChanged;
+                        break;
+                    case TextBox textBox:
+                        textBox.TextChanged += ValueIsChanged;
+                        break;
+                    case ListBox listBox:
+                        listBox.SelectedIndexChanged += ValueIsChanged;
+                        break;
                 }
             }
         }
@@ -31,19 +32,20 @@
         /// </summary>
         private void DeleteValueChangedEvent()
         {
-            foreach (Control control in Controls)
+            for (var controlIndex = 0; controlIndex < Controls.Count; controlIndex++)
             {
-                if (control is CheckBox checkBox)
+                var control = Controls[controlIndex];
+                switch (control)
                 {
-                    checkBox.CheckedChanged -= ValueIsChanged;
-                }
-                else if (control is TextBox)
-                {
-                    control.TextChanged -= ValueIsChanged;
-                }
-                else if (control is ListBox listBox)
-                {
-                    listBox.SelectedIndexChanged -= ValueIsChanged;
+                    case CheckBox checkBox:
+                        checkBox.CheckedChanged -= ValueIsChanged;
+                        break;
+                    case TextBox:
+                        control.TextChanged -= ValueIsChanged;
+                        break;
+                    case ListBox listBox:
+                        listBox.SelectedIndexChanged -= ValueIsChanged;
+                        break;
                 }
             }
         }

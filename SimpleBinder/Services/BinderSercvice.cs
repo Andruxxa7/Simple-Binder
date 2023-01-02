@@ -1,8 +1,10 @@
+using System.Threading.Tasks;
+
 namespace SimpleBinder
 {
     public partial class SimpleBinder
     {
-        private void TurnOnBinder()
+        private Task TurnOnBinder()
         {
             keyboardHookManager.Start();
             var i = 0;
@@ -13,13 +15,15 @@ namespace SimpleBinder
              activeBindsArray[i].RegisterBind();
              i++;
             }
+            return Task.CompletedTask;
         }
 
-        private void TurnOffBinder()
+        private Task TurnOffBinder()
         {
             keyboardHookManager.UnregisterAll();
             activeBindsArray.Clear();
             keyboardHookManager.Stop();
+            return Task.CompletedTask;
         }
     }
 }

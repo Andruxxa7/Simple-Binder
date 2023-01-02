@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using WindowsInput;
 
 namespace SimpleBinder
@@ -59,7 +60,7 @@ namespace SimpleBinder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void statusButton_Click(object sender, EventArgs e)
+        private async void statusButton_Click(object sender, EventArgs e)
         {
             if (statusButton.Text == "Turn On")
             {
@@ -74,7 +75,7 @@ namespace SimpleBinder
                     enabledArray[i].Enabled = false;
                     modifierArray[i].Enabled = false;
                 }
-                TurnOnBinder();
+                await TurnOnBinder();
             }
             else
             {
@@ -88,7 +89,7 @@ namespace SimpleBinder
                     enabledArray[i].Enabled = true;
                     modifierArray[i].Enabled = true;
                 }
-                TurnOffBinder();
+                await TurnOffBinder();
             }
         }
         
