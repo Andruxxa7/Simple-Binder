@@ -115,7 +115,9 @@ namespace SimpleBinder
                     case "/" or ".":
                         result = Key.Oem2;
                         break;  
-
+                    case "`" or "Ё":
+                        result = Key.Oem3;
+                        break;  
                     #endregion
 
                     #region Digits
