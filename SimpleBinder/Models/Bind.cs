@@ -42,20 +42,20 @@
         {
             BindKeys = keys;
             BindText = text;
-            IsEnabled = (((GenerateKeyString()) != string.Empty) && (text != string.Empty)) && enabled; //если кл
+            IsEnabled = GenerateKeyString() != string.Empty && text != string.Empty && enabled; //если кл
             IndexOfSelectedModifier = indexOfModifier;
             SelectedModifier = (modifier == "Ctrl") ? "Control" : modifier;
         }
 
         public string GenerateKeyString()
         {
-            var hotkey = string.Empty;
+            string hotkey;
             if (IndexOfSelectedModifier == 0) //Без модификаторов
                 hotkey = (BindKeys != string.Empty) ? BindKeys : string.Empty;
             else //C модификатором
             {
                 hotkey = SelectedModifier;
-                hotkey = (BindKeys != string.Empty) ? hotkey + " + " + BindKeys : hotkey;
+                hotkey = (BindKeys != string.Empty) ? $"{hotkey} + {BindKeys}" : hotkey;
             }
 
             return hotkey;

@@ -10,7 +10,6 @@ namespace SimpleBinder
         private string keys { get; set; }
         private string Modifier { get; set; }
         private bool isAdded;
-        private Guid hotKey;
 
         public ActiveBind(Bind bind)
         {
@@ -35,13 +34,13 @@ namespace SimpleBinder
             var convertedKeys = ConvertFromStringToKeys();
             if (!IsWithModifier)
             {
-                hotKey = SimpleBinder.keyboardHookManager.RegisterHotkey(
+                SimpleBinder.keyboardHookManager.RegisterHotkey(
                     KeyInterop.VirtualKeyFromKey((Key)convertedKeys[0]),
                     () => SimulateTyping(Text));
             }
             else
             {
-                hotKey = SimpleBinder.keyboardHookManager.RegisterHotkey((ModifierKeys)(convertedKeys[0]),
+                SimpleBinder.keyboardHookManager.RegisterHotkey((ModifierKeys)(convertedKeys[0]),
                     KeyInterop.VirtualKeyFromKey((Key)convertedKeys[1]),
                     () => SimulateTyping(Text));
             }

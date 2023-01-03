@@ -12,9 +12,7 @@ namespace SimpleBinder
         private void ParseFromJsonToWinForms(string path2Json)
         {
             if (!File.Exists(path2Json)) return;
-            var tempArray = JsonSerializer.Deserialize<Bind[]>(File.ReadAllText(path2Json));
-            Array.Resize(ref tempArray, 10);
-            bindsArray = tempArray;
+            bindsArray = JsonSerializer.Deserialize<Bind[]>(File.ReadAllText(path2Json));
             for (var i = 0; i < bindKeysArray.Length; i++)
             {
                 if (bindsArray == null) break;
@@ -35,7 +33,7 @@ namespace SimpleBinder
             for (var i = 0; i < bindKeysArray.Length; i++)
             {
                 bindsArray[i] = new Bind(bindKeysArray[i].Text, bindTextArray[i].Text, enabledArray[i].Checked,
-                   modifierArray[i].SelectedIndex, (string)modifierArray[i].SelectedItem);
+                    modifierArray[i].SelectedIndex, (string)modifierArray[i].SelectedItem);
                 enabledArray[i].Checked = bindsArray[i].IsEnabled;
             }
 

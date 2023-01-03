@@ -5,7 +5,7 @@ namespace SimpleBinder
     public partial class SimpleBinder
     {
         private Task TurnOnBinder()
-        {
+        {    
             keyboardHookManager.Start();
             var i = 0;
             foreach (var bind in bindsArray)
