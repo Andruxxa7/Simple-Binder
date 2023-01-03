@@ -72,6 +72,12 @@
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="Properties\Resources.ru-ru.resx">
+          <DependentUpon>Resources.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Properties\Resources.ru.resx">
+          <DependentUpon>Resources.resx</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="SimpleBinder.resx">
           <DependentUpon>SimpleBinder.cs</DependentUpon>
         </EmbeddedResource>
@@ -84,6 +90,12 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+        <EmbeddedResource Include="SimpleBinder.ru-ru.resx">
+          <DependentUpon>SimpleBinder.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="SimpleBinder.ru.resx">
+          <DependentUpon>SimpleBinder.cs</DependentUpon>
+        </EmbeddedResource>
         <None Include="Properties\Settings.settings">
             <Generator>SettingsSingleFileGenerator</Generator>
             <LastGenOutput>Settings.Designer.cs</LastGenOutput>

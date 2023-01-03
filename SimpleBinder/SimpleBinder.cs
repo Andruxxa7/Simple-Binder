@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Threading.Tasks;
+using SimpleBinder.Properties;
 using WindowsInput;
 
 namespace SimpleBinder
@@ -53,18 +53,24 @@ namespace SimpleBinder
                 textBox.GotFocus += bindKeysTextBox_GotFocus;
                 textBox.LostFocus += bindKeysTextBox_LostFocus;
             }
+            
+            bindTextLabel.Text = Resources.bindText;
+            bindKeysLabel.Text = Resources.bindKeys;
+            modifierLabel.Text = Resources.modifier;
+            defaultButton.Text = Resources.Default;
+            cancelButton.Text = Resources.cancel;
+            saveButton.Text = Resources.save;
+            statusButton.Text = Resources.statusButton_Turn_On;
         }
 
         /// <summary>
         /// Тут описывается логика переключателя состояния биндера
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private async void statusButton_Click(object sender, EventArgs e)
         {
-            if (statusButton.Text == "Turn On")
+            if (statusButton.Text == Resources.statusButton_Turn_On)
             {
-                statusButton.Text = "Turn Off";
+                statusButton.Text = Resources.statusButton_Turn_Off;
                 statusLabel.BackColor = Color.LawnGreen;
                 defaultButton.Enabled = false;
                 saveButton_Click(null, null);
@@ -79,7 +85,7 @@ namespace SimpleBinder
             }
             else
             {
-                statusButton.Text = "Turn On";
+                statusButton.Text = Resources.statusButton_Turn_On;
                 statusLabel.BackColor = Color.Red;
                 defaultButton.Enabled = true;   
                 for (var i = 0; i < bindKeysArray.Length; i++)
@@ -117,10 +123,6 @@ namespace SimpleBinder
                 modifierArray[i].SelectedIndex = 0;
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-          
-        }
+        
     }
 }
