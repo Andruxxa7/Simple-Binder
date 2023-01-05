@@ -123,7 +123,10 @@
   <data name="exitToolStripMenuItem_Click_Text" xml:space="preserve">
     <value>Do you wanna save binds before exit?</value>
   </data>
-  <data name="SimpleBinder_exitToolStripMenuItem_Click_Warning" xml:space="preserve">
+  <data name="exitToolStripMenuItem_Click_Warning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="SimpleBinder_Binder_FormClosing_Text" xml:space="preserve">
+    <value>Do you wanna close binder?</value>
   </data>
 </root>

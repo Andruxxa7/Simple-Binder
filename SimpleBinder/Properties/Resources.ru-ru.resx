@@ -20,7 +20,10 @@
     <data name="exitToolStripMenuItem_Click_Text" xml:space="preserve">
         <value>Хотите ли Вы сохранить бинды перед выходом?</value>
     </data>
-    <data name="SimpleBinder_exitToolStripMenuItem_Click_Warning" xml:space="preserve">
+    <data name="exitToolStripMenuItem_Click_Warning" xml:space="preserve">
         <value>Внимание</value>
+    </data>
+    <data name="SimpleBinder_Binder_FormClosing_Text" xml:space="preserve">
+        <value>Вы действительно хотите закрыть биндер?</value>
     </data>
 </root>

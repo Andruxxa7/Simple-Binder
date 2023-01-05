@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace SimpleBinder
 {
@@ -12,7 +11,15 @@ namespace SimpleBinder
         private void ParseFromJsonToWinForms(string path2Json)
         {
             if (!File.Exists(path2Json)) return;
-            bindsArray = JsonSerializer.Deserialize<Bind[]>(File.ReadAllText(path2Json));
+            try
+            {
+                bindsArray = JsonSerializer.Deserialize<Bind[]>(File.ReadAllText(path2Json));
+            }
+            catch
+            {
+                MessageBox.Show("Some te", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             for (var i = 0; i < bindKeysArray.Length; i++)
             {
                 if (bindsArray == null) break;

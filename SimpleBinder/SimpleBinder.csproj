@@ -13,6 +13,7 @@
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <Deterministic>true</Deterministic>
         <LangVersion>latest</LangVersion>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -76,9 +77,6 @@
         <EmbeddedResource Include="Properties\Resources.ru-ru.resx">
           <DependentUpon>Resources.resx</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="Properties\Resources.ru.resx">
-          <DependentUpon>Resources.resx</DependentUpon>
-        </EmbeddedResource>
         <EmbeddedResource Include="SimpleBinder.resx">
           <DependentUpon>SimpleBinder.cs</DependentUpon>
         </EmbeddedResource>
@@ -92,9 +90,6 @@
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
         <EmbeddedResource Include="SimpleBinder.ru-ru.resx">
-          <DependentUpon>SimpleBinder.cs</DependentUpon>
-        </EmbeddedResource>
-        <EmbeddedResource Include="SimpleBinder.ru.resx">
           <DependentUpon>SimpleBinder.cs</DependentUpon>
         </EmbeddedResource>
         <None Include="Properties\Settings.settings">
@@ -122,6 +117,9 @@
       <PackageReference Include="System.Text.Json" Version="7.0.0" />
       <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
       <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Include="Handlers\FormClosingHandler.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

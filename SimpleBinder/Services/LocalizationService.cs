@@ -1,17 +1,23 @@
 using System.ComponentModel;
-using System.Linq;
 
 namespace SimpleBinder
 {
     public partial class SimpleBinder
     {
-        private void ChangeLanguage(string lang)
+        private void ChangerCurrentCulture(string lang)
         {
-            if(lang == currentLanguage)return;
-            currentLanguage = lang;
+            if (lang == settings.CurrentLanguage) return;
+            settings.CurrentLanguage = lang;
             var newLangCultureInfo = new CultureInfo(lang);
             Thread.CurrentThread.CurrentCulture = newLangCultureInfo;
             Thread.CurrentThread.CurrentUICulture = newLangCultureInfo;
+        }
+
+        private void ChangeLanguage(string lang)
+        {
+            if (lang == settings.CurrentLanguage) return;
+            ChangerCurrentCulture(lang);
+            var newLangCultureInfo = new CultureInfo(lang);
 
             #region ApplyingResources
             {
@@ -21,29 +27,24 @@ namespace SimpleBinder
                     resources.ApplyResources(control, control.Name, newLangCultureInfo);
                 }
 
-                foreach (var label in Controls.OfType<Label>())
-                {
-                    resources.ApplyResources(label,label.Name,newLangCultureInfo);
-                }
+
                 foreach (ToolStripMenuItem item in menuStrip1.Items)
                 {
                     resources.ApplyResources(item, item.Name, newLangCultureInfo);
-                    foreach (ToolStripMenuItem dropItem in item.DropDownItems)
+                    foreach (var dropItem in item.DropDownItems)
                     {
-                        resources.ApplyResources(dropItem, dropItem.Name, newLangCultureInfo);
+                        if (dropItem is ToolStripMenuItem Item)
+                            resources.ApplyResources(Item, Item.Name, newLangCultureInfo);
                     }
                 }
-                resources.ApplyResources(this, "$this",newLangCultureInfo);
+
+                resources.ApplyResources(this, "$this", newLangCultureInfo);
             }
             #endregion
         }
-        
-        
     }
 
     #region LanguageToolStripItems
-
-    
 
     #endregion
 }

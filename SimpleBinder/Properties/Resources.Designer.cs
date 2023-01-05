@@ -71,9 +71,18 @@ namespace SimpleBinder.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Warning.
         /// </summary>
-        internal static string SimpleBinder_exitToolStripMenuItem_Click_Warning {
+        internal static string exitToolStripMenuItem_Click_Warning {
             get {
-                return ResourceManager.GetString("SimpleBinder_exitToolStripMenuItem_Click_Warning", resourceCulture);
+                return ResourceManager.GetString("exitToolStripMenuItem_Click_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you wanna close binder?.
+        /// </summary>
+        internal static string SimpleBinder_Binder_FormClosing_Text {
+            get {
+                return ResourceManager.GetString("SimpleBinder_Binder_FormClosing_Text", resourceCulture);
             }
         }
         

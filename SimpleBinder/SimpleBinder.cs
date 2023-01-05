@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using SimpleBinder.Properties;
 using WindowsInput;
 using static SimpleBinder.Properties.Resources;
+
 
 namespace SimpleBinder
 {
     public partial class SimpleBinder : Form
     {
+        private Settings settings = new Settings();
         private const string PathToJson = "settings.json";
         public static InputSimulator inputSimulator = new InputSimulator();
         public static KeyboardHookManager keyboardHookManager = new KeyboardHookManager();
@@ -17,11 +20,11 @@ namespace SimpleBinder
         private ListBox[] modifierArray;
         private Bind[] bindsArray;
         private List<ActiveBind> activeBindsArray;
-        private string currentLanguage;
+
         public SimpleBinder()
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("");
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
+            ChangerCurrentCulture(settings.CurrentLanguage ??
+                                  (CultureInfo.InstalledUICulture.Name == "ru-RU" ? "ru-ru" : ""));
             InitializeComponent();
             activeBindsArray = new List<ActiveBind>();
 
@@ -55,10 +58,16 @@ namespace SimpleBinder
                 textBox.GotFocus += bindKeysTextBox_GotFocus;
                 textBox.LostFocus += bindKeysTextBox_LostFocus;
             }
+    
+            exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
+            FormClosing += Binder_FormClosing;
         }
 
+
+        #region Button_Click event realisations
+
         /// <summary>
-        /// Тут описывается логика переключателя состояния биндера
+        /// Логика переключателя состояния биндера
         /// </summary>
         private async void statusButton_Click(object sender, EventArgs e)
         {
@@ -76,6 +85,8 @@ namespace SimpleBinder
                     modifierArray[i].Enabled = false;
                 }
 
+                exportToolStripMenuItem.Enabled = false;
+                toolStripMenuItem2.Enabled = false;
                 await TurnOnBinder();
             }
             else
@@ -90,7 +101,9 @@ namespace SimpleBinder
                     enabledArray[i].Enabled = true;
                     modifierArray[i].Enabled = true;
                 }
-        
+
+                exportToolStripMenuItem.Enabled = true;
+                toolStripMenuItem2.Enabled = true;
                 await TurnOffBinder();
             }
         }
@@ -98,6 +111,7 @@ namespace SimpleBinder
         private void saveButton_Click(object sender, EventArgs e)
         {
             ParseToJson(PathToJson);
+            File.SetAttributes(PathToJson, FileAttributes.ReparsePoint);
             isValueChanged = false;
             SwitchSaveAndCancelButtons();
         }
@@ -120,38 +134,53 @@ namespace SimpleBinder
             }
         }
 
+        #endregion
+
+
+        #region ToolStripItems Realisation
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var resultClosing = MessageBox.Show(SimpleBinder_Binder_FormClosing_Text,
+                exitToolStripMenuItem_Click_Warning,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (resultClosing == DialogResult.Yes) Application.Exit();
+        }
+
+
         private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // throw new System.NotImplementedException();
         }
 
-        
-
         private void русскийToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("");
 
-
-        private async void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            await TurnOffBinder();
-            if(!saveButton.Enabled)Application.Exit();
-            var result = MessageBox.Show(exitToolStripMenuItem_Click_Text, SimpleBinder_exitToolStripMenuItem_Click_Warning, 
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-            switch (result)
+            var importFileDialog = new OpenFileDialog();
+            importFileDialog.Filter = "Json config|*.json";
+            importFileDialog.Title = "Open a Config(Json) File";
+            var result = importFileDialog.ShowDialog();
+            if (importFileDialog.FileName != "" && importFileDialog.FilterIndex == 1)
             {
-                case DialogResult.Yes:
-                    saveButton_Click(null,null);
-                    Application.Exit();
-                    break;
-                case DialogResult.No:
-                    Application.Exit();
-                    break;
-                case DialogResult.Cancel:
-                    break;
+                ParseFromJsonToWinForms(importFileDialog.FileName);
             }
-
-            
         }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var exportFileDialog = new SaveFileDialog();
+            exportFileDialog.Filter = "Json config|*.json";
+            exportFileDialog.Title = "Save a Config(Json) File";
+            var result = exportFileDialog.ShowDialog();
+            if (exportFileDialog.FileName != "" && exportFileDialog.FilterIndex == 1)
+            {
+                    ParseToJson(exportFileDialog.FileName);
+            }
+        }
+
+        #endregion
     }
 }

@@ -99,6 +99,7 @@ namespace SimpleBinder
             this.FileStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.русскийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -473,7 +474,7 @@ namespace SimpleBinder
             // 
             // FileStripMenu
             // 
-            this.FileStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.toolStripMenuItem2, this.exportToolStripMenuItem, this.exitToolStripMenuItem });
+            this.FileStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.toolStripMenuItem2, this.exportToolStripMenuItem, this.toolStripSeparator1, this.exitToolStripMenuItem });
             this.FileStripMenu.Name = "FileStripMenu";
             resources.ApplyResources(this.FileStripMenu, "FileStripMenu");
             // 
@@ -481,11 +482,17 @@ namespace SimpleBinder
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // exitToolStripMenuItem
             // 
@@ -604,6 +611,8 @@ namespace SimpleBinder
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
