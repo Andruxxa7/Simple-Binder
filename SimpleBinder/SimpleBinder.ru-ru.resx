@@ -11,4 +11,55 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="toolStripMenuItem2.Text" xml:space="preserve">
+        <value>Импорт</value>
+    </data>
+    <data name="exportToolStripMenuItem.Text" xml:space="preserve">
+        <value>Экспорт</value>
+    </data>
+    <data name="$this.Text" xml:space="preserve">
+        <value>Биндер</value>
+    </data>
+    <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+        <value>Язык</value>
+    </data>
+    <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+        <value>Справка</value>
+    </data>
+    <data name="helpToolStripMenuItem1.Text" xml:space="preserve">
+        <value>Посмотреть справку</value>
+    </data>
+    <data name="aboutProgramToolStripMenuItem.Text" xml:space="preserve">
+        <value>О программе</value>
+    </data>
+    <data name="modifierLabel.Text" xml:space="preserve">
+        <value>Модиф.</value>
+    </data>
+    <data name="enabledLabel.Text" xml:space="preserve">
+        <value>Включ.</value>
+    </data>
+    <data name="defaultButton.Text" xml:space="preserve">
+        <value>По умолчанию</value>
+    </data>
+    <data name="cancelButton.Text" xml:space="preserve">
+        <value>Отменить</value>
+    </data>
+    <data name="bindTextLabel.Text" xml:space="preserve">
+        <value>Текст</value>
+    </data>
+    <data name="bindKeysLabel.Text" xml:space="preserve">
+        <value>Клавиша</value>
+    </data>
+    <data name="saveButton.Text" xml:space="preserve">
+        <value>Сохранить</value>
+    </data>
+    <data name="statusButton.Text" xml:space="preserve">
+        <value>Включить</value>
+    </data>
+    <data name="FileStripMenu.Text" xml:space="preserve">
+        <value>Файл</value>
+    </data>
+    <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+        <value>Выход из программы</value>
+    </data>
 </root>

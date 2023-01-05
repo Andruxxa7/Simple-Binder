@@ -17,25 +17,10 @@
     <data name="statusButton_Turn_On" xml:space="preserve">
         <value>Включить</value>
     </data>
-    <data name="enabled" xml:space="preserve">
-        <value>Включен</value>
+    <data name="exitToolStripMenuItem_Click_Text" xml:space="preserve">
+        <value>Хотите ли Вы сохранить бинды перед выходом?</value>
     </data>
-    <data name="bindKeys" xml:space="preserve">
-        <value>Клавиша</value>
-    </data>
-    <data name="bindText" xml:space="preserve">
-        <value>Текст бинда</value>
-    </data>
-    <data name="cancel" xml:space="preserve">
-        <value>Отмена</value>
-    </data>
-    <data name="save" xml:space="preserve">
-        <value>Сохранить</value>
-    </data>
-    <data name="Default" xml:space="preserve">
-        <value>По умолчанию</value>
-    </data>
-    <data name="modifier" xml:space="preserve">
-        <value>Модиф.</value>
+    <data name="SimpleBinder_exitToolStripMenuItem_Click_Warning" xml:space="preserve">
+        <value>Внимание</value>
     </data>
 </root>

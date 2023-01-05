@@ -9,23 +9,13 @@
         {
         }
 
-        private string bindKeys; //временное, потом если чё переделать
-        private string bindText; // текст, к-й будет будеть "набираться"
-
         public bool IsEnabled { get; set; }
         
-        public string BindKeys
-        {
-            get => bindKeys;
-            set => bindKeys = value;
-        }
-        public string BindText
-        {
-            get => bindText;
-            set => bindText = value;
-        }
+        public string BindKeys { get; set; }
 
-        
+        public string BindText { get; set; }
+
+
         public int IndexOfSelectedModifier { get; set; }
 
         public string SelectedModifier { get; set; }

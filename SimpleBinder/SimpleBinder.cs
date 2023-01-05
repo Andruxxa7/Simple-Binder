@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using SimpleBinder.Properties;
 using WindowsInput;
+using static SimpleBinder.Properties.Resources;
 
 namespace SimpleBinder
 {
     public partial class SimpleBinder : Form
     {
         private const string PathToJson = "settings.json";
-        public static InputSimulator inputSimulator =new InputSimulator();
-        public static  KeyboardHookManager keyboardHookManager = new KeyboardHookManager();
+        public static InputSimulator inputSimulator = new InputSimulator();
+        public static KeyboardHookManager keyboardHookManager = new KeyboardHookManager();
         private bool isValueChanged;
         private TextBox[] bindKeysArray;
         private TextBox[] bindTextArray;
@@ -17,11 +17,13 @@ namespace SimpleBinder
         private ListBox[] modifierArray;
         private Bind[] bindsArray;
         private List<ActiveBind> activeBindsArray;
+        private string currentLanguage;
         public SimpleBinder()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
             InitializeComponent();
             activeBindsArray = new List<ActiveBind>();
-            
 
             enabledArray = new[]
             {
@@ -53,14 +55,6 @@ namespace SimpleBinder
                 textBox.GotFocus += bindKeysTextBox_GotFocus;
                 textBox.LostFocus += bindKeysTextBox_LostFocus;
             }
-            
-            bindTextLabel.Text = Resources.bindText;
-            bindKeysLabel.Text = Resources.bindKeys;
-            modifierLabel.Text = Resources.modifier;
-            defaultButton.Text = Resources.Default;
-            cancelButton.Text = Resources.cancel;
-            saveButton.Text = Resources.save;
-            statusButton.Text = Resources.statusButton_Turn_On;
         }
 
         /// <summary>
@@ -68,9 +62,9 @@ namespace SimpleBinder
         /// </summary>
         private async void statusButton_Click(object sender, EventArgs e)
         {
-            if (statusButton.Text == Resources.statusButton_Turn_On)
+            if (statusButton.Text == statusButton_Turn_On)
             {
-                statusButton.Text = Resources.statusButton_Turn_Off;
+                statusButton.Text = statusButton_Turn_Off;
                 statusLabel.BackColor = Color.LawnGreen;
                 defaultButton.Enabled = false;
                 saveButton_Click(null, null);
@@ -81,13 +75,14 @@ namespace SimpleBinder
                     enabledArray[i].Enabled = false;
                     modifierArray[i].Enabled = false;
                 }
+
                 await TurnOnBinder();
             }
             else
             {
-                statusButton.Text = Resources.statusButton_Turn_On;
+                statusButton.Text = statusButton_Turn_On;
                 statusLabel.BackColor = Color.Red;
-                defaultButton.Enabled = true;   
+                defaultButton.Enabled = true;
                 for (var i = 0; i < bindKeysArray.Length; i++)
                 {
                     bindKeysArray[i].Enabled = true;
@@ -95,10 +90,11 @@ namespace SimpleBinder
                     enabledArray[i].Enabled = true;
                     modifierArray[i].Enabled = true;
                 }
+        
                 await TurnOffBinder();
             }
         }
-        
+
         private void saveButton_Click(object sender, EventArgs e)
         {
             ParseToJson(PathToJson);
@@ -123,6 +119,39 @@ namespace SimpleBinder
                 modifierArray[i].SelectedIndex = 0;
             }
         }
+
+        private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // throw new System.NotImplementedException();
+        }
+
         
+
+        private void русскийToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("");
+
+
+        private async void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            await TurnOffBinder();
+            if(!saveButton.Enabled)Application.Exit();
+            var result = MessageBox.Show(exitToolStripMenuItem_Click_Text, SimpleBinder_exitToolStripMenuItem_Click_Warning, 
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    saveButton_Click(null,null);
+                    Application.Exit();
+                    break;
+                case DialogResult.No:
+                    Application.Exit();
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
+
+            
+        }
     }
 }

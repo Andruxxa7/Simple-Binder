@@ -60,65 +60,20 @@ namespace SimpleBinder.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Key.
+        ///   Looks up a localized string similar to Do you wanna save binds before exit?.
         /// </summary>
-        internal static string bindKeys {
+        internal static string exitToolStripMenuItem_Click_Text {
             get {
-                return ResourceManager.GetString("bindKeys", resourceCulture);
+                return ResourceManager.GetString("exitToolStripMenuItem_Click_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Text of the hotkey.
+        ///   Looks up a localized string similar to Warning.
         /// </summary>
-        internal static string bindText {
+        internal static string SimpleBinder_exitToolStripMenuItem_Click_Warning {
             get {
-                return ResourceManager.GetString("bindText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cancel.
-        /// </summary>
-        internal static string cancel {
-            get {
-                return ResourceManager.GetString("cancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Default.
-        /// </summary>
-        internal static string Default {
-            get {
-                return ResourceManager.GetString("Default", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enabled.
-        /// </summary>
-        internal static string enabled {
-            get {
-                return ResourceManager.GetString("enabled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Modif..
-        /// </summary>
-        internal static string modifier {
-            get {
-                return ResourceManager.GetString("modifier", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Save.
-        /// </summary>
-        internal static string save {
-            get {
-                return ResourceManager.GetString("save", resourceCulture);
+                return ResourceManager.GetString("SimpleBinder_exitToolStripMenuItem_Click_Warning", resourceCulture);
             }
         }
         

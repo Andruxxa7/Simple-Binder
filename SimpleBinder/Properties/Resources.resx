@@ -120,25 +120,10 @@
   <data name="statusButton_Turn_Off" xml:space="preserve">
     <value>Turn Off</value>
   </data>
-  <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+  <data name="exitToolStripMenuItem_Click_Text" xml:space="preserve">
+    <value>Do you wanna save binds before exit?</value>
   </data>
-  <data name="bindKeys" xml:space="preserve">
-    <value>Key</value>
-  </data>
-  <data name="bindText" xml:space="preserve">
-    <value>Text of the hotkey</value>
-  </data>
-  <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Default" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="modifier" xml:space="preserve">
-    <value>Modif.</value>
+  <data name="SimpleBinder_exitToolStripMenuItem_Click_Warning" xml:space="preserve">
+    <value>Warning</value>
   </data>
 </root>

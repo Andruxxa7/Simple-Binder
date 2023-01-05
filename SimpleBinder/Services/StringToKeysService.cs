@@ -181,8 +181,7 @@ namespace SimpleBinder
                     "Control" => ModifierKeys.Control,
                     "Alt" => ModifierKeys.Alt,
                     "Win" => ModifierKeys.WindowsKey,
-                    "Shift" => ModifierKeys.Shift,
-                    _ => result
+                    "Shift" => ModifierKeys.Shift
                 };
 
                 #endregion

@@ -62,6 +62,7 @@
         <Compile Include="Models\Bind.cs" />
         <Compile Include="Properties\GlobalUsings.cs" />
         <Compile Include="Services\BinderSercvice.cs" />
+        <Compile Include="Services\LocalizationService.cs" />
         <Compile Include="Services\StringToKeysService.cs" />
         <Compile Include="Services\ParserService.cs" />
         <Compile Include="SimpleBinder.cs">
