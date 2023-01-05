@@ -68,15 +68,15 @@ namespace SimpleBinder
             this.enabled6 = new System.Windows.Forms.CheckBox();
             this.bindText7 = new System.Windows.Forms.TextBox();
             this.bindKeys7 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.bindNumber8 = new System.Windows.Forms.Label();
             this.enabled7 = new System.Windows.Forms.CheckBox();
             this.bindText8 = new System.Windows.Forms.TextBox();
             this.bindKeys8 = new System.Windows.Forms.TextBox();
-            this.bindNumber8 = new System.Windows.Forms.Label();
+            this.bindNumber9 = new System.Windows.Forms.Label();
             this.enabled8 = new System.Windows.Forms.CheckBox();
             this.bindText9 = new System.Windows.Forms.TextBox();
             this.bindKeys9 = new System.Windows.Forms.TextBox();
-            this.bindNumber9 = new System.Windows.Forms.Label();
+            this.bindNumber10 = new System.Windows.Forms.Label();
             this.enabled9 = new System.Windows.Forms.CheckBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -295,10 +295,10 @@ namespace SimpleBinder
             this.bindKeys7.Name = "bindKeys7";
             this.bindKeys7.ReadOnly = true;
             // 
-            // label8
+            // bindNumber8
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            resources.ApplyResources(this.bindNumber8, "bindNumber8");
+            this.bindNumber8.Name = "bindNumber8";
             // 
             // enabled7
             // 
@@ -317,10 +317,10 @@ namespace SimpleBinder
             this.bindKeys8.Name = "bindKeys8";
             this.bindKeys8.ReadOnly = true;
             // 
-            // bindNumber8
+            // bindNumber9
             // 
-            resources.ApplyResources(this.bindNumber8, "bindNumber8");
-            this.bindNumber8.Name = "bindNumber8";
+            resources.ApplyResources(this.bindNumber9, "bindNumber9");
+            this.bindNumber9.Name = "bindNumber9";
             // 
             // enabled8
             // 
@@ -339,10 +339,10 @@ namespace SimpleBinder
             this.bindKeys9.Name = "bindKeys9";
             this.bindKeys9.ReadOnly = true;
             // 
-            // bindNumber9
+            // bindNumber10
             // 
-            resources.ApplyResources(this.bindNumber9, "bindNumber9");
-            this.bindNumber9.Name = "bindNumber9";
+            resources.ApplyResources(this.bindNumber10, "bindNumber10");
+            this.bindNumber10.Name = "bindNumber10";
             // 
             // enabled9
             // 
@@ -558,15 +558,15 @@ namespace SimpleBinder
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.bindText9);
             this.Controls.Add(this.bindKeys9);
-            this.Controls.Add(this.bindNumber9);
+            this.Controls.Add(this.bindNumber10);
             this.Controls.Add(this.enabled9);
             this.Controls.Add(this.bindText8);
             this.Controls.Add(this.bindKeys8);
-            this.Controls.Add(this.bindNumber8);
+            this.Controls.Add(this.bindNumber9);
             this.Controls.Add(this.enabled8);
             this.Controls.Add(this.bindText7);
             this.Controls.Add(this.bindKeys7);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.bindNumber8);
             this.Controls.Add(this.enabled7);
             this.Controls.Add(this.bindText6);
             this.Controls.Add(this.bindKeys6);
@@ -613,7 +613,6 @@ namespace SimpleBinder
         }
 
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
@@ -648,7 +647,6 @@ namespace SimpleBinder
         private System.Windows.Forms.Label bindNumberLabel;
         private System.Windows.Forms.TextBox bindText7;
         private System.Windows.Forms.TextBox bindText0;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox enabled7;
         private System.Windows.Forms.TextBox bindText8;
         private System.Windows.Forms.TextBox bindKeys8;
@@ -663,6 +661,7 @@ namespace SimpleBinder
         private System.Windows.Forms.Label bindNumber3;
         private System.Windows.Forms.Label bindNumber4;
         private System.Windows.Forms.Label bindNumber5;
+        private System.Windows.Forms.Label bindNumber10;
         private System.Windows.Forms.CheckBox enabled1;
         private System.Windows.Forms.Label bindNumber6;
         private System.Windows.Forms.TextBox bindText2;

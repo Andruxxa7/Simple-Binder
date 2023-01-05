@@ -84,15 +84,15 @@
         <value>7</value>
     </data>
     <data name="bindNumber8.Text" xml:space="preserve">
-        <value>9</value>
+        <value>8</value>
     </data>
     <data name="bindNumber9.Text" xml:space="preserve">
-        <value>10</value>
+        <value>9</value>
     </data>
     <data name="bindNumberLabel.Text" xml:space="preserve">
         <value>№</value>
     </data>
-    <data name="label8.Text" xml:space="preserve">
-        <value>8</value>
+    <data name="bindNumber10.Text" xml:space="preserve">
+        <value>10</value>
     </data>
 </root>

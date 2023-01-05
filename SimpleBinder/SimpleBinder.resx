@@ -866,28 +866,32 @@
   <data name="&gt;&gt;bindKeys7.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bindNumber8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bindNumber8.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 299</value>
   </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="bindNumber8.Size" type="System.Drawing.Size, System.Drawing">
     <value>21, 16</value>
   </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+  <data name="bindNumber8.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="label8.Text" xml:space="preserve">
+  <data name="bindNumber8.Text" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
+  <data name="&gt;&gt;bindNumber8.Name" xml:space="preserve">
+    <value>bindNumber8</value>
   </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber8.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber8.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber8.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
   <data name="enabled7.Location" type="System.Drawing.Point, System.Drawing">
@@ -953,28 +957,28 @@
   <data name="&gt;&gt;bindKeys8.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="bindNumber8.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="bindNumber9.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 335</value>
   </data>
-  <data name="bindNumber8.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="bindNumber9.Size" type="System.Drawing.Size, System.Drawing">
     <value>21, 16</value>
   </data>
-  <data name="bindNumber8.TabIndex" type="System.Int32, mscorlib">
+  <data name="bindNumber9.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
-  <data name="bindNumber8.Text" xml:space="preserve">
+  <data name="bindNumber9.Text" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;bindNumber8.Name" xml:space="preserve">
-    <value>bindNumber8</value>
+  <data name="&gt;&gt;bindNumber9.Name" xml:space="preserve">
+    <value>bindNumber9</value>
   </data>
-  <data name="&gt;&gt;bindNumber8.Type" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber9.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bindNumber8.Parent" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber9.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;bindNumber8.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber9.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
   <data name="enabled8.Location" type="System.Drawing.Point, System.Drawing">
@@ -1040,28 +1044,28 @@
   <data name="&gt;&gt;bindKeys9.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="bindNumber9.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="bindNumber10.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 372</value>
   </data>
-  <data name="bindNumber9.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="bindNumber10.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 16</value>
   </data>
-  <data name="bindNumber9.TabIndex" type="System.Int32, mscorlib">
+  <data name="bindNumber10.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="bindNumber9.Text" xml:space="preserve">
+  <data name="bindNumber10.Text" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;bindNumber9.Name" xml:space="preserve">
-    <value>bindNumber9</value>
+  <data name="&gt;&gt;bindNumber10.Name" xml:space="preserve">
+    <value>bindNumber10</value>
   </data>
-  <data name="&gt;&gt;bindNumber9.Type" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber10.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bindNumber9.Parent" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber10.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;bindNumber9.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;bindNumber10.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
   <data name="enabled9.Location" type="System.Drawing.Point, System.Drawing">
@@ -3392,7 +3396,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
