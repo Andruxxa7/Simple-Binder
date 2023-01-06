@@ -5,182 +5,185 @@ using WindowsInput;
 using static SimpleBinder.Properties.Resources;
 
 
-namespace SimpleBinder
+namespace SimpleBinder;
+
+public partial class SimpleBinder : Form
 {
-    public partial class SimpleBinder : Form
+    private Settings settings = new Settings();
+    private const string PathToJson = "settings.json";
+    public static readonly InputSimulator inputSimulator = new InputSimulator();
+    public static readonly KeyboardHookManager keyboardHookManager = new KeyboardHookManager();
+    private bool isValueChanged;
+    private TextBox[] bindKeysArray;
+    private TextBox[] bindTextArray;
+    private CheckBox[] enabledArray;
+    private ListBox[] modifierArray;
+    private Bind[] bindsArray;
+    private List<ActiveBind> activeBindsArray;
+
+    public SimpleBinder()
     {
-        private Settings settings = new Settings();
-        private const string PathToJson = "settings.json";
-        public static InputSimulator inputSimulator = new InputSimulator();
-        public static KeyboardHookManager keyboardHookManager = new KeyboardHookManager();
-        private bool isValueChanged;
-        private TextBox[] bindKeysArray;
-        private TextBox[] bindTextArray;
-        private CheckBox[] enabledArray;
-        private ListBox[] modifierArray;
-        private Bind[] bindsArray;
-        private List<ActiveBind> activeBindsArray;
+        ChangerCurrentCulture(settings.CurrentLanguage ??
+                              (CultureInfo.InstalledUICulture.Name == "ru-RU" ? "ru-ru" : ""));
+        InitializeComponent();
 
-        public SimpleBinder()
+        #region Data and components arrays declaration
+            
+        activeBindsArray = new List<ActiveBind>();
+        enabledArray = new[]
         {
-            ChangerCurrentCulture(settings.CurrentLanguage ??
-                                  (CultureInfo.InstalledUICulture.Name == "ru-RU" ? "ru-ru" : ""));
-            InitializeComponent();
-            activeBindsArray = new List<ActiveBind>();
+            enabled0, enabled1, enabled2, enabled3, enabled4,
+            enabled5, enabled6, enabled7, enabled8, enabled9
+        };
 
-            enabledArray = new[]
-            {
-                enabled0, enabled1, enabled2, enabled3, enabled4,
-                enabled5, enabled6, enabled7, enabled8, enabled9
-            };
+        bindKeysArray = new[]
+        {
+            bindKeys0, bindKeys1, bindKeys2, bindKeys3, bindKeys4,
+            bindKeys5, bindKeys6, bindKeys7, bindKeys8, bindKeys9
+        };
 
-            bindKeysArray = new[]
-            {
-                bindKeys0, bindKeys1, bindKeys2, bindKeys3, bindKeys4,
-                bindKeys5, bindKeys6, bindKeys7, bindKeys8, bindKeys9
-            };
-
-            bindTextArray = new[]
-            {
-                bindText0, bindText1, bindText2, bindText3, bindText4,
-                bindText5, bindText6, bindText7, bindText8, bindText9
-            };
-            modifierArray = new[]
-            {
-                modifierListBox0, modifierListBox1, modifierListBox2, modifierListBox3, modifierListBox4,
-                modifierListBox5, modifierListBox6, modifierListBox7, modifierListBox8, modifierListBox9
-            };
-            ParseFromJsonToWinForms(PathToJson);
-            SwitchSaveAndCancelButtons();
-            bindsArray = new Bind[10];
-            foreach (var textBox in bindKeysArray)
-            {
-                textBox.GotFocus += bindKeysTextBox_GotFocus;
-                textBox.LostFocus += bindKeysTextBox_LostFocus;
-            }
-    
-            exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
-            FormClosing += Binder_FormClosing;
+        bindTextArray = new[]
+        {
+            bindText0, bindText1, bindText2, bindText3, bindText4,
+            bindText5, bindText6, bindText7, bindText8, bindText9
+        };
+        modifierArray = new[]
+        {
+            modifierListBox0, modifierListBox1, modifierListBox2, modifierListBox3, modifierListBox4,
+            modifierListBox5, modifierListBox6, modifierListBox7, modifierListBox8, modifierListBox9
+        };
+        #endregion
+        ParseFromJsonToWinForms(PathToJson);
+        SwitchSaveAndCancelButtons();
+        bindsArray = new Bind[10];
+        foreach (var textBox in bindKeysArray)
+        {
+            textBox.GotFocus += bindKeysTextBox_GotFocus;
+            textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
 
+            
+        exportToolStripMenuItem.Click+=exportToolStripMenuItem_Click;
+        FormClosing += Binder_FormClosing;
+    }
 
-        #region Button_Click event realisations
 
-        /// <summary>
-        /// Логика переключателя состояния биндера
-        /// </summary>
-        private async void statusButton_Click(object sender, EventArgs e)
+    #region Button_Click event realisations
+
+    /// <summary>
+    /// Логика переключателя состояния биндера
+    /// </summary>
+    private async void statusButton_Click(object sender, EventArgs e)
+    {
+        if (statusButton.Text == statusButton_Turn_On)
         {
-            if (statusButton.Text == statusButton_Turn_On)
-            {
-                statusButton.Text = statusButton_Turn_Off;
-                statusLabel.BackColor = Color.LawnGreen;
-                defaultButton.Enabled = false;
-                saveButton_Click(null, null);
-                for (var i = 0; i < bindKeysArray.Length; i++)
-                {
-                    bindKeysArray[i].Enabled = false;
-                    bindTextArray[i].Enabled = false;
-                    enabledArray[i].Enabled = false;
-                    modifierArray[i].Enabled = false;
-                }
-
-                exportToolStripMenuItem.Enabled = false;
-                toolStripMenuItem2.Enabled = false;
-                await TurnOnBinder();
-            }
-            else
-            {
-                statusButton.Text = statusButton_Turn_On;
-                statusLabel.BackColor = Color.Red;
-                defaultButton.Enabled = true;
-                for (var i = 0; i < bindKeysArray.Length; i++)
-                {
-                    bindKeysArray[i].Enabled = true;
-                    bindTextArray[i].Enabled = true;
-                    enabledArray[i].Enabled = true;
-                    modifierArray[i].Enabled = true;
-                }
-
-                exportToolStripMenuItem.Enabled = true;
-                toolStripMenuItem2.Enabled = true;
-                await TurnOffBinder();
-            }
-        }
-
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            ParseToJson(PathToJson);
-            File.SetAttributes(PathToJson, FileAttributes.ReparsePoint);
-            isValueChanged = false;
-            SwitchSaveAndCancelButtons();
-        }
-
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            ParseFromJsonToWinForms(PathToJson);
-            isValueChanged = false;
-            SwitchSaveAndCancelButtons();
-        }
-
-        private void defaultButton_Click(object sender, EventArgs e)
-        {
+            statusButton.Text = statusButton_Turn_Off;
+            statusLabel.BackColor = Color.LawnGreen;
+            defaultButton.Enabled = false;
+            saveButton_Click(null, null);
             for (var i = 0; i < bindKeysArray.Length; i++)
             {
-                bindKeysArray[i].Text = "";
-                bindTextArray[i].Text = "";
-                enabledArray[i].Checked = false;
-                modifierArray[i].SelectedIndex = 0;
+                bindKeysArray[i].Enabled = false;
+                bindTextArray[i].Enabled = false;
+                enabledArray[i].Enabled = false;
+                modifierArray[i].Enabled = false;
             }
+
+            exportToolStripMenuItem.Enabled = false;
+            toolStripMenuItem2.Enabled = false;
+            await TurnOnBinder();
         }
-
-        #endregion
-
-
-        #region ToolStripItems Realisation
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        else
         {
-            var resultClosing = MessageBox.Show(SimpleBinder_Binder_FormClosing_Text,
-                exitToolStripMenuItem_Click_Warning,
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (resultClosing == DialogResult.Yes) Application.Exit();
-        }
-
-
-        private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // throw new System.NotImplementedException();
-        }
-
-        private void русскийToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
-
-        private void englishToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("");
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            var importFileDialog = new OpenFileDialog();
-            importFileDialog.Filter = "Json config|*.json";
-            importFileDialog.Title = "Open a Config(Json) File";
-            var result = importFileDialog.ShowDialog();
-            if (importFileDialog.FileName != "" && importFileDialog.FilterIndex == 1)
+            statusButton.Text = statusButton_Turn_On;
+            statusLabel.BackColor = Color.Red;
+            defaultButton.Enabled = true;
+            for (var i = 0; i < bindKeysArray.Length; i++)
             {
-                ParseFromJsonToWinForms(importFileDialog.FileName);
+                bindKeysArray[i].Enabled = true;
+                bindTextArray[i].Enabled = true;
+                enabledArray[i].Enabled = true;
+                modifierArray[i].Enabled = true;
             }
-        }
 
-        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var exportFileDialog = new SaveFileDialog();
-            exportFileDialog.Filter = "Json config|*.json";
-            exportFileDialog.Title = "Save a Config(Json) File";
-            var result = exportFileDialog.ShowDialog();
-            if (exportFileDialog.FileName != "" && exportFileDialog.FilterIndex == 1)
-            {
-                    ParseToJson(exportFileDialog.FileName);
-            }
+            exportToolStripMenuItem.Enabled = true;
+            toolStripMenuItem2.Enabled = true;
+            await TurnOffBinder();
         }
-
-        #endregion
     }
+
+    private void saveButton_Click(object sender, EventArgs e)
+    {
+        ParseToJson(PathToJson);
+        File.SetAttributes(PathToJson, FileAttributes.ReparsePoint);
+        isValueChanged = false;
+        SwitchSaveAndCancelButtons();
+    }
+
+    private void cancelButton_Click(object sender, EventArgs e)
+    {
+        ParseFromJsonToWinForms(PathToJson);
+        isValueChanged = false;
+        SwitchSaveAndCancelButtons();
+    }
+
+    private void defaultButton_Click(object sender, EventArgs e)
+    {
+        for (var i = 0; i < bindKeysArray.Length; i++)
+        {
+            bindKeysArray[i].Text = "";
+            bindTextArray[i].Text = "";
+            enabledArray[i].Checked = false;
+            modifierArray[i].SelectedIndex = 0;
+        }
+    }
+
+    #endregion
+
+
+    #region ToolStripItems Realisation
+
+    private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var resultClosing = MessageBox.Show(SimpleBinder_Binder_FormClosing_Text,
+            exitToolStripMenuItem_Click_Warning,
+            MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        if (resultClosing == DialogResult.Yes) Application.Exit();
+    }
+
+
+    private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        // throw new System.NotImplementedException();
+    }
+
+    private void russianToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
+
+    private void englishToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("");
+
+    private void toolStripMenuItem2_Click(object sender, EventArgs e)
+    {
+        var importFileDialog = new OpenFileDialog();
+        importFileDialog.Filter = importStripMenuItemClick_Json_config;
+        importFileDialog.Title = importStripMenuItem_Text;
+        importFileDialog.ShowDialog();
+        if (importFileDialog.FileName != "" && importFileDialog.FilterIndex == 1)
+        { 
+            ParseFromJsonToWinForms(importFileDialog.FileName);
+        }
+    }
+
+    private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var exportFileDialog = new SaveFileDialog();
+        exportFileDialog.Filter = importStripMenuItemClick_Json_config;
+        exportFileDialog.Title = Resources.exportToolStripMenuItem_Click;
+        exportFileDialog.ShowDialog();
+        if (exportFileDialog.FileName != "" && exportFileDialog.FilterIndex == 1)
+        { 
+            ParseToJson(exportFileDialog.FileName);
+        }
+    }
+
+    #endregion
 }

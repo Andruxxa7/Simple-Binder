@@ -1,6 +1,4 @@
-﻿using System.IO;
-using Microsoft.CSharp.RuntimeBinder;
-using SimpleBinder.Properties;
+﻿using System.ComponentModel;
 
 namespace SimpleBinder
 {
@@ -9,7 +7,7 @@ namespace SimpleBinder
         /// <summary>
         /// Required designer variable. Тут какой-то п#зд@ц, не советую смотреть - страшно.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -510,7 +508,7 @@ namespace SimpleBinder
             // 
             this.русскийToolStripMenuItem.Name = "русскийToolStripMenuItem";
             resources.ApplyResources(this.русскийToolStripMenuItem, "русскийToolStripMenuItem");
-            this.русскийToolStripMenuItem.Click += new System.EventHandler(this.русскийToolStripMenuItem_Click);
+            this.русскийToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
             // 
             // englishToolStripMenuItem
             // 

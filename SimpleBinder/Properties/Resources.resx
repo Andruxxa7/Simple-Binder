@@ -129,4 +129,19 @@
   <data name="SimpleBinder_Binder_FormClosing_Text" xml:space="preserve">
     <value>Do you wanna close binder?</value>
   </data>
+  <data name="importStripMenuItemClick_Json_config" xml:space="preserve">
+    <value>Json config|*.json</value>
+  </data>
+  <data name="importStripMenuItem_Text" xml:space="preserve">
+    <value>Open a Config(Json) File</value>
+  </data>
+  <data name="exportToolStripMenuItem_Click" xml:space="preserve">
+    <value>Save a Config(Json) File</value>
+  </data>
+  <data name="ParseFromJsonToWinForms_Error_Message" xml:space="preserve">
+    <value>Something gone wrong with parsing values from your config(.json)</value>
+  </data>
+  <data name="ParseFromJsonToWinForms_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
 </root>
