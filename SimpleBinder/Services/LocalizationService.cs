@@ -17,7 +17,6 @@ public partial class SimpleBinder
         if (lang == settings.CurrentLanguage) return;
         ChangerCurrentCulture(lang);
         var newLangCultureInfo = new CultureInfo(lang);
-
         #region ApplyingResources
 
         var resources = new ComponentResourceManager(typeof(SimpleBinder));

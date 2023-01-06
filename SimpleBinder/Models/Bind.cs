@@ -7,8 +7,12 @@ public class Bind
 {
     public Bind()
     {
+        BindNumber = bindNumber++;
     }
 
+
+    public static int bindNumber { get; set; } = 1;
+    public int BindNumber { get; set; }
     public bool IsEnabled { get; set; }
         
     public string BindKeys { get; set; }
@@ -30,6 +34,7 @@ public class Bind
     /// <param name="modifier">Модификатор бинда</param>
     public Bind(string keys, string text, bool enabled, int indexOfModifier, string modifier)
     {
+        BindNumber = bindNumber++;
         BindKeys = keys;
         BindText = text;
         IsEnabled = GenerateKeyString() != string.Empty && text != string.Empty && enabled; //если кл

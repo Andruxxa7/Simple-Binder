@@ -19,7 +19,7 @@ public partial class ActiveBind //Part of class is in ConvertStringToKeys.cs
     }
 
 
-    private void SimulateTyping(string text)
+    private static void SimulateTyping(string text)
     {
         Thread.Sleep(1); //да-да, я говноед
         SimpleBinder.inputSimulator.Keyboard.KeyPress(VirtualKeyCode.BACK);

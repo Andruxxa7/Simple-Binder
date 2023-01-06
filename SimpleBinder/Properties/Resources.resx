@@ -141,7 +141,10 @@
   <data name="ParseFromJsonToWinForms_Error_Message" xml:space="preserve">
     <value>Something gone wrong with parsing values from your config(.json)</value>
   </data>
-  <data name="ParseFromJsonToWinForms_Error" xml:space="preserve">
+  <data name="Caption_Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="TurnOnBinder_Error_Message" xml:space="preserve">
+    <value>Bind cannot be registered. There is another such bind but already registered. Number of bind with problem is </value>
   </data>
 </root>

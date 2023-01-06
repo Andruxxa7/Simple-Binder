@@ -38,7 +38,11 @@
     <data name="ParseFromJsonToWinForms_Error_Message" xml:space="preserve">
         <value>Что-то пошло не так с парсингом значений из вашего конфига(.json)</value>
     </data>
-    <data name="ParseFromJsonToWinForms_Error" xml:space="preserve">
+    <data name="Caption_Error" xml:space="preserve">
         <value>Ошибка</value>
+    </data>
+    <data name="TurnOnBinder_Error_Message" xml:space="preserve">
+        <value>Бинд не может быть зарегистрирован. Существует еще один такой же бинд, но уже зарегистрированный.
+ Номер проблемного бинда:</value>
     </data>
 </root>

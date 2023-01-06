@@ -95,4 +95,10 @@
     <data name="bindNumber10.Text" xml:space="preserve">
         <value>10</value>
     </data>
+    <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+        <value>English</value>
+    </data>
+    <data name="русскийToolStripMenuItem.Text" xml:space="preserve">
+        <value>Русский</value>
+    </data>
 </root>

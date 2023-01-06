@@ -1,6 +1,4 @@
 ﻿using System.Text.Json;
-using SimpleBinder.Properties;
-
 namespace SimpleBinder;
 
 public partial class SimpleBinder
@@ -18,12 +16,11 @@ public partial class SimpleBinder
         }
         catch
         {
-            MessageBox.Show(Resources.ParseFromJsonToWinForms_Error_Message, Resources.ParseFromJsonToWinForms_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(Resources.ParseFromJsonToWinForms_Error_Message, Resources.Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         for (var i = 0; i < bindKeysArray.Length; i++)
         {
-            if (bindsArray == null) break;
             bindKeysArray[i].Text = bindsArray[i].BindKeys ?? "";
             bindTextArray[i].Text = bindsArray[i].BindText ?? "";
             enabledArray[i].Checked = bindsArray[i].IsEnabled;
@@ -38,8 +35,10 @@ public partial class SimpleBinder
     /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>   
     private void ParseToJson(string path2Json)
     {
+        Bind.bindNumber = 1;
         for (var i = 0; i < bindKeysArray.Length; i++)
         {
+            bindsArray[i] = null;
             bindsArray[i] = new Bind(bindKeysArray[i].Text, bindTextArray[i].Text, enabledArray[i].Checked,
                 modifierArray[i].SelectedIndex, (string)modifierArray[i].SelectedItem);
             enabledArray[i].Checked = bindsArray[i].IsEnabled;

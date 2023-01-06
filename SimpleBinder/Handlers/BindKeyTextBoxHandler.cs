@@ -4,21 +4,11 @@ public partial class SimpleBinder
 {
     private void bindKeysTextBox_KeyPress(object sender, KeyPressEventArgs e)
     {
-        char temp;
-        if (e.KeyChar == (char)8)
-        {
-            Focus();
-            temp = e.KeyChar;
-        }
-
-        temp = e.KeyChar;
-        UpdateTextBox(currentBindTextBox, temp);
-            
+        UpdateTextBox(currentBindTextBox, e.KeyChar);
     }
 
     private void UpdateTextBox(TextBox textBox, char newKey)
     {
-        if (newKey == (char)8) return;
         textBox.Text = newKey.ToString().ToUpper();
     }
 

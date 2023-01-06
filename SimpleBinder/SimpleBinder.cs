@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using SimpleBinder.Properties;
+﻿using System.Drawing;
 using WindowsInput;
 using static SimpleBinder.Properties.Resources;
 
@@ -9,17 +7,16 @@ namespace SimpleBinder;
 
 public partial class SimpleBinder : Form
 {
-    private Settings settings = new Settings();
+    private Settings settings = new();
     private const string PathToJson = "settings.json";
-    public static readonly InputSimulator inputSimulator = new InputSimulator();
-    public static readonly KeyboardHookManager keyboardHookManager = new KeyboardHookManager();
+    public static readonly InputSimulator inputSimulator = new();
+    public static readonly KeyboardHookManager keyboardHookManager = new();
     private bool isValueChanged;
     private TextBox[] bindKeysArray;
     private TextBox[] bindTextArray;
     private CheckBox[] enabledArray;
     private ListBox[] modifierArray;
     private Bind[] bindsArray;
-    private List<ActiveBind> activeBindsArray;
 
     public SimpleBinder()
     {
@@ -28,8 +25,7 @@ public partial class SimpleBinder : Form
         InitializeComponent();
 
         #region Data and components arrays declaration
-            
-        activeBindsArray = new List<ActiveBind>();
+
         enabledArray = new[]
         {
             enabled0, enabled1, enabled2, enabled3, enabled4,
@@ -52,18 +48,19 @@ public partial class SimpleBinder : Form
             modifierListBox0, modifierListBox1, modifierListBox2, modifierListBox3, modifierListBox4,
             modifierListBox5, modifierListBox6, modifierListBox7, modifierListBox8, modifierListBox9
         };
+
         #endregion
+
         ParseFromJsonToWinForms(PathToJson);
         SwitchSaveAndCancelButtons();
-        bindsArray = new Bind[10];
         foreach (var textBox in bindKeysArray)
         {
             textBox.GotFocus += bindKeysTextBox_GotFocus;
             textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
 
-            
-        exportToolStripMenuItem.Click+=exportToolStripMenuItem_Click;
+
+        exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
     }
 
@@ -80,7 +77,7 @@ public partial class SimpleBinder : Form
             statusButton.Text = statusButton_Turn_Off;
             statusLabel.BackColor = Color.LawnGreen;
             defaultButton.Enabled = false;
-            saveButton_Click(null, null);
+            if (saveButton.Enabled) saveButton_Click(null, null);
             for (var i = 0; i < bindKeysArray.Length; i++)
             {
                 bindKeysArray[i].Enabled = false;
@@ -131,8 +128,8 @@ public partial class SimpleBinder : Form
     {
         for (var i = 0; i < bindKeysArray.Length; i++)
         {
-            bindKeysArray[i].Text = "";
-            bindTextArray[i].Text = "";
+            bindKeysArray[i].Clear();
+            bindTextArray[i].Clear();
             enabledArray[i].Checked = false;
             modifierArray[i].SelectedIndex = 0;
         }
@@ -168,7 +165,7 @@ public partial class SimpleBinder : Form
         importFileDialog.Title = importStripMenuItem_Text;
         importFileDialog.ShowDialog();
         if (importFileDialog.FileName != "" && importFileDialog.FilterIndex == 1)
-        { 
+        {
             ParseFromJsonToWinForms(importFileDialog.FileName);
         }
     }
@@ -180,7 +177,7 @@ public partial class SimpleBinder : Form
         exportFileDialog.Title = Resources.exportToolStripMenuItem_Click;
         exportFileDialog.ShowDialog();
         if (exportFileDialog.FileName != "" && exportFileDialog.FilterIndex == 1)
-        { 
+        {
             ParseToJson(exportFileDialog.FileName);
         }
     }
