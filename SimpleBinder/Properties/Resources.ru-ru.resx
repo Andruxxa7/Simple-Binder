@@ -45,4 +45,13 @@
         <value>Бинд не может быть зарегистрирован. Существует еще один такой же бинд, но уже зарегистрированный.
  Номер проблемного бинда:</value>
     </data>
+    <data name="aboutProgramToolStripMenuItem_Click" xml:space="preserve">
+        <value>Simple Binder - это менеджер биндов разработанный на Net Framework 4.7.2(C#). Ссылка на GitHub репозиторий: </value>
+    </data>
+    <data name="helpToolStripMenuItem1_Click_Text" xml:space="preserve">
+        <value>В этом простом биндере вы можете сделать вплоть до 10 биндов. Бинды могут быть с модификатором(Ctrl,Alt, Shift) и без.</value>
+    </data>
+    <data name="helpToolStripMenuItem1_Click_Capation" xml:space="preserve">
+        <value>Справка</value>
+    </data>
 </root>

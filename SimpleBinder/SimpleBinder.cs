@@ -151,7 +151,8 @@ public partial class SimpleBinder : Form
 
     private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        // throw new System.NotImplementedException();
+        MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click + 
+                        "https://github.com/Andruxxa7/Simple-Binder","Simple Binder");
     }
 
     private void russianToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
@@ -196,5 +197,12 @@ public partial class SimpleBinder : Form
         ChangeTheme("white");
         whiteToolStripMenuItem.Enabled = false;
         blackToolStripMenuItem.Enabled = true;
+    }
+
+    private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show(
+            helpToolStripMenuItem1_Click_Text,
+            helpToolStripMenuItem1_Click_Capation);
     }
 }

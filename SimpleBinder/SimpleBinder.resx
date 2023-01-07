@@ -1633,16 +1633,16 @@
     <value>Switch Theme</value>
   </data>
   <data name="helpToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>156, 22</value>
   </data>
   <data name="helpToolStripMenuItem1.Text" xml:space="preserve">
     <value>Help</value>
   </data>
   <data name="aboutProgramToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>156, 22</value>
   </data>
   <data name="aboutProgramToolStripMenuItem.Text" xml:space="preserve">
-    <value>about program</value>
+    <value>About program</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
@@ -3420,24 +3420,6 @@
   <data name="&gt;&gt;englishToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
-    <value>helpToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;helpToolStripMenuItem1.Name" xml:space="preserve">
-    <value>helpToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;helpToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;aboutProgramToolStripMenuItem.Name" xml:space="preserve">
-    <value>aboutProgramToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;aboutProgramToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;switchThemeToolStripMenuItem.Name" xml:space="preserve">
     <value>switchThemeToolStripMenuItem</value>
   </data>
@@ -3456,10 +3438,76 @@
   <data name="&gt;&gt;blackToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
+    <value>helpToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;helpToolStripMenuItem1.Name" xml:space="preserve">
+    <value>helpToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;helpToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutProgramToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutProgramToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;aboutProgramToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SimpleBinder</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Simple Binder</value>
+  </data>
+  <data name="bindKeysLabel.Text" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="bindNumber0.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bindNumber1.Text" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bindNumber10.Text" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="bindNumber2.Text" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="bindNumber3.Text" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="bindNumber4.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="bindNumber5.Text" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="bindNumber6.Text" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="bindNumber8.Text" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="bindNumber9.Text" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="bindNumberLabel.Text" xml:space="preserve">
+    <value>№</value>
+  </data>
+  <data name="bindTextLabel.Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="enabledLabel.Text" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="modifierLabel.Text" xml:space="preserve">
+    <value>Modif.</value>
   </data>
 </root>

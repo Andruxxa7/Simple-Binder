@@ -147,4 +147,13 @@
   <data name="TurnOnBinder_Error_Message" xml:space="preserve">
     <value>Bind cannot be registered. There is another such bind but already registered. Number of bind with problem is </value>
   </data>
+  <data name="aboutProgramToolStripMenuItem_Click" xml:space="preserve">
+    <value>Simple Binder is hotkey manager developed on .Net Framework 4.7.2(C#). GitHub repository is </value>
+  </data>
+  <data name="helpToolStripMenuItem1_Click_Capation" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="helpToolStripMenuItem1_Click_Text" xml:space="preserve">
+    <value>In this simple binder you can make up 10 hotkeys. Binds can be of 2 types: with(Ctrl,Alt, Shift) and without modifier.</value>
+  </data>
 </root>

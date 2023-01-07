@@ -60,6 +60,15 @@ namespace SimpleBinder.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Simple Binder is hotkey manager developed on .Net Framework 4.7.2(C#). GitHub repository is .
+        /// </summary>
+        internal static string aboutProgramToolStripMenuItem_Click {
+            get {
+                return ResourceManager.GetString("aboutProgramToolStripMenuItem_Click", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Caption_Error {
@@ -92,6 +101,24 @@ namespace SimpleBinder.Properties {
         internal static string exportToolStripMenuItem_Click {
             get {
                 return ResourceManager.GetString("exportToolStripMenuItem_Click", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        internal static string helpToolStripMenuItem1_Click_Capation {
+            get {
+                return ResourceManager.GetString("helpToolStripMenuItem1_Click_Capation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In this simple binder you can make up 10 hotkeys. Binds can be of 2 types: with(Ctrl,Alt, Shift) and without modifier..
+        /// </summary>
+        internal static string helpToolStripMenuItem1_Click_Text {
+            get {
+                return ResourceManager.GetString("helpToolStripMenuItem1_Click_Text", resourceCulture);
             }
         }
         
