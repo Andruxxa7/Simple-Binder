@@ -105,6 +105,9 @@ namespace SimpleBinder
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.switchThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -466,7 +469,7 @@ namespace SimpleBinder
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.FileStripMenu, this.languageToolStripMenuItem, this.helpToolStripMenuItem });
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.FileStripMenu, this.languageToolStripMenuItem, this.switchThemeToolStripMenuItem, this.helpToolStripMenuItem });
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
@@ -532,6 +535,24 @@ namespace SimpleBinder
             this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
             resources.ApplyResources(this.aboutProgramToolStripMenuItem, "aboutProgramToolStripMenuItem");
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
+            // 
+            // switchThemeToolStripMenuItem
+            // 
+            this.switchThemeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.whiteToolStripMenuItem, this.blackToolStripMenuItem });
+            this.switchThemeToolStripMenuItem.Name = "switchThemeToolStripMenuItem";
+            resources.ApplyResources(this.switchThemeToolStripMenuItem, "switchThemeToolStripMenuItem");
+            // 
+            // whiteToolStripMenuItem
+            // 
+            this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
+            resources.ApplyResources(this.whiteToolStripMenuItem, "whiteToolStripMenuItem");
+            this.whiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
+            // 
+            // blackToolStripMenuItem
+            // 
+            this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
+            resources.ApplyResources(this.blackToolStripMenuItem, "blackToolStripMenuItem");
+            this.blackToolStripMenuItem.Click += new System.EventHandler(this.blackToolStripMenuItem_Click);
             // 
             // SimpleBinder
             // 
@@ -609,6 +630,10 @@ namespace SimpleBinder
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripMenuItem switchThemeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whiteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem blackToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;

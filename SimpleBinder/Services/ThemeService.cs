@@ -1,0 +1,22 @@
+using System.Drawing;
+
+namespace SimpleBinder;
+
+public partial class SimpleBinder
+{
+    private void ChangeTheme(string themeName)
+    {
+        var theme = (themeName == "white") ? WhiteTheme : BlackTheme;
+        ForeColor = theme.FontColor;
+        BackColor = theme.BackgroundColor;
+        foreach (Control control in Controls)
+        {
+            control.BackColor = theme.ElementBackColor;
+            control.ForeColor = theme.FontColor;
+        }
+
+        statusLabel.BackColor = statusButton.Text != statusButton_Turn_On ? Color.LawnGreen : Color.Red;
+        settings.CurrentTheme = theme.ThemeName;
+        Invalidate();
+    }
+}

@@ -1,5 +1,3 @@
-using static SimpleBinder.Properties.Resources;
-
 namespace SimpleBinder;
 
 public partial class SimpleBinder

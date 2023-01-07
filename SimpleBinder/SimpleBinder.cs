@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using WindowsInput;
-using static SimpleBinder.Properties.Resources;
 
 
 namespace SimpleBinder;
@@ -22,6 +21,7 @@ public partial class SimpleBinder : Form
     {
         ChangerCurrentCulture(settings.CurrentLanguage ??
                               (CultureInfo.InstalledUICulture.Name == "ru-RU" ? "ru-ru" : ""));
+
         InitializeComponent();
 
         #region Data and components arrays declaration
@@ -59,7 +59,7 @@ public partial class SimpleBinder : Form
             textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
 
-
+        ChangeTheme(settings.CurrentTheme ?? "white");
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
     }
@@ -183,4 +183,18 @@ public partial class SimpleBinder : Form
     }
 
     #endregion
+
+    private void blackToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeTheme("black");
+        blackToolStripMenuItem.Enabled = false;
+        whiteToolStripMenuItem.Enabled = true;
+    }
+
+    private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeTheme("white");
+        whiteToolStripMenuItem.Enabled = false;
+        blackToolStripMenuItem.Enabled = true;
+    }
 }

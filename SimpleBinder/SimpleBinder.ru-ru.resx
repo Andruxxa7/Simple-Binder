@@ -101,4 +101,13 @@
     <data name="русскийToolStripMenuItem.Text" xml:space="preserve">
         <value>Русский</value>
     </data>
+    <data name="blackToolStripMenuItem.Text" xml:space="preserve">
+        <value>Чёрная</value>
+    </data>
+    <data name="switchThemeToolStripMenuItem.Text" xml:space="preserve">
+        <value>Сменить тему</value>
+    </data>
+    <data name="whiteToolStripMenuItem.Text" xml:space="preserve">
+        <value>Белая</value>
+    </data>
 </root>

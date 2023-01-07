@@ -128,9 +128,6 @@
   <data name="enabledLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="enabledLabel.Text" xml:space="preserve">
-    <value>Enabled</value>
-  </data>
   <data name="&gt;&gt;enabledLabel.Name" xml:space="preserve">
     <value>enabledLabel</value>
   </data>
@@ -173,9 +170,6 @@
   <data name="bindNumberLabel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="bindNumberLabel.Text" xml:space="preserve">
-    <value>№</value>
-  </data>
   <data name="&gt;&gt;bindNumberLabel.Name" xml:space="preserve">
     <value>bindNumberLabel</value>
   </data>
@@ -197,9 +191,6 @@
   <data name="bindNumber0.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="bindNumber0.Text" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;bindNumber0.Name" xml:space="preserve">
     <value>bindNumber0</value>
   </data>
@@ -220,9 +211,6 @@
   </data>
   <data name="bindKeysLabel.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="bindKeysLabel.Text" xml:space="preserve">
-    <value>Key</value>
   </data>
   <data name="&gt;&gt;bindKeysLabel.Name" xml:space="preserve">
     <value>bindKeysLabel</value>
@@ -265,9 +253,6 @@
   </data>
   <data name="bindTextLabel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
-  </data>
-  <data name="bindTextLabel.Text" xml:space="preserve">
-    <value>Text</value>
   </data>
   <data name="&gt;&gt;bindTextLabel.Name" xml:space="preserve">
     <value>bindTextLabel</value>
@@ -353,9 +338,6 @@
   <data name="bindNumber1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="bindNumber1.Text" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="&gt;&gt;bindNumber1.Name" xml:space="preserve">
     <value>bindNumber1</value>
   </data>
@@ -439,9 +421,6 @@
   </data>
   <data name="bindNumber2.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
-  </data>
-  <data name="bindNumber2.Text" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;bindNumber2.Name" xml:space="preserve">
     <value>bindNumber2</value>
@@ -527,9 +506,6 @@
   <data name="bindNumber3.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="bindNumber3.Text" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="&gt;&gt;bindNumber3.Name" xml:space="preserve">
     <value>bindNumber3</value>
   </data>
@@ -613,9 +589,6 @@
   </data>
   <data name="bindNumber4.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
-  </data>
-  <data name="bindNumber4.Text" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="&gt;&gt;bindNumber4.Name" xml:space="preserve">
     <value>bindNumber4</value>
@@ -701,9 +674,6 @@
   <data name="bindNumber5.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
   </data>
-  <data name="bindNumber5.Text" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="&gt;&gt;bindNumber5.Name" xml:space="preserve">
     <value>bindNumber5</value>
   </data>
@@ -787,9 +757,6 @@
   </data>
   <data name="bindNumber6.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
-  </data>
-  <data name="bindNumber6.Text" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="&gt;&gt;bindNumber6.Name" xml:space="preserve">
     <value>bindNumber6</value>
@@ -879,9 +846,6 @@
   <data name="bindNumber8.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="bindNumber8.Text" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="&gt;&gt;bindNumber8.Name" xml:space="preserve">
     <value>bindNumber8</value>
   </data>
@@ -966,9 +930,6 @@
   <data name="bindNumber9.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
-  <data name="bindNumber9.Text" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="&gt;&gt;bindNumber9.Name" xml:space="preserve">
     <value>bindNumber9</value>
   </data>
@@ -1052,9 +1013,6 @@
   </data>
   <data name="bindNumber10.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
-  </data>
-  <data name="bindNumber10.Text" xml:space="preserve">
-    <value>10</value>
   </data>
   <data name="&gt;&gt;bindNumber10.Name" xml:space="preserve">
     <value>bindNumber10</value>
@@ -1214,9 +1172,6 @@
   </data>
   <data name="modifierLabel.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
-  </data>
-  <data name="modifierLabel.Text" xml:space="preserve">
-    <value>Modif.</value>
   </data>
   <data name="&gt;&gt;modifierLabel.Name" xml:space="preserve">
     <value>modifierLabel</value>
@@ -1658,6 +1613,24 @@
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="whiteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="whiteToolStripMenuItem.Text" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="blackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="blackToolStripMenuItem.Text" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="switchThemeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 20</value>
+  </data>
+  <data name="switchThemeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Switch Theme</value>
   </data>
   <data name="helpToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 22</value>
@@ -3399,9 +3372,6 @@
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Binder</value>
-  </data>
   <data name="&gt;&gt;FileStripMenu.Name" xml:space="preserve">
     <value>FileStripMenu</value>
   </data>
@@ -3466,6 +3436,24 @@
     <value>aboutProgramToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;aboutProgramToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;switchThemeToolStripMenuItem.Name" xml:space="preserve">
+    <value>switchThemeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;switchThemeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;whiteToolStripMenuItem.Name" xml:space="preserve">
+    <value>whiteToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;whiteToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;blackToolStripMenuItem.Name" xml:space="preserve">
+    <value>blackToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;blackToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
