@@ -2,7 +2,7 @@ using System.Drawing;
 
 namespace SimpleBinder;
 
-public class Theme
+public struct Theme
 {
     public string ThemeName { get; set; }
     public Color BackgroundColor { get; set; }

@@ -6,7 +6,7 @@ public partial class SimpleBinder
 {
     private void ChangeTheme(string themeName)
     {
-        var theme = (themeName == "white") ? WhiteTheme : BlackTheme;
+        var theme = (themeName == "white") ? WhiteTheme() : BlackTheme();
         ForeColor = theme.FontColor;
         BackColor = theme.BackgroundColor;
         foreach (Control control in Controls)

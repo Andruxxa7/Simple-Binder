@@ -4,7 +4,7 @@ namespace SimpleBinder;
 
 public partial class SimpleBinder
 {
-    private static Theme BlackTheme = new Theme()
+    private static Theme BlackTheme() => new()
         {
             ThemeName = "black",
             BackgroundColor = Color.Black,
@@ -12,7 +12,7 @@ public partial class SimpleBinder
             FontColor = Color.White
         };
 
-    private static Theme WhiteTheme = new Theme()
+    private static Theme WhiteTheme()=> new()
         {
             ThemeName = "white",
             BackgroundColor = Color.White,
