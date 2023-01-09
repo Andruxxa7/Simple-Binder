@@ -11,10 +11,14 @@ public partial class SimpleBinder
         BackColor = theme.BackgroundColor;
         foreach (Control control in Controls)
         {
+            if (control is Button)
+            {
+                control.ForeColor = Color.DarkSlateGray;
+                continue;
+            }
             control.BackColor = theme.ElementBackColor;
             control.ForeColor = theme.FontColor;
         }
-
         statusLabel.BackColor = statusButton.Text != statusButton_Turn_On ? Color.LawnGreen : Color.Red;
         settings.CurrentTheme = theme.ThemeName;
         Invalidate();
