@@ -43,19 +43,4 @@ public class Bind
         SelectedModifier = (modifier == "Ctrl") ? "Control" : modifier;
         KeyValue = keyValue;
     }
-
-    
-    public string GenerateKeyString()//а это нахуя
-    {
-        string hotkey;
-        if (IndexOfSelectedModifier == 0) //Без модификаторов
-            hotkey = (BindKeys != string.Empty) ? BindKeys : string.Empty;
-        else //C модификатором
-        {
-            hotkey = SelectedModifier;
-            hotkey = (BindKeys != string.Empty) ? $"{hotkey} + {BindKeys}" : hotkey;
-        }
-
-        return hotkey;
-    }
 }
