@@ -1,28 +1,28 @@
 ﻿using System.Drawing;
 using WindowsInput;
 
-
 namespace SimpleBinder;
 
 public partial class SimpleBinder : Form
 {
-    private Settings settings = new();
     private const string PathToJson = "settings.json";
     public static readonly InputSimulator inputSimulator = new();
     public static readonly KeyboardHookManager keyboardHookManager = new();
-    private bool isValueChanged;
     private TextBox[] bindKeysArray;
+    private Bind[] bindsArray;
     private TextBox[] bindTextArray;
     private CheckBox[] enabledArray;
-    private ListBox[] modifierArray;
-    private Bind[] bindsArray;
+    private bool isValueChanged;
     private int[] keyValueArray;
+    private ListBox[] modifierArray;
+    private Settings settings = new();
+
     public SimpleBinder()
     {
         ChangerCurrentCulture(settings.CurrentLanguage ??
                               (CultureInfo.InstalledUICulture.Name == "ru-RU" ? "ru-ru" : ""));
         InitializeComponent();
-        
+
         #region Data and components arrays declaration
 
         enabledArray = new[]
@@ -49,21 +49,18 @@ public partial class SimpleBinder : Form
         };
 
         #endregion
-
-        
     }
 
- private async void SimpleBinder_Load(object sender, EventArgs e)
+    private async void SimpleBinder_Load(object sender, EventArgs e)
     {
         await ParseFromJsonToWinForms(PathToJson);
         if (bindsArray == null)
         {
-            foreach (var listBox in modifierArray)
-            {
-                listBox.SelectedIndex = 0;
-            }
+            foreach (var listBox in modifierArray) listBox.SelectedIndex = 0;
+
             bindsArray = new Bind[bindKeysArray.Length];
         }
+
         keyValueArray ??= new int[bindKeysArray.Length];
         SwitchSaveAndCancelButtons();
         foreach (var textBox in bindKeysArray)
@@ -71,14 +68,37 @@ public partial class SimpleBinder : Form
             textBox.GotFocus += bindKeysTextBox_GotFocus;
             textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
+
         ChangeTheme(settings.CurrentTheme ?? "white");
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
     }
+
+    private void blackToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeTheme("black");
+        blackToolStripMenuItem.Enabled = false;
+        whiteToolStripMenuItem.Enabled = true;
+    }
+
+    private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeTheme("white");
+        whiteToolStripMenuItem.Enabled = false;
+        blackToolStripMenuItem.Enabled = true;
+    }
+
+    private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show(
+            helpToolStripMenuItem1_Click_Text,
+            helpToolStripMenuItem1_Click_Capation);
+    }
+
     #region Button_Click event realisations
 
     /// <summary>
-    /// Логика переключателя состояния биндера
+    ///     Логика переключателя состояния биндера
     /// </summary>
     private async void statusButton_Click(object sender, EventArgs e)
     {
@@ -161,13 +181,19 @@ public partial class SimpleBinder : Form
 
     private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click + 
-                        "https://github.com/Andruxxa7/Simple-Binder","Simple Binder");
+        MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
+                        "https://github.com/Andruxxa7/Simple-Binder", "Simple Binder");
     }
 
-    private void russianToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
+    private void russianToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeLanguage("ru-ru");
+    }
 
-    private void englishToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("");
+    private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeLanguage("");
+    }
 
     private async void toolStripMenuItem2_Click(object sender, EventArgs e)
     {
@@ -176,9 +202,7 @@ public partial class SimpleBinder : Form
         importFileDialog.Title = importStripMenuItem_Text;
         importFileDialog.ShowDialog();
         if (importFileDialog.FileName != "" && importFileDialog.FilterIndex == 1)
-        {
             await ParseFromJsonToWinForms(importFileDialog.FileName);
-        }
     }
 
     private async void exportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -188,33 +212,8 @@ public partial class SimpleBinder : Form
         exportFileDialog.Title = Resources.exportToolStripMenuItem_Click;
         exportFileDialog.ShowDialog();
         if (exportFileDialog.FileName != "" && exportFileDialog.FilterIndex == 1)
-        {
             await ParseToJson(exportFileDialog.FileName);
-        }
     }
 
     #endregion
-
-    private void blackToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        ChangeTheme("black");
-        blackToolStripMenuItem.Enabled = false;
-        whiteToolStripMenuItem.Enabled = true;
-    }
-
-    private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        ChangeTheme("white");
-        whiteToolStripMenuItem.Enabled = false;
-        blackToolStripMenuItem.Enabled = true;
-    }
-
-    private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-        MessageBox.Show(
-            helpToolStripMenuItem1_Click_Text,
-            helpToolStripMenuItem1_Click_Capation);
-    }
-
-   
 }

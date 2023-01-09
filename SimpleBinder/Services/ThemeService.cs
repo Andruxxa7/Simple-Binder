@@ -6,7 +6,7 @@ public partial class SimpleBinder
 {
     private void ChangeTheme(string themeName)
     {
-        var theme = (themeName == "white") ? WhiteTheme() : BlackTheme();
+        var theme = themeName == "white" ? WhiteTheme() : BlackTheme();
         ForeColor = theme.FontColor;
         BackColor = theme.BackgroundColor;
         foreach (Control control in Controls)
@@ -16,9 +16,11 @@ public partial class SimpleBinder
                 control.ForeColor = Color.DarkSlateGray;
                 continue;
             }
+
             control.BackColor = theme.ElementBackColor;
             control.ForeColor = theme.FontColor;
         }
+
         statusLabel.BackColor = statusButton.Text != statusButton_Turn_On ? Color.LawnGreen : Color.Red;
         settings.CurrentTheme = theme.ThemeName;
         Invalidate();

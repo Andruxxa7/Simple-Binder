@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+
 namespace SimpleBinder;
 
 public partial class SimpleBinder
@@ -15,15 +16,16 @@ public partial class SimpleBinder
             {
                 new ActiveBind(bind).RegisterBind();
             }
-            catch (NonInvasiveKeyboardHookException)//если будут одинаковые бинды
+            catch (NonInvasiveKeyboardHookException) //если будут одинаковые бинды
             {
-                enabledArray[bind.BindNumber-1].Checked = false;
+                enabledArray[bind.BindNumber - 1].Checked = false;
                 MessageBox.Show(TurnOnBinder_Error_Message +
                                 bind.BindNumber, Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 error = true;
             }
         }
-        if(error)saveButton_Click(null,null);
+
+        if (error) saveButton_Click(null, null);
         return Task.CompletedTask;
     }
 

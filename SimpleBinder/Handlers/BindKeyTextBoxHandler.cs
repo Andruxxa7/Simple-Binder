@@ -8,7 +8,7 @@ public partial class SimpleBinder
     private void bindKeysTextBox_KeyDown(object sender, KeyEventArgs e)
     {
         var newKey = KeyCodeToUnicode(e.KeyCode);
-        if(newKey=="")return;
+        if (newKey == "") return;
         keyValueArray[int.Parse(currentBindTextBox.Name[currentBindTextBox.Name.Length - 1].ToString())] =
             e.KeyValue;
         UpdateTextBox(currentBindTextBox, newKey);
@@ -35,16 +35,14 @@ public partial class SimpleBinder
     }
 
     #region Translare from Keys to string
+
     //https://stackoverflow.com/questions/23170259/convert-keycode-to-char-string
     public string KeyCodeToUnicode(Keys key)
     {
         var keyboardState = new byte[255];
         var keyboardStateStatus = GetKeyboardState(keyboardState);
 
-        if (!keyboardStateStatus)
-        {
-            return "";
-        }
+        if (!keyboardStateStatus) return "";
 
         var virtualKeyCode = (uint)key;
         var scanCode = MapVirtualKey(virtualKeyCode, 0);
@@ -56,17 +54,18 @@ public partial class SimpleBinder
     }
 
     [DllImport("user32.dll")]
-    static extern bool GetKeyboardState(byte[] lpKeyState);
+    private static extern bool GetKeyboardState(byte[] lpKeyState);
 
     [DllImport("user32.dll")]
-    static extern uint MapVirtualKey(uint uCode, uint uMapType);
+    private static extern uint MapVirtualKey(uint uCode, uint uMapType);
 
     [DllImport("user32.dll")]
-    static extern IntPtr GetKeyboardLayout(uint idThread);
+    private static extern IntPtr GetKeyboardLayout(uint idThread);
 
     [DllImport("user32.dll")]
-    static extern int ToUnicodeEx(uint wVirtKey, uint wScanCode, byte[] lpKeyState,
-        [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff, int cchBuff, uint wFlags, IntPtr dwhkl);
+    private static extern int ToUnicodeEx(uint wVirtKey, uint wScanCode, byte[] lpKeyState,
+        [Out] [MarshalAs(UnmanagedType.LPWStr)]
+        StringBuilder pwszBuff, int cchBuff, uint wFlags, IntPtr dwhkl);
 
     #endregion
 }

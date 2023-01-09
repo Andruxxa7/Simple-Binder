@@ -6,7 +6,7 @@ namespace SimpleBinder;
 public partial class SimpleBinder
 {
     /// <summary>
-    /// Парсит значения из .json в поля WinForm'ы
+    ///     Парсит значения из .json в поля WinForm'ы
     /// </summary>
     /// <param name="path2Json">- путь до файла .json, из которого берутся значения</param>
     private async Task ParseFromJsonToWinForms(string path2Json)
@@ -18,7 +18,7 @@ public partial class SimpleBinder
         }
         catch
         {
-            MessageBox.Show(Resources.ParseFromJsonToWinForms_Error_Message, Resources.Caption_Error,
+            MessageBox.Show(ParseFromJsonToWinForms_Error_Message, Caption_Error,
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -36,9 +36,9 @@ public partial class SimpleBinder
 
 
     /// <summary>
-    /// Парс значений из полей WinForm'ы в .json
+    ///     Парс значений из полей WinForm'ы в .json
     /// </summary>
-    /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>   
+    /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>
     private async Task ParseToJson(string path2Json)
     {
         Bind.bindNumber = 1;

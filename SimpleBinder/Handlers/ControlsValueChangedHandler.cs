@@ -5,7 +5,7 @@ public partial class SimpleBinder
     private TextBox currentBindTextBox;
 
     /// <summary>
-    /// Добавляет ивент ValueChangedEvent на TextBox'ы и  CheckBox'ы
+    ///     Добавляет ивент ValueChangedEvent на TextBox'ы и  CheckBox'ы
     /// </summary>
     private void AddValueChangedEvent()
     {
@@ -28,7 +28,7 @@ public partial class SimpleBinder
     }
 
     /// <summary>
-    /// Удаляет ивент ValueChangedEvent c TextBox'ы и CheckBox'ы
+    ///     Удаляет ивент ValueChangedEvent c TextBox'ы и CheckBox'ы
     /// </summary>
     private void DeleteValueChangedEvent()
     {
@@ -56,7 +56,7 @@ public partial class SimpleBinder
         SwitchSaveAndCancelButtons();
         DeleteValueChangedEvent();
     }
-        
+
     private void SwitchSaveAndCancelButtons()
     {
         if (!isValueChanged)
