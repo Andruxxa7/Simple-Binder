@@ -1,12 +1,14 @@
+using System.Threading.Tasks;
 using WindowsInput.Native;
+using static System.Threading.Thread;
 using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
 
 namespace SimpleBinder;
 
-public partial class ActiveBind //Part of class is in ConvertStringToKeys.cs
+public class ActiveBind
 {
     private string Text { get; set; }
-    private string keys { get; set; }
+    private int key { get; set; }
     private string Modifier { get; set; }
     private bool isAdded;
 
@@ -14,33 +16,40 @@ public partial class ActiveBind //Part of class is in ConvertStringToKeys.cs
     {
         isAdded = false;
         Text = bind.BindText;
-        keys = bind.GenerateKeyString();
+        key = bind.KeyValue;
         Modifier = bind.SelectedModifier;
     }
 
 
-    private static void SimulateTyping(string text)
+    private static Task SimulateTyping(string text)
     {
-        Thread.Sleep(1); //да-да, я говноед
+        Sleep(10); //да-да, я говноед
         SimpleBinder.inputSimulator.Keyboard.KeyPress(VirtualKeyCode.BACK);
         SimpleBinder.inputSimulator.Keyboard.TextEntry(text);
+        return Task.CompletedTask;
     }
 
     public void RegisterBind()
     {
         if (isAdded) return;
-        var convertedKeys = ConvertFromStringToKeys();
         if (Modifier == "None")
         {
             SimpleBinder.keyboardHookManager.RegisterHotkey(
-                KeyInterop.VirtualKeyFromKey((Key)convertedKeys[0]),
-                () => SimulateTyping(Text));
+                key,
+                async () => await SimulateTyping(Text));
         }
         else
         {
-            SimpleBinder.keyboardHookManager.RegisterHotkey((ModifierKeys)(convertedKeys[0]),
-                KeyInterop.VirtualKeyFromKey((Key)convertedKeys[1]),
-                () => SimulateTyping(Text));
+            SimpleBinder.keyboardHookManager.RegisterHotkey(
+                Modifier switch
+                {
+                    "Control" => ModifierKeys.Control,
+                    "Alt" => ModifierKeys.Alt,
+                    "Win" => ModifierKeys.WindowsKey,
+                    "Shift" => ModifierKeys.Shift,
+                },
+                key,
+                async () => await SimulateTyping(Text));
         }
 
         isAdded = true;

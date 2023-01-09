@@ -7,6 +7,7 @@ public partial class SimpleBinder
     {
         Bind.bindNumber = 1;
         keyboardHookManager.Start();
+        var error = false;
         foreach (var bind in bindsArray)
         {
             if (!bind.IsEnabled) continue;
@@ -14,13 +15,15 @@ public partial class SimpleBinder
             {
                 new ActiveBind(bind).RegisterBind();
             }
-            catch
+            catch (NonInvasiveKeyboardHookException)//если будут одинаковые бинды
             {
-                MessageBox.Show(Resources.TurnOnBinder_Error_Message +
-                                bind.BindNumber, Resources.Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                enabledArray[bind.BindNumber-1].Checked = false;
+                MessageBox.Show(TurnOnBinder_Error_Message +
+                                bind.BindNumber, Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                error = true;
             }
         }
-
+        if(error)saveButton_Click(null,null);
         return Task.CompletedTask;
     }
 

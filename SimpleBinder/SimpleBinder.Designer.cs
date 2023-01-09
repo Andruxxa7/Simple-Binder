@@ -626,6 +626,7 @@ namespace SimpleBinder
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "SimpleBinder";
+            this.Load += new System.EventHandler(this.SimpleBinder_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

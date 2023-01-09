@@ -16,14 +16,13 @@ public partial class SimpleBinder : Form
     private CheckBox[] enabledArray;
     private ListBox[] modifierArray;
     private Bind[] bindsArray;
-
+    private int[] keyValueArray;
     public SimpleBinder()
     {
         ChangerCurrentCulture(settings.CurrentLanguage ??
                               (CultureInfo.InstalledUICulture.Name == "ru-RU" ? "ru-ru" : ""));
-
         InitializeComponent();
-
+        
         #region Data and components arrays declaration
 
         enabledArray = new[]
@@ -51,20 +50,31 @@ public partial class SimpleBinder : Form
 
         #endregion
 
-        ParseFromJsonToWinForms(PathToJson);
+        
+    }
+
+ private async void SimpleBinder_Load(object sender, EventArgs e)
+    {
+        await ParseFromJsonToWinForms(PathToJson);
+        if (bindsArray == null)
+        {
+            foreach (var listBox in modifierArray)
+            {
+                listBox.SelectedIndex = 0;
+            }
+            bindsArray = new Bind[bindKeysArray.Length];
+        }
+        keyValueArray ??= new int[bindKeysArray.Length];
         SwitchSaveAndCancelButtons();
         foreach (var textBox in bindKeysArray)
         {
             textBox.GotFocus += bindKeysTextBox_GotFocus;
             textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
-
         ChangeTheme(settings.CurrentTheme ?? "white");
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
     }
-
-
     #region Button_Click event realisations
 
     /// <summary>
@@ -109,17 +119,17 @@ public partial class SimpleBinder : Form
         }
     }
 
-    private void saveButton_Click(object sender, EventArgs e)
+    private async void saveButton_Click(object sender, EventArgs e)
     {
-        ParseToJson(PathToJson);
+        await ParseToJson(PathToJson);
         File.SetAttributes(PathToJson, FileAttributes.ReparsePoint);
         isValueChanged = false;
         SwitchSaveAndCancelButtons();
     }
 
-    private void cancelButton_Click(object sender, EventArgs e)
+    private async void cancelButton_Click(object sender, EventArgs e)
     {
-        ParseFromJsonToWinForms(PathToJson);
+        await ParseFromJsonToWinForms(PathToJson);
         isValueChanged = false;
         SwitchSaveAndCancelButtons();
     }
@@ -159,7 +169,7 @@ public partial class SimpleBinder : Form
 
     private void englishToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("");
 
-    private void toolStripMenuItem2_Click(object sender, EventArgs e)
+    private async void toolStripMenuItem2_Click(object sender, EventArgs e)
     {
         var importFileDialog = new OpenFileDialog();
         importFileDialog.Filter = importStripMenuItemClick_Json_config;
@@ -167,11 +177,11 @@ public partial class SimpleBinder : Form
         importFileDialog.ShowDialog();
         if (importFileDialog.FileName != "" && importFileDialog.FilterIndex == 1)
         {
-            ParseFromJsonToWinForms(importFileDialog.FileName);
+            await ParseFromJsonToWinForms(importFileDialog.FileName);
         }
     }
 
-    private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+    private async void exportToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var exportFileDialog = new SaveFileDialog();
         exportFileDialog.Filter = importStripMenuItemClick_Json_config;
@@ -179,7 +189,7 @@ public partial class SimpleBinder : Form
         exportFileDialog.ShowDialog();
         if (exportFileDialog.FileName != "" && exportFileDialog.FilterIndex == 1)
         {
-            ParseToJson(exportFileDialog.FileName);
+            await ParseToJson(exportFileDialog.FileName);
         }
     }
 
@@ -205,4 +215,6 @@ public partial class SimpleBinder : Form
             helpToolStripMenuItem1_Click_Text,
             helpToolStripMenuItem1_Click_Capation);
     }
+
+   
 }
