@@ -4,6 +4,7 @@ namespace SimpleBinder;
 
 public partial class SimpleBinder
 {
+    //todo переделать кнопки и темы(сделать парс с .json
     private void ChangeTheme(string themeName)
     {
         var theme = themeName == "white" ? WhiteTheme() : BlackTheme();

@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using System.Text.RegularExpressions;
 using WindowsInput;
 
 namespace SimpleBinder;
@@ -49,6 +49,7 @@ public partial class SimpleBinder : Form
         };
 
         #endregion
+        
     }
 
     private async void SimpleBinder_Load(object sender, EventArgs e)
@@ -72,6 +73,8 @@ public partial class SimpleBinder : Form
         ChangeTheme(settings.CurrentTheme ?? "white");
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
+        keyboardHookManager.Start();
+        RegisterBinderStartHotkey(0x74, "F5"); 
     }
 
     private void blackToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,45 +100,19 @@ public partial class SimpleBinder : Form
 
     #region Button_Click event realisations
 
-    /// <summary>
-    ///     Логика переключателя состояния биндера
-    /// </summary>
     private async void statusButton_Click(object sender, EventArgs e)
     {
-        if (statusButton.Text == statusButton_Turn_On)
+        if (Regex.Replace(statusButton.Text,@"\((.*?)\)","") == statusButton_Turn_On)
         {
-            statusButton.Text = statusButton_Turn_Off;
-            statusLabel.BackColor = Color.LawnGreen;
-            defaultButton.Enabled = false;
-            if (saveButton.Enabled) saveButton_Click(null, null);
-            for (var i = 0; i < bindKeysArray.Length; i++)
-            {
-                bindKeysArray[i].Enabled = false;
-                bindTextArray[i].Enabled = false;
-                enabledArray[i].Enabled = false;
-                modifierArray[i].Enabled = false;
-            }
-
-            exportToolStripMenuItem.Enabled = false;
-            toolStripMenuItem2.Enabled = false;
+            keyboardHookManager.UnregisterAll();
+            RegisterBinderStopHotkey(0x74, "F5"); 
             await TurnOnBinder();
         }
         else
         {
-            statusButton.Text = statusButton_Turn_On;
-            statusLabel.BackColor = Color.Red;
-            defaultButton.Enabled = true;
-            for (var i = 0; i < bindKeysArray.Length; i++)
-            {
-                bindKeysArray[i].Enabled = true;
-                bindTextArray[i].Enabled = true;
-                enabledArray[i].Enabled = true;
-                modifierArray[i].Enabled = true;
-            }
-
-            exportToolStripMenuItem.Enabled = true;
-            toolStripMenuItem2.Enabled = true;
             await TurnOffBinder();
+            keyboardHookManager.UnregisterAll();
+            RegisterBinderStartHotkey(0x74, "F5");
         }
     }
 

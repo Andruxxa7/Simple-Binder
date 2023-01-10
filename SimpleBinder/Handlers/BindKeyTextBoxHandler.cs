@@ -7,7 +7,12 @@ public partial class SimpleBinder
 {
     private void bindKeysTextBox_KeyDown(object sender, KeyEventArgs e)
     {
-        var newKey = KeyCodeToUnicode(e.KeyCode);
+        var newKey = e.KeyCode switch
+        {
+            Keys.Escape => "Esc",
+            Keys.Space => "Space",
+            _ => KeyCodeToUnicode(e.KeyCode)
+        };
         if (newKey == "") return;
         keyValueArray[int.Parse(currentBindTextBox.Name[currentBindTextBox.Name.Length - 1].ToString())] =
             e.KeyValue;

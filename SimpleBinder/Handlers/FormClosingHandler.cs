@@ -6,6 +6,7 @@ public partial class SimpleBinder
     {
         await TurnOffBinder();
         settings.Save();
+        keyboardHookManager.Stop();
         if (!saveButton.Enabled) return;
         var result = MessageBox.Show(exitToolStripMenuItem_Click_Text,
             exitToolStripMenuItem_Click_Warning,

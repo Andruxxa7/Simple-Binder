@@ -18,7 +18,7 @@ public partial class SimpleBinder
 
     private static Theme BlackTheme()
     {
-        return new()
+        return new Theme()
         {
             ThemeName = "black", //было оба 56
             BackgroundColor = Color.FromArgb(24, 24, 24),
@@ -29,7 +29,7 @@ public partial class SimpleBinder
 
     private static Theme WhiteTheme()
     {
-        return new()
+        return new Theme()
         {
             ThemeName = "white",
             BackgroundColor = Color.White,
