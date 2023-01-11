@@ -7,6 +7,7 @@ public partial class SimpleBinder
 {
     private Task TurnOnBinder()
     {
+        binderIsEnabled = true;
         statusButton.Text = statusButton_Turn_Off;
         statusLabel.BackColor = Color.LawnGreen;
         defaultButton.Enabled = false;
@@ -45,6 +46,7 @@ public partial class SimpleBinder
 
     private Task TurnOffBinder()
     {
+        binderIsEnabled = false;
         statusButton.Text = statusButton_Turn_On;
         statusLabel.BackColor = Color.Red;
         defaultButton.Enabled = true;
@@ -66,8 +68,13 @@ public partial class SimpleBinder
         //допилить
         keyboardHookManager.RegisterHotkey(
             key,
-            async () => await TurnOnBinder());
-        statusButton.Text += $"({keyName})";
+            () =>
+            {
+                keyboardHookManager.UnregisterAll();
+                statusButton.Invoke(async () => await TurnOnBinder());
+                RegisterBinderStopHotkey(0x74, "F5");
+            });
+        statusButton.Invoke(() => statusButton.Text += $"({keyName})");
     }
 
     private void RegisterBinderStopHotkey(int key, string keyName)
@@ -75,8 +82,12 @@ public partial class SimpleBinder
         //допилить
         keyboardHookManager.RegisterHotkey(
             key,
-            async () => await TurnOffBinder()
-        );
-        statusButton.Text += $"({keyName})";
+            () =>
+            {
+                statusButton.Invoke(async () => await TurnOffBinder());
+                keyboardHookManager.UnregisterAll();
+                RegisterBinderStartHotkey(0x74, "F5");
+            });
+        statusButton.Invoke(() => statusButton.Text += $"({keyName})");
     }
 }

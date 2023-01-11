@@ -1,10 +1,11 @@
-﻿using System.Text.RegularExpressions;
-using WindowsInput;
+﻿using WindowsInput;
 
 namespace SimpleBinder;
 
 public partial class SimpleBinder : Form
 {
+    #region Data and arrays of components declaration
+
     private const string PathToJson = "settings.json";
     public static readonly InputSimulator inputSimulator = new();
     public static readonly KeyboardHookManager keyboardHookManager = new();
@@ -19,11 +20,11 @@ public partial class SimpleBinder : Form
 
     public SimpleBinder()
     {
+        binderIsEnabled = false;
         ChangerCurrentCulture(settings.CurrentLanguage ??
                               (CultureInfo.InstalledUICulture.Name == "ru-RU" ? "ru-ru" : ""));
         InitializeComponent();
 
-        #region Data and components arrays declaration
 
         enabledArray = new[]
         {
@@ -47,10 +48,9 @@ public partial class SimpleBinder : Form
             modifierListBox0, modifierListBox1, modifierListBox2, modifierListBox3, modifierListBox4,
             modifierListBox5, modifierListBox6, modifierListBox7, modifierListBox8, modifierListBox9
         };
-
-        #endregion
-        
     }
+
+    #endregion
 
     private async void SimpleBinder_Load(object sender, EventArgs e)
     {
@@ -74,39 +74,22 @@ public partial class SimpleBinder : Form
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
         keyboardHookManager.Start();
-        RegisterBinderStartHotkey(0x74, "F5"); 
+        RegisterBinderStartHotkey(0x74, "F5");
     }
 
-    private void blackToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        ChangeTheme("black");
-        blackToolStripMenuItem.Enabled = false;
-        whiteToolStripMenuItem.Enabled = true;
-    }
 
-    private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        ChangeTheme("white");
-        whiteToolStripMenuItem.Enabled = false;
-        blackToolStripMenuItem.Enabled = true;
-    }
-
-    private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-        MessageBox.Show(
-            helpToolStripMenuItem1_Click_Text,
-            helpToolStripMenuItem1_Click_Capation);
-    }
-
+   
     #region Button_Click event realisations
+
+    private bool binderIsEnabled;
 
     private async void statusButton_Click(object sender, EventArgs e)
     {
-        if (Regex.Replace(statusButton.Text,@"\((.*?)\)","") == statusButton_Turn_On)
+        if (!binderIsEnabled)
         {
             keyboardHookManager.UnregisterAll();
-            RegisterBinderStopHotkey(0x74, "F5"); 
             await TurnOnBinder();
+            RegisterBinderStopHotkey(0x74, "F5");
         }
         else
         {
@@ -129,6 +112,13 @@ public partial class SimpleBinder : Form
         await ParseFromJsonToWinForms(PathToJson);
         isValueChanged = false;
         SwitchSaveAndCancelButtons();
+    }
+
+    private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show(
+            helpToolStripMenuItem1_Click_Text,
+            helpToolStripMenuItem1_Click_Capation);
     }
 
     private void defaultButton_Click(object sender, EventArgs e)
@@ -190,6 +180,20 @@ public partial class SimpleBinder : Form
         exportFileDialog.ShowDialog();
         if (exportFileDialog.FileName != "" && exportFileDialog.FilterIndex == 1)
             await ParseToJson(exportFileDialog.FileName);
+    }
+
+    private void blackToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeTheme("black");
+        blackToolStripMenuItem.Enabled = false;
+        whiteToolStripMenuItem.Enabled = true;
+    }
+
+    private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeTheme("white");
+        whiteToolStripMenuItem.Enabled = false;
+        blackToolStripMenuItem.Enabled = true;
     }
 
     #endregion

@@ -22,7 +22,7 @@ public partial class SimpleBinder
             control.ForeColor = theme.FontColor;
         }
 
-        statusLabel.BackColor = statusButton.Text != statusButton_Turn_On ? Color.LawnGreen : Color.Red;
+        statusLabel.BackColor = binderIsEnabled ? Color.LawnGreen : Color.Red;
         settings.CurrentTheme = theme.ThemeName;
         Invalidate();
     }
