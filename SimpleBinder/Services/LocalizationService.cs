@@ -23,6 +23,8 @@ public partial class SimpleBinder
         var resources = new ComponentResourceManager(typeof(SimpleBinder));
         foreach (Control control in Controls) resources.ApplyResources(control, control.Name, newLangCultureInfo);
 
+        if (BinderKeyValue is >= 0x01 and <= 0xFE)
+            statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "";
 
         foreach (ToolStripMenuItem item in menuStrip1.Items)
         {

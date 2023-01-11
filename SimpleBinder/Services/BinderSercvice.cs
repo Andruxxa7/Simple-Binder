@@ -65,29 +65,29 @@ public partial class SimpleBinder
 
     private void RegisterBinderStartHotkey(int key, string keyName)
     {
-        //допилить
+        if (key is not (>= 0x01 and <= 0xFE)) return; //0x01 - min virtual key code, 0xFE - max virtual key code
         keyboardHookManager.RegisterHotkey(
             key,
             () =>
             {
                 keyboardHookManager.UnregisterAll();
                 statusButton.Invoke(async () => await TurnOnBinder());
-                RegisterBinderStopHotkey(0x74, "F5");
+                RegisterBinderStopHotkey(key, keyName);
             });
-        statusButton.Invoke(() => statusButton.Text += $"({keyName})");
+        statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
     }
 
     private void RegisterBinderStopHotkey(int key, string keyName)
     {
-        //допилить
+        if (key is not (>= 0x01 and <= 0xFE)) return;
         keyboardHookManager.RegisterHotkey(
             key,
             () =>
             {
                 statusButton.Invoke(async () => await TurnOffBinder());
                 keyboardHookManager.UnregisterAll();
-                RegisterBinderStartHotkey(0x74, "F5");
+                RegisterBinderStartHotkey(key, keyName);
             });
-        statusButton.Invoke(() => statusButton.Text += $"({keyName})");
+        statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
     }
 }

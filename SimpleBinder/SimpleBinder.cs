@@ -17,7 +17,8 @@ public partial class SimpleBinder : Form
     private int[] keyValueArray;
     private ListBox[] modifierArray;
     private Settings settings = new();
-
+    private int BinderKeyValue;
+    private string BinderKeyName;
     public SimpleBinder()
     {
         binderIsEnabled = false;
@@ -74,7 +75,10 @@ public partial class SimpleBinder : Form
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
         keyboardHookManager.Start();
-        RegisterBinderStartHotkey(0x74, "F5");
+        //todo сделать выбор бинда, что ниже захардкожен
+        BinderKeyValue = 0x74;
+        BinderKeyName = "F5";
+        RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
     }
 
 
@@ -89,13 +93,13 @@ public partial class SimpleBinder : Form
         {
             keyboardHookManager.UnregisterAll();
             await TurnOnBinder();
-            RegisterBinderStopHotkey(0x74, "F5");
+            RegisterBinderStopHotkey(BinderKeyValue, BinderKeyName);
         }
         else
         {
             await TurnOffBinder();
             keyboardHookManager.UnregisterAll();
-            RegisterBinderStartHotkey(0x74, "F5");
+            RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
         }
     }
 
@@ -149,7 +153,7 @@ public partial class SimpleBinder : Form
     private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
     {
         MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
-                        "https://github.com/Andruxxa7/Simple-Binder", "Simple Binder");
+                        @"https://github.com/Andruxxa7/Simple-Binder", @"Simple Binder");
     }
 
     private void russianToolStripMenuItem_Click(object sender, EventArgs e)

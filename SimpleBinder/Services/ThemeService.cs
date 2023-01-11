@@ -7,6 +7,7 @@ public partial class SimpleBinder
     //todo переделать кнопки и темы(сделать парс с .json
     private void ChangeTheme(string themeName)
     {
+        if(themeName=="")return;
         var theme = themeName == "white" ? WhiteTheme() : BlackTheme();
         ForeColor = theme.FontColor;
         BackColor = theme.BackgroundColor;

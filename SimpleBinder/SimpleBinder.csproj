@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -35,47 +35,47 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="mscorlib"/>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Numerics"/>
+        <Reference Include="mscorlib" />
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Numerics" />
         <Reference Include="System.Text.Json">
             <HintPath>..\packages\System.Text.Json.7.0.0\lib\net462\System.Text.Json.dll</HintPath>
         </Reference>
-        <Reference Include="System.Xml.Linq"/>
-        <Reference Include="System.Data.DataSetExtensions"/>
-        <Reference Include="Microsoft.CSharp"/>
-        <Reference Include="System.Data"/>
-        <Reference Include="System.Deployment"/>
-        <Reference Include="System.Drawing"/>
-        <Reference Include="System.Net.Http"/>
-        <Reference Include="System.Windows.Forms"/>
-        <Reference Include="System.Xml"/>
-        <Reference Include="WindowsBase"/>
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Deployment" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Net.Http" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+        <Reference Include="WindowsBase" />
         <Reference Include="WindowsInput">
             <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Handlers\BindKeyTextBoxHandler.cs"/>
-        <Compile Include="Handlers\ControlsValueChangedHandler.cs"/>
-        <Compile Include="Models\ActiveBind.cs"/>
-        <Compile Include="Models\Bind.cs"/>
-        <Compile Include="Models\Theme.cs"/>
-        <Compile Include="Properties\GlobalUsings.cs"/>
-        <Compile Include="Properties\Themes.cs"/>
-        <Compile Include="Services\BinderSercvice.cs"/>
-        <Compile Include="Services\LocalizationService.cs"/>
-        <Compile Include="Services\ParserService.cs"/>
-        <Compile Include="Services\ThemeService.cs"/>
+        <Compile Include="Handlers\BindKeyTextBoxHandler.cs" />
+        <Compile Include="Handlers\ControlsValueChangedHandler.cs" />
+        <Compile Include="Models\ActiveBind.cs" />
+        <Compile Include="Models\Bind.cs" />
+        <Compile Include="Models\Theme.cs" />
+        <Compile Include="Properties\GlobalUsings.cs" />
+        <Compile Include="Properties\Themes.cs" />
+        <Compile Include="Services\BinderSercvice.cs" />
+        <Compile Include="Services\LocalizationService.cs" />
+        <Compile Include="Services\ParserService.cs" />
+        <Compile Include="Services\ThemeService.cs" />
         <Compile Include="SimpleBinder.cs">
             <SubType>Form</SubType>
         </Compile>
         <Compile Include="SimpleBinder.Designer.cs">
             <DependentUpon>SimpleBinder.cs</DependentUpon>
         </Compile>
-        <Compile Include="Program.cs"/>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Program.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
         <EmbeddedResource Include="Properties\Resources.ru-ru.resx">
             <DependentUpon>Resources.resx</DependentUpon>
         </EmbeddedResource>
@@ -105,23 +105,23 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-        <None Include="App.config"/>
+        <None Include="App.config" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="InputSimulator" Version="1.0.4"/>
-        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="7.0.0"/>
-        <PackageReference Include="NonInvasiveKeyboardHookLibrary.Fork" Version="2.1.3"/>
-        <PackageReference Include="System.Buffers" Version="4.5.1"/>
-        <PackageReference Include="System.Memory" Version="4.5.5"/>
-        <PackageReference Include="System.Numerics.Vectors" Version="4.5.0"/>
-        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0"/>
-        <PackageReference Include="System.Text.Encodings.Web" Version="7.0.0"/>
-        <PackageReference Include="System.Text.Json" Version="7.0.0"/>
-        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4"/>
-        <PackageReference Include="System.ValueTuple" Version="4.5.0"/>
+        <PackageReference Include="InputSimulator" Version="1.0.4" />
+        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="7.0.0" />
+        <PackageReference Include="NonInvasiveKeyboardHookLibrary.Fork" Version="2.1.3" />
+        <PackageReference Include="System.Buffers" Version="4.5.1" />
+        <PackageReference Include="System.Memory" Version="4.5.5" />
+        <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+        <PackageReference Include="System.Text.Encodings.Web" Version="7.0.0" />
+        <PackageReference Include="System.Text.Json" Version="7.0.0" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Handlers\FormClosingHandler.cs"/>
+        <Compile Include="Handlers\FormClosingHandler.cs" />
     </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
