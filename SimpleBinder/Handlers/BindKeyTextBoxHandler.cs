@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SimpleBinder;
 
@@ -37,11 +38,14 @@ public partial class SimpleBinder
     {
         var textBox = (TextBox)obj;
         textBox.KeyDown -= bindKeysTextBox_KeyDown;
+        if (textBox.Text == "")
+            keyValueArray[int.Parse(Regex.Replace(textBox.Name,@"\D",""))] = 0;
     }
+
 
     #region Translare from Keys to string
 
-    //https://stackoverflow.com/questions/23170259/convert-keycode-to-char-string
+//https://stackoverflow.com/questions/23170259/convert-keycode-to-char-string
     public string KeyCodeToUnicode(Keys key)
     {
         var keyboardState = new byte[255];

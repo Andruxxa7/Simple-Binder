@@ -105,6 +105,7 @@ namespace SimpleBinder
             this.switchThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.blackContrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -521,7 +522,7 @@ namespace SimpleBinder
             // 
             // switchThemeToolStripMenuItem
             // 
-            this.switchThemeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.whiteToolStripMenuItem, this.blackToolStripMenuItem });
+            this.switchThemeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.whiteToolStripMenuItem, this.blackToolStripMenuItem, this.blackContrastToolStripMenuItem });
             this.switchThemeToolStripMenuItem.Name = "switchThemeToolStripMenuItem";
             resources.ApplyResources(this.switchThemeToolStripMenuItem, "switchThemeToolStripMenuItem");
             // 
@@ -536,6 +537,12 @@ namespace SimpleBinder
             this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
             resources.ApplyResources(this.blackToolStripMenuItem, "blackToolStripMenuItem");
             this.blackToolStripMenuItem.Click += new System.EventHandler(this.blackToolStripMenuItem_Click);
+            // 
+            // blackContastToolStripMenuItem
+            // 
+            this.blackContrastToolStripMenuItem.Name = "blackContrastToolStripMenuItem";
+            resources.ApplyResources(this.blackContrastToolStripMenuItem, "blackContrastToolStripMenuItem");
+            this.blackContrastToolStripMenuItem.Click += new System.EventHandler(this.blackContrastToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -636,7 +643,7 @@ namespace SimpleBinder
         private System.Windows.Forms.ToolStripMenuItem switchThemeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem whiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem blackToolStripMenuItem;
-
+        private System.Windows.Forms.ToolStripMenuItem blackContrastToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;

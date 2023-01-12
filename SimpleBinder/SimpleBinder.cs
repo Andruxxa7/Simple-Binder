@@ -189,16 +189,16 @@ public partial class SimpleBinder : Form
     private void blackToolStripMenuItem_Click(object sender, EventArgs e)
     {
         ChangeTheme("black");
-        blackToolStripMenuItem.Enabled = false;
-        whiteToolStripMenuItem.Enabled = true;
     }
 
     private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
     {
         ChangeTheme("white");
-        whiteToolStripMenuItem.Enabled = false;
-        blackToolStripMenuItem.Enabled = true;
     }
 
+    private void blackContrastToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ChangeTheme("black high contrast");
+    }
     #endregion
 }

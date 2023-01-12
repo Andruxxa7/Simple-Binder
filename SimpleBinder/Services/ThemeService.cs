@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Linq;
 
 namespace SimpleBinder;
 
@@ -7,8 +8,12 @@ public partial class SimpleBinder
     //todo переделать кнопки и темы(сделать парс с .json
     private void ChangeTheme(string themeName)
     {
-        if(themeName=="")return;
-        var theme = themeName == "white" ? WhiteTheme() : BlackTheme();
+        var theme = themeName switch
+        {
+            "black" => BlackTheme,
+            "white" => WhiteTheme,
+            "black high contrast" => BlackHighContrastTheme
+        };
         ForeColor = theme.FontColor;
         BackColor = theme.BackgroundColor;
         foreach (Control control in Controls)

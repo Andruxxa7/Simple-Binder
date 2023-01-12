@@ -114,4 +114,7 @@
     <data name="whiteToolStripMenuItem.Text" xml:space="preserve">
         <value>Белая</value>
     </data>
+    <data name="blackContrastToolStripMenuItem.Text" xml:space="preserve">
+        <value>Чёрная высококонтрастная</value>
+    </data>
 </root>
