@@ -1,11 +1,9 @@
 using System.Drawing;
-using System.Linq;
 
 namespace SimpleBinder;
 
 public partial class SimpleBinder
 {
-    //todo переделать кнопки и темы(сделать парс с .json
     private void ChangeTheme(string themeName)
     {
         var theme = themeName switch

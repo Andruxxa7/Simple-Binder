@@ -78,6 +78,24 @@ namespace SimpleBinder.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set Binder Key name,only for advanced users. Enter a string with a maximum of 6 characters. Next step is to set up key value. .
+        /// </summary>
+        internal static string changeHotkey_input_hotkeyName {
+            get {
+                return ResourceManager.GetString("changeHotkey_input_hotkeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Binder Key Value, only for advanced users. You can watch values on .
+        /// </summary>
+        internal static string changeHotkey_input_hotkeyValue {
+            get {
+                return ResourceManager.GetString("changeHotkey_input_hotkeyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you wanna save binds before exit?.
         /// </summary>
         internal static string exitToolStripMenuItem_Click_Text {
@@ -146,6 +164,15 @@ namespace SimpleBinder.Properties {
         internal static string ParseFromJsonToWinForms_Error_Message {
             get {
                 return ResourceManager.GetString("ParseFromJsonToWinForms_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current key name and value are .
+        /// </summary>
+        internal static string showCurrentBinderHotkey_Message {
+            get {
+                return ResourceManager.GetString("showCurrentBinderHotkey_Message", resourceCulture);
             }
         }
         

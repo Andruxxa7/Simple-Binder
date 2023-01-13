@@ -117,4 +117,22 @@
     <data name="blackContrastToolStripMenuItem.Text" xml:space="preserve">
         <value>Чёрная высококонтрастная</value>
     </data>
+    <data name="setDefaultHotkeyToolStripMenuItem.Text" xml:space="preserve">
+        <value>Установить бинд по умолчанию</value>
+    </data>
+    <data name="showCurrentHotkeyToolStripMenuItem.Text" xml:space="preserve">
+        <value>Отобразить нынешний бинд</value>
+    </data>
+    <data name="turnOffHotkeyToolStripMenuItem.Text" xml:space="preserve">
+        <value>Выключить бинд</value>
+    </data>
+    <data name="turnOnHotkeyToolStripMenuItem.Text" xml:space="preserve">
+        <value>Включить бинд</value>
+    </data>
+    <data name="changeHotkeyToolStripMenuItem.Text" xml:space="preserve">
+        <value>Изменить бинд</value>
+    </data>
+    <data name="binderHotkeySettingsToolStripMenuItem.Text" xml:space="preserve">
+        <value>Настройки бинда вкл/выкл</value>
+    </data>
 </root>

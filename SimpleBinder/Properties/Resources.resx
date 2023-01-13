@@ -161,4 +161,13 @@
     <data name="helpToolStripMenuItem1_Click_Text" xml:space="preserve">
     <value>In this simple binder you can make up 10 hotkeys. Binds can be of 2 types: with(Ctrl,Alt, Shift) and without modifier.</value>
   </data>
+    <data name="showCurrentBinderHotkey_Message" xml:space="preserve">
+        <value>Current key name and value are </value>
+    </data>
+    <data name="changeHotkey_input_hotkeyName" xml:space="preserve">
+        <value>Set Binder Key name,only for advanced users. Enter a string with a maximum of 6 characters. Next step is to set up key value. </value>
+    </data>
+    <data name="changeHotkey_input_hotkeyValue" xml:space="preserve">
+        <value>Set Binder Key Value, only for advanced users. You can watch values on </value>
+    </data>
 </root>

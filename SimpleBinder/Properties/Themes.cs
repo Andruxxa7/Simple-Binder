@@ -4,7 +4,6 @@ namespace SimpleBinder;
 
 public partial class SimpleBinder
 {
-    //todo переделать кнопки и темы(сделать парс с .json
     private static Theme BlackHighContrastTheme = new()
     {
         ThemeName = "black high contrast",

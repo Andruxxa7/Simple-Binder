@@ -1,6 +1,5 @@
 using System.Drawing;
 using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 
 namespace SimpleBinder;
 
@@ -94,27 +93,14 @@ public partial class SimpleBinder
         statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
     }
 
-    private void changeHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
+    private Task changeBinderHotkey(int value, string name)
     {
-        var hotkeyName = Interaction.InputBox("Set Binder Key name,only for advanced users. Enter a string with a maximum of 6 characters. Next step is to set up key value. ",
-            @"Simple Binder", "");
-        if (hotkeyName == "" || hotkeyName.Length > 6) return;
-        var tempHotKeyValue = Interaction.InputBox("Set Binder Key Value, only for advanced users. You can watch values on " +
-                                                   @"https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes",
-            @"Simple Binder", "");
-        int hotKeyValue;
-        try
-        {
-            hotKeyValue = (int)new System.ComponentModel.Int32Converter().ConvertFromString(tempHotKeyValue);
-        }
-        catch
-        {
-            return;
-        }
-        if (hotKeyValue is not (>= 0x01 and <= 0xFE)) return;
-        settings.CurrentKeyName = hotkeyName;
-        settings.CurrentKeyValue = hotKeyValue;
+        if (name.Length > 6) return Task.CompletedTask;
+        if (value is not (>= 0x01 and <= 0xFE)) return Task.CompletedTask;
+        settings.CurrentKeyName = name;
+        settings.CurrentKeyValue = value;
         turnOffHotkeyToolStripMenuItem_Click(null, null);
         turnOnHotkeyToolStripMenuItem_Click(null, null);
+        return Task.CompletedTask;
     }
 }

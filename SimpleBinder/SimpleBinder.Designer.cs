@@ -92,7 +92,6 @@ namespace SimpleBinder
             this.modifierListBox7 = new System.Windows.Forms.ListBox();
             this.modifierListBox8 = new System.Windows.Forms.ListBox();
             this.modifierListBox9 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,13 +106,14 @@ namespace SimpleBinder
             this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blackContrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.binderHotkeySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showCurrentHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turnOffHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turnOnHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setDefaultHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setDefaultHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -468,11 +468,6 @@ namespace SimpleBinder
             resources.ApplyResources(this.modifierListBox9, "modifierListBox9");
             this.modifierListBox9.Name = "modifierListBox9";
             // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.FileStripMenu, this.languageToolStripMenuItem, this.switchThemeToolStripMenuItem, this.binderHotkeySettingsToolStripMenuItem, this.helpToolStripMenuItem });
@@ -551,7 +546,13 @@ namespace SimpleBinder
             // 
             // binderHotkeySettingsToolStripMenuItem
             // 
-            this.binderHotkeySettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.changeHotkeyToolStripMenuItem, this.turnOffHotkeyToolStripMenuItem, this.turnOnHotkeyToolStripMenuItem, this.setDefaultHotkeyToolStripMenuItem });
+            // 
+            // showCurrentHotkeyToolStripMenuItem
+            // 
+            this.showCurrentHotkeyToolStripMenuItem.Name = "showCurrentHotkeyToolStripMenuItem";
+            this.showCurrentHotkeyToolStripMenuItem.Click += showCurrentHotkeyToolStripMenuItem_Click;
+            resources.ApplyResources(this.showCurrentHotkeyToolStripMenuItem, "showCurrentHotkeyToolStripMenuItem");
+            this.binderHotkeySettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.changeHotkeyToolStripMenuItem, this.turnOffHotkeyToolStripMenuItem, this.turnOnHotkeyToolStripMenuItem, this.setDefaultHotkeyToolStripMenuItem, this.showCurrentHotkeyToolStripMenuItem });
             this.binderHotkeySettingsToolStripMenuItem.Name = "binderHotkeySettingsToolStripMenuItem";
             resources.ApplyResources(this.binderHotkeySettingsToolStripMenuItem, "binderHotkeySettingsToolStripMenuItem");
             // 
@@ -573,6 +574,12 @@ namespace SimpleBinder
             resources.ApplyResources(this.turnOnHotkeyToolStripMenuItem, "turnOnHotkeyToolStripMenuItem");
             this.turnOnHotkeyToolStripMenuItem.Click += new System.EventHandler(this.turnOnHotkeyToolStripMenuItem_Click);
             // 
+            // setDefaultHotkeyToolStripMenuItem
+            // 
+            this.setDefaultHotkeyToolStripMenuItem.Name = "setDefaultHotkeyToolStripMenuItem";
+            resources.ApplyResources(this.setDefaultHotkeyToolStripMenuItem, "setDefaultHotkeyToolStripMenuItem");
+            this.setDefaultHotkeyToolStripMenuItem.Click += new System.EventHandler(this.setDefaultHotkeyToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.helpToolStripMenuItem1, this.aboutProgramToolStripMenuItem });
@@ -591,16 +598,10 @@ namespace SimpleBinder
             resources.ApplyResources(this.aboutProgramToolStripMenuItem, "aboutProgramToolStripMenuItem");
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
             // 
-            // setDefaultHotkeyToolStripMenuItem
-            // 
-            this.setDefaultHotkeyToolStripMenuItem.Name = "setDefaultHotkeyToolStripMenuItem";
-            resources.ApplyResources(this.setDefaultHotkeyToolStripMenuItem, "setDefaultHotkeyToolStripMenuItem");
-            // 
             // SimpleBinder
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.modifierListBox9);
             this.Controls.Add(this.modifierListBox8);
             this.Controls.Add(this.modifierListBox7);
@@ -674,6 +675,8 @@ namespace SimpleBinder
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.ToolStripMenuItem showCurrentHotkeyToolStripMenuItem;
+
         private System.Windows.Forms.ToolStripMenuItem setDefaultHotkeyToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripMenuItem turnOnHotkeyToolStripMenuItem;
@@ -698,7 +701,6 @@ namespace SimpleBinder
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FileStripMenu;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox modifierListBox7;
         private System.Windows.Forms.ListBox modifierListBox9;
         private System.Windows.Forms.ListBox modifierListBox1;

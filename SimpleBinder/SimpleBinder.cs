@@ -1,4 +1,5 @@
-﻿using WindowsInput;
+﻿using Microsoft.VisualBasic;
+using WindowsInput;
 
 namespace SimpleBinder;
 
@@ -19,11 +20,14 @@ public partial class SimpleBinder : Form
     private Settings settings = new();
     private int BinderKeyValue;
     private string BinderKeyName;
+
     public SimpleBinder()
     {
         binderIsEnabled = false;
         ChangerCurrentCulture(settings.CurrentLanguage ??
-                              (CultureInfo.InstalledUICulture.Name == "ru-RU" ? CultureInfo.InstalledUICulture.Name : ""));
+                              (CultureInfo.InstalledUICulture.Name == "ru-RU"
+                                  ? CultureInfo.InstalledUICulture.Name
+                                  : ""));
         InitializeComponent();
 
 
@@ -75,14 +79,12 @@ public partial class SimpleBinder : Form
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
         keyboardHookManager.Start();
-        //todo сделать выбор бинда, что ниже захардкожен
         BinderKeyValue = settings.CurrentKeyValue;
         BinderKeyName = settings.CurrentKeyName;
         RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
     }
 
 
-   
     #region Button_Click event realisations
 
     private bool binderIsEnabled;
@@ -138,7 +140,6 @@ public partial class SimpleBinder : Form
 
     #endregion
 
-
     #region ToolStripItems Realisation
 
     private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -149,22 +150,15 @@ public partial class SimpleBinder : Form
         if (resultClosing == DialogResult.Yes) Application.Exit();
     }
 
-
     private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
     {
         MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
                         @"https://github.com/Andruxxa7/Simple-Binder", @"Simple Binder");
     }
 
-    private void russianToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        ChangeLanguage("ru-ru");
-    }
+    private void russianToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
 
-    private void englishToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        ChangeLanguage("");
-    }
+    private void englishToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("");
 
     private async void toolStripMenuItem2_Click(object sender, EventArgs e)
     {
@@ -219,5 +213,38 @@ public partial class SimpleBinder : Form
         BinderKeyValue = settings.CurrentKeyValue;
         RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
     }
+
+    private async void changeHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var hotkeyName = Interaction.InputBox(
+            changeHotkey_input_hotkeyName,
+            @"Simple Binder", "");
+        if (hotkeyName == "") return;
+        var tempHotKeyValue = Interaction.InputBox(
+            changeHotkey_input_hotkeyValue +
+            @"https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes",
+            @"Simple Binder", "0");
+        int hotKeyValue;
+        try
+        {
+            hotKeyValue = (int)new System.ComponentModel.Int32Converter().ConvertFromString(tempHotKeyValue);
+        }
+        catch
+        {
+            return;
+        }
+
+        await changeBinderHotkey(hotKeyValue, hotkeyName);
+    }
+
+    private async void setDefaultHotkeyToolStripMenuItem_Click(object sender, EventArgs e) =>
+        await changeBinderHotkey(0x74, "F5");
+
+    private void showCurrentHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
+        =>
+            MessageBox.Show(
+                showCurrentBinderHotkey_Message + settings.CurrentKeyName + ", " + settings.CurrentKeyValue,
+                @"Simple Binder");
+
     #endregion
 }

@@ -58,4 +58,13 @@
     <data name="helpToolStripMenuItem1_Click_Capation" xml:space="preserve">
         <value>Справка</value>
     </data>
+    <data name="showCurrentBinderHotkey_Message" xml:space="preserve">
+        <value>Нынешняя клавиша состояния биндера и значение клавишы(int): </value>
+    </data>
+    <data name="changeHotkey_input_hotkeyName" xml:space="preserve">
+        <value>Укажите имя клавиши переключателя Binder, только для продвинутых пользователей. Введите строку с максимальным количеством символов 6. Следующий шаг - установить значение ключа. </value>
+    </data>
+    <data name="changeHotkey_input_hotkeyValue" xml:space="preserve">
+        <value>Установите значение клавиши переключения Биндера. Вы можете посмотреть значения по следующей ссылке:</value>
+    </data>
 </root>

@@ -38,16 +38,16 @@ public partial class SimpleBinder
     {
         var textBox = (TextBox)obj;
         textBox.KeyDown -= bindKeysTextBox_KeyDown;
-        if (textBox.Text == "")
-            keyValueArray[int.Parse(Regex.Replace(textBox.Name,@"\D",""))] = 0;
+        if (textBox.Text == "") //по названию textBox'а,если пусто, сетам 0 у бинда
+            keyValueArray[int.Parse(Regex.Replace(textBox.Name, @"\D", ""))] = 0;
     }
 
 
     #region Translare from Keys to string
 
-//https://stackoverflow.com/questions/23170259/convert-keycode-to-char-string
-    public string KeyCodeToUnicode(Keys key)
+    private string KeyCodeToUnicode(Keys key)
     {
+        //https://stackoverflow.com/questions/23170259/convert-keycode-to-char-string
         var keyboardState = new byte[255];
         var keyboardStateStatus = GetKeyboardState(keyboardState);
 
