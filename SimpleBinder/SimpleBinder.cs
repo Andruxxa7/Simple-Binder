@@ -75,7 +75,7 @@ public partial class SimpleBinder : Form
             textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
 
-        ChangeTheme(settings.CurrentTheme ?? "white");
+        ChangeTheme(settings.CurrentTheme);
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
         keyboardHookManager.Start();

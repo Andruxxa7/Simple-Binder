@@ -8,7 +8,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CurrentTheme" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">white</Value>
     </Setting>
     <Setting Name="CurrentKeyName" Type="System.String" Scope="User">
       <Value Profile="(Default)">F5</Value>

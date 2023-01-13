@@ -36,7 +36,7 @@ namespace SimpleBinder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("white")]
         public string CurrentTheme {
             get {
                 return ((string)(this["CurrentTheme"]));
