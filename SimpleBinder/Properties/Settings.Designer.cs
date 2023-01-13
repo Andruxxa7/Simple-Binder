@@ -45,5 +45,41 @@ namespace SimpleBinder.Properties {
                 this["CurrentTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F5")]
+        public string CurrentKeyName {
+            get {
+                return ((string)(this["CurrentKeyName"]));
+            }
+            set {
+                this["CurrentKeyName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("116")]
+        public int CurrentKeyValue {
+            get {
+                return ((int)(this["CurrentKeyValue"]));
+            }
+            set {
+                this["CurrentKeyValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CurrentHotkeyState {
+            get {
+                return ((bool)(this["CurrentHotkeyState"]));
+            }
+            set {
+                this["CurrentHotkeyState"] = value;
+            }
+        }
     }
 }

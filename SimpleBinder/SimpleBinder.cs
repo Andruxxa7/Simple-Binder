@@ -23,7 +23,7 @@ public partial class SimpleBinder : Form
     {
         binderIsEnabled = false;
         ChangerCurrentCulture(settings.CurrentLanguage ??
-                              (CultureInfo.InstalledUICulture.Name == "ru-RU" ? "ru-ru" : ""));
+                              (CultureInfo.InstalledUICulture.Name == "ru-RU" ? CultureInfo.InstalledUICulture.Name : ""));
         InitializeComponent();
 
 
@@ -76,8 +76,8 @@ public partial class SimpleBinder : Form
         FormClosing += Binder_FormClosing;
         keyboardHookManager.Start();
         //todo сделать выбор бинда, что ниже захардкожен
-        BinderKeyValue = 0x74;
-        BinderKeyName = "F5";
+        BinderKeyValue = settings.CurrentKeyValue;
+        BinderKeyName = settings.CurrentKeyName;
         RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
     }
 
@@ -199,6 +199,25 @@ public partial class SimpleBinder : Form
     private void blackContrastToolStripMenuItem_Click(object sender, EventArgs e)
     {
         ChangeTheme("black high contrast");
+    }
+
+    private void turnOffHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (!settings.CurrentHotkeyState) return;
+        settings.CurrentHotkeyState = false;
+        statusButton.Text = statusButton.Text.Replace($"({BinderKeyName})", "");
+        BinderKeyName = "";
+        keyboardHookManager.UnregisterHotkey(BinderKeyValue);
+        BinderKeyValue = 0;
+    }
+
+    private void turnOnHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (settings.CurrentHotkeyState) return;
+        settings.CurrentHotkeyState = true;
+        BinderKeyName = settings.CurrentKeyName;
+        BinderKeyValue = settings.CurrentKeyValue;
+        RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
     }
     #endregion
 }

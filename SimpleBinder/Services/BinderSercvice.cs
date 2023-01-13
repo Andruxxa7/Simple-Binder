@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace SimpleBinder;
 
@@ -65,6 +66,7 @@ public partial class SimpleBinder
 
     private void RegisterBinderStartHotkey(int key, string keyName)
     {
+        if (!settings.CurrentHotkeyState) return;
         if (key is not (>= 0x01 and <= 0xFE)) return; //0x01 - min virtual key code, 0xFE - max virtual key code
         keyboardHookManager.RegisterHotkey(
             key,
@@ -79,6 +81,7 @@ public partial class SimpleBinder
 
     private void RegisterBinderStopHotkey(int key, string keyName)
     {
+        if (!settings.CurrentHotkeyState) return;
         if (key is not (>= 0x01 and <= 0xFE)) return;
         keyboardHookManager.RegisterHotkey(
             key,
@@ -89,5 +92,29 @@ public partial class SimpleBinder
                 RegisterBinderStartHotkey(key, keyName);
             });
         statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
+    }
+
+    private void changeHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var hotkeyName = Interaction.InputBox("Set Binder Key name,only for advanced users. Enter a string with a maximum of 6 characters. Next step is to set up key value. ",
+            @"Simple Binder", "");
+        if (hotkeyName == "" || hotkeyName.Length > 6) return;
+        var tempHotKeyValue = Interaction.InputBox("Set Binder Key Value, only for advanced users. You can watch values on " +
+                                                   @"https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes",
+            @"Simple Binder", "");
+        int hotKeyValue;
+        try
+        {
+            hotKeyValue = (int)new System.ComponentModel.Int32Converter().ConvertFromString(tempHotKeyValue);
+        }
+        catch
+        {
+            return;
+        }
+        if (hotKeyValue is not (>= 0x01 and <= 0xFE)) return;
+        settings.CurrentKeyName = hotkeyName;
+        settings.CurrentKeyValue = hotKeyValue;
+        turnOffHotkeyToolStripMenuItem_Click(null, null);
+        turnOnHotkeyToolStripMenuItem_Click(null, null);
     }
 }
