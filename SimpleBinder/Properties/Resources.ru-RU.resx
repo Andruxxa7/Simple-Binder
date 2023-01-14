@@ -67,4 +67,7 @@
     <data name="changeHotkey_input_hotkeyValue" xml:space="preserve">
         <value>Установите значение клавиши переключения Биндера. Вы можете посмотреть значения по следующей ссылке:</value>
     </data>
+    <data name="openTestWindowToolStripMenuItem_Click_Prompt" xml:space="preserve">
+        <value>Вы можете протестировать ваши бинды здесь</value>
+    </data>
 </root>

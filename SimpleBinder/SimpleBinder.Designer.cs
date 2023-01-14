@@ -98,19 +98,20 @@ namespace SimpleBinder
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.русскийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.switchThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.blackContrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.binderHotkeySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showCurrentHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turnOffHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turnOnHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setDefaultHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showCurrentHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.switchThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.blackContrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.русскийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTestWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -470,7 +471,7 @@ namespace SimpleBinder
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.FileStripMenu, this.languageToolStripMenuItem, this.switchThemeToolStripMenuItem, this.binderHotkeySettingsToolStripMenuItem, this.helpToolStripMenuItem });
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.FileStripMenu, this.binderHotkeySettingsToolStripMenuItem, this.switchThemeToolStripMenuItem, this.languageToolStripMenuItem, this.openTestWindowToolStripMenuItem, this.helpToolStripMenuItem });
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
@@ -502,56 +503,8 @@ namespace SimpleBinder
             resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // languageToolStripMenuItem
-            // 
-            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.русскийToolStripMenuItem, this.englishToolStripMenuItem });
-            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
-            // 
-            // русскийToolStripMenuItem
-            // 
-            this.русскийToolStripMenuItem.Name = "русскийToolStripMenuItem";
-            resources.ApplyResources(this.русскийToolStripMenuItem, "русскийToolStripMenuItem");
-            this.русскийToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
-            // 
-            // englishToolStripMenuItem
-            // 
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
-            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
-            // 
-            // switchThemeToolStripMenuItem
-            // 
-            this.switchThemeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.whiteToolStripMenuItem, this.blackToolStripMenuItem, this.blackContrastToolStripMenuItem });
-            this.switchThemeToolStripMenuItem.Name = "switchThemeToolStripMenuItem";
-            resources.ApplyResources(this.switchThemeToolStripMenuItem, "switchThemeToolStripMenuItem");
-            // 
-            // whiteToolStripMenuItem
-            // 
-            this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
-            resources.ApplyResources(this.whiteToolStripMenuItem, "whiteToolStripMenuItem");
-            this.whiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
-            // 
-            // blackToolStripMenuItem
-            // 
-            this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
-            resources.ApplyResources(this.blackToolStripMenuItem, "blackToolStripMenuItem");
-            this.blackToolStripMenuItem.Click += new System.EventHandler(this.blackToolStripMenuItem_Click);
-            // 
-            // blackContrastToolStripMenuItem
-            // 
-            this.blackContrastToolStripMenuItem.Name = "blackContrastToolStripMenuItem";
-            resources.ApplyResources(this.blackContrastToolStripMenuItem, "blackContrastToolStripMenuItem");
-            this.blackContrastToolStripMenuItem.Click += new System.EventHandler(this.blackContrastToolStripMenuItem_Click);
-            // 
             // binderHotkeySettingsToolStripMenuItem
             // 
-            // 
-            // showCurrentHotkeyToolStripMenuItem
-            // 
-            this.showCurrentHotkeyToolStripMenuItem.Name = "showCurrentHotkeyToolStripMenuItem";
-            this.showCurrentHotkeyToolStripMenuItem.Click += showCurrentHotkeyToolStripMenuItem_Click;
-            resources.ApplyResources(this.showCurrentHotkeyToolStripMenuItem, "showCurrentHotkeyToolStripMenuItem");
             this.binderHotkeySettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.changeHotkeyToolStripMenuItem, this.turnOffHotkeyToolStripMenuItem, this.turnOnHotkeyToolStripMenuItem, this.setDefaultHotkeyToolStripMenuItem, this.showCurrentHotkeyToolStripMenuItem });
             this.binderHotkeySettingsToolStripMenuItem.Name = "binderHotkeySettingsToolStripMenuItem";
             resources.ApplyResources(this.binderHotkeySettingsToolStripMenuItem, "binderHotkeySettingsToolStripMenuItem");
@@ -579,6 +532,60 @@ namespace SimpleBinder
             this.setDefaultHotkeyToolStripMenuItem.Name = "setDefaultHotkeyToolStripMenuItem";
             resources.ApplyResources(this.setDefaultHotkeyToolStripMenuItem, "setDefaultHotkeyToolStripMenuItem");
             this.setDefaultHotkeyToolStripMenuItem.Click += new System.EventHandler(this.setDefaultHotkeyToolStripMenuItem_Click);
+            // 
+            // showCurrentHotkeyToolStripMenuItem
+            // 
+            this.showCurrentHotkeyToolStripMenuItem.Name = "showCurrentHotkeyToolStripMenuItem";
+            resources.ApplyResources(this.showCurrentHotkeyToolStripMenuItem, "showCurrentHotkeyToolStripMenuItem");
+            this.showCurrentHotkeyToolStripMenuItem.Click += new System.EventHandler(this.showCurrentHotkeyToolStripMenuItem_Click);
+            // 
+            // switchThemeToolStripMenuItem
+            // 
+            this.switchThemeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.whiteToolStripMenuItem, this.blackToolStripMenuItem, this.blackContrastToolStripMenuItem });
+            this.switchThemeToolStripMenuItem.Name = "switchThemeToolStripMenuItem";
+            resources.ApplyResources(this.switchThemeToolStripMenuItem, "switchThemeToolStripMenuItem");
+            // 
+            // whiteToolStripMenuItem
+            // 
+            this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
+            resources.ApplyResources(this.whiteToolStripMenuItem, "whiteToolStripMenuItem");
+            this.whiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
+            // 
+            // blackToolStripMenuItem
+            // 
+            this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
+            resources.ApplyResources(this.blackToolStripMenuItem, "blackToolStripMenuItem");
+            this.blackToolStripMenuItem.Click += new System.EventHandler(this.blackToolStripMenuItem_Click);
+            // 
+            // blackContrastToolStripMenuItem
+            // 
+            this.blackContrastToolStripMenuItem.Name = "blackContrastToolStripMenuItem";
+            resources.ApplyResources(this.blackContrastToolStripMenuItem, "blackContrastToolStripMenuItem");
+            this.blackContrastToolStripMenuItem.Click += new System.EventHandler(this.blackContrastToolStripMenuItem_Click);
+            // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.русскийToolStripMenuItem, this.englishToolStripMenuItem });
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
+            // 
+            // русскийToolStripMenuItem
+            // 
+            this.русскийToolStripMenuItem.Name = "русскийToolStripMenuItem";
+            resources.ApplyResources(this.русскийToolStripMenuItem, "русскийToolStripMenuItem");
+            this.русскийToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
+            // 
+            // englishToolStripMenuItem
+            // 
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            // 
+            // openTestWindowToolStripMenuItem
+            // 
+            this.openTestWindowToolStripMenuItem.Name = "openTestWindowToolStripMenuItem";
+            resources.ApplyResources(this.openTestWindowToolStripMenuItem, "openTestWindowToolStripMenuItem");
+            this.openTestWindowToolStripMenuItem.Click += new System.EventHandler(this.openTestWindowToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -674,6 +681,8 @@ namespace SimpleBinder
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripMenuItem openTestWindowToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripMenuItem showCurrentHotkeyToolStripMenuItem;
 

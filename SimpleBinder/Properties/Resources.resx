@@ -170,4 +170,7 @@
     <data name="changeHotkey_input_hotkeyValue" xml:space="preserve">
         <value>Set Binder Key Value, only for advanced users. You can watch values on </value>
     </data>
+    <data name="openTestWindowToolStripMenuItem_Click_Prompt" xml:space="preserve">
+        <value>You can test ur binds there</value>
+    </data>
 </root>

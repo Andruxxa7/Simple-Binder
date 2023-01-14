@@ -159,6 +159,15 @@ namespace SimpleBinder.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can test ur binds there.
+        /// </summary>
+        internal static string openTestWindowToolStripMenuItem_Click_Prompt {
+            get {
+                return ResourceManager.GetString("openTestWindowToolStripMenuItem_Click_Prompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something gone wrong with parsing values from your config(.json).
         /// </summary>
         internal static string ParseFromJsonToWinForms_Error_Message {

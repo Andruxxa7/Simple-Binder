@@ -153,7 +153,7 @@ public partial class SimpleBinder : Form
     private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
     {
         MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
-                        @"https://github.com/Andruxxa7/Simple-Binder", @"Simple Binder");
+                        @"https://github.com/Andruxxa7/Simple-Binder", Text);
     }
 
     private void russianToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
@@ -218,12 +218,12 @@ public partial class SimpleBinder : Form
     {
         var hotkeyName = Interaction.InputBox(
             changeHotkey_input_hotkeyName,
-            @"Simple Binder", "");
+            Text, "");
         if (hotkeyName == "") return;
         var tempHotKeyValue = Interaction.InputBox(
             changeHotkey_input_hotkeyValue +
             @"https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes",
-            @"Simple Binder", "0");
+            Text, "0");
         int hotKeyValue;
         try
         {
@@ -237,14 +237,16 @@ public partial class SimpleBinder : Form
         await changeBinderHotkey(hotKeyValue, hotkeyName);
     }
 
-    private async void setDefaultHotkeyToolStripMenuItem_Click(object sender, EventArgs e) =>
-        await changeBinderHotkey(0x74, "F5");
+    private async void setDefaultHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
+        => await changeBinderHotkey(0x74, "F5");
 
     private void showCurrentHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
-        =>
-            MessageBox.Show(
-                showCurrentBinderHotkey_Message + settings.CurrentKeyName + ", " + settings.CurrentKeyValue,
-                @"Simple Binder");
+        => MessageBox.Show(
+            showCurrentBinderHotkey_Message + settings.CurrentKeyName + ", " + settings.CurrentKeyValue,
+            Text);
+
+    private void openTestWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        => Interaction.InputBox(openTestWindowToolStripMenuItem_Click_Prompt, Text);
 
     #endregion
 }

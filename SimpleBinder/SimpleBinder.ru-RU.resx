@@ -135,4 +135,7 @@
     <data name="binderHotkeySettingsToolStripMenuItem.Text" xml:space="preserve">
         <value>Настройки бинда вкл/выкл</value>
     </data>
+    <data name="openTestWindowToolStripMenuItem.Text" xml:space="preserve">
+        <value>Открыть тестовое окно</value>
+    </data>
 </root>
