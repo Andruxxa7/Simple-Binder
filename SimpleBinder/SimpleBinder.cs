@@ -216,9 +216,7 @@ public partial class SimpleBinder : Form
 
     private async void changeHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var hotkeyName = Interaction.InputBox(
-            changeHotkey_input_hotkeyName,
-            Text, "");
+        var hotkeyName = Interaction.InputBox(changeHotkey_input_hotkeyName, Text);
         if (hotkeyName == "") return;
         var tempHotKeyValue = Interaction.InputBox(
             changeHotkey_input_hotkeyValue +
@@ -242,7 +240,7 @@ public partial class SimpleBinder : Form
 
     private void showCurrentHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
         => MessageBox.Show(
-            showCurrentBinderHotkey_Message + settings.CurrentKeyName + ", " + settings.CurrentKeyValue,
+            showCurrentBinderHotkey_Message + settings.CurrentKeyName + @", " + settings.CurrentKeyValue,
             Text);
 
     private void openTestWindowToolStripMenuItem_Click(object sender, EventArgs e)
