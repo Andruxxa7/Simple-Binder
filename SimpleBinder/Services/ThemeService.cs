@@ -1,5 +1,4 @@
 using System.Drawing;
-
 namespace SimpleBinder;
 
 public partial class SimpleBinder
@@ -10,7 +9,8 @@ public partial class SimpleBinder
         {
             "black" => BlackTheme,
             "white" => WhiteTheme,
-            "black high contrast" => BlackHighContrastTheme
+            "black high contrast" => BlackHighContrastTheme,
+            _ => WhiteTheme
         };
         ForeColor = theme.FontColor;
         BackColor = theme.BackgroundColor;
