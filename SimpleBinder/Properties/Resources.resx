@@ -173,4 +173,10 @@
     <data name="openTestWindowToolStripMenuItem_Click_Prompt" xml:space="preserve">
         <value>You can test ur binds there</value>
     </data>
+    <data name="MinimizeToTrayOnToolStripMenuItem" xml:space="preserve">
+        <value>Turn on minimizing to tray</value>
+    </data>
+    <data name="MinimizeToTrayOffToolStripMenuItem" xml:space="preserve">
+        <value>Turn off minimizing to tray</value>
+    </data>
 </root>

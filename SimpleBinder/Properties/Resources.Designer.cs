@@ -159,6 +159,24 @@ namespace SimpleBinder.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Turn off minimizing to tray.
+        /// </summary>
+        internal static string MinimizeToTrayOffToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("MinimizeToTrayOffToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn on minimizing to tray.
+        /// </summary>
+        internal static string MinimizeToTrayOnToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("MinimizeToTrayOnToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can test ur binds there.
         /// </summary>
         internal static string openTestWindowToolStripMenuItem_Click_Prompt {

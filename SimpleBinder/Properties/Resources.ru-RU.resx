@@ -70,4 +70,10 @@
     <data name="openTestWindowToolStripMenuItem_Click_Prompt" xml:space="preserve">
         <value>Вы можете протестировать ваши бинды здесь</value>
     </data>
+    <data name="MinimizeToTrayOnToolStripMenuItem" xml:space="preserve">
+        <value>Включить сворачивание в трэй</value>
+    </data>
+    <data name="MinimizeToTrayOffToolStripMenuItem" xml:space="preserve">
+        <value>Выключить сворачивание в трэй</value>
+    </data>
 </root>

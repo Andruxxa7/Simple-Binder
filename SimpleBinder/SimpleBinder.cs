@@ -29,14 +29,11 @@ public partial class SimpleBinder : Form
                                   ? CultureInfo.InstalledUICulture.Name
                                   : ""));
         InitializeComponent();
-
-
         enabledArray = new[]
         {
             enabled0, enabled1, enabled2, enabled3, enabled4,
             enabled5, enabled6, enabled7, enabled8, enabled9
         };
-
         bindKeysArray = new[]
         {
             bindKeys0, bindKeys1, bindKeys2, bindKeys3, bindKeys4,
@@ -75,6 +72,9 @@ public partial class SimpleBinder : Form
             textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
 
+        SwitchMinimizeToTrayToolStripMenuItem.Text = (settings.CurrentIsMinimizeToTray)
+            ? MinimizeToTrayOffToolStripMenuItem
+            : MinimizeToTrayOnToolStripMenuItem;
         ChangeTheme(settings.CurrentTheme);
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
@@ -245,6 +245,14 @@ public partial class SimpleBinder : Form
 
     private void openTestWindowToolStripMenuItem_Click(object sender, EventArgs e)
         => Interaction.InputBox(openTestWindowToolStripMenuItem_Click_Prompt, Text);
+
+    private void SwitchMinimizeToTrayToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        settings.CurrentIsMinimizeToTray = !settings.CurrentIsMinimizeToTray;
+        SwitchMinimizeToTrayToolStripMenuItem.Text = (settings.CurrentIsMinimizeToTray)
+            ? MinimizeToTrayOffToolStripMenuItem
+            : MinimizeToTrayOnToolStripMenuItem;
+    }
 
     #endregion
 }

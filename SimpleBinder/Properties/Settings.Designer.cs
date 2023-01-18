@@ -81,5 +81,17 @@ namespace SimpleBinder.Properties {
                 this["CurrentHotkeyState"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CurrentIsMinimizeToTray {
+            get {
+                return ((bool)(this["CurrentIsMinimizeToTray"]));
+            }
+            set {
+                this["CurrentIsMinimizeToTray"] = value;
+            }
+        }
     }
 }

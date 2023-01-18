@@ -1645,27 +1645,27 @@
     <data name="setDefaultHotkeyToolStripMenuItem.Text" xml:space="preserve">
     <value>Set default hotkey</value>
   </data>
-    <data name="showCurrentHotkeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-        <value>183, 22</value>
-    </data>
-    <data name="showCurrentHotkeyToolStripMenuItem.Text" xml:space="preserve">
+  <data name="showCurrentHotkeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="showCurrentHotkeyToolStripMenuItem.Text" xml:space="preserve">
     <value>Show current hotkey</value>
   </data>
-    <data name="binderHotkeySettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-        <value>136, 20</value>
-    </data>
-    <data name="binderHotkeySettingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Binder hotkey settings</value>
+  <data name="binderHotkeySettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 20</value>
   </data>
-    <data name="whiteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-        <value>179, 22</value>
-    </data>
-    <data name="whiteToolStripMenuItem.Text" xml:space="preserve">
+  <data name="binderHotkeySettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Binder settings</value>
+  </data>
+  <data name="whiteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
+  </data>
+  <data name="whiteToolStripMenuItem.Text" xml:space="preserve">
     <value>White</value>
   </data>
-    <data name="blackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-        <value>179, 22</value>
-    </data>
+  <data name="blackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
+  </data>
   <data name="blackToolStripMenuItem.Text" xml:space="preserve">
     <value>Black</value>
   </data>
@@ -3580,6 +3580,12 @@
   <data name="&gt;&gt;aboutProgramToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="binderNotifyContextMenuExitItem.Text" xml:space="preserve">
+        <value>Exit</value>
+    </data>
+  <data name="binderNotifyContextMenuOpenItem.Text" xml:space="preserve">
+        <value>Open</value>
+    </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SimpleBinder</value>
   </data>
