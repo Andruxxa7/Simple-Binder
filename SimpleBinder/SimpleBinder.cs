@@ -89,17 +89,17 @@ public partial class SimpleBinder : Form
 
     private bool binderIsEnabled;
 
-    private async void statusButton_Click(object sender, EventArgs e)
+    private void statusButton_Click(object sender, EventArgs e)
     {
         if (!binderIsEnabled)
         {
-            keyboardHookManager.UnregisterAll();
-            await TurnOnBinder();
+            keyboardHookManager.UnregisterAll(); 
+            Invoke( async() => await TurnOnBinder());
             RegisterBinderStopHotkey(BinderKeyValue, BinderKeyName);
         }
         else
         {
-            await TurnOffBinder();
+            Invoke( async() =>await TurnOffBinder());
             keyboardHookManager.UnregisterAll();
             RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
         }

@@ -34,13 +34,12 @@ public partial class SimpleBinder
                 if (dropItem is ToolStripMenuItem Item)
                     resources.ApplyResources(Item, Item.Name, newLangCultureInfo);
         }
-
         SwitchMinimizeToTrayToolStripMenuItem.Text = (settings.CurrentIsMinimizeToTray)
             ? MinimizeToTrayOffToolStripMenuItem
             : MinimizeToTrayOnToolStripMenuItem;
-        foreach (var item in binderNotifyContextMenu.MenuItems)
+        foreach (var item in binderNotifyContextMenu.Items)
         {
-            if (item is MenuItem menuItem)
+            if (item is ToolStripMenuItem menuItem)
                 resources.ApplyResources(menuItem, menuItem.Name, newLangCultureInfo);
         }
 

@@ -96,7 +96,6 @@ namespace SimpleBinder
             this.FileStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.binderHotkeySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeHotkeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,9 +116,9 @@ namespace SimpleBinder
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.binderNotifyIcon = new System.Windows.Forms.NotifyIcon();
-            this.binderNotifyContextMenu = new System.Windows.Forms.ContextMenu();
-            this.binderNotifyContextMenuExitItem = new System.Windows.Forms.MenuItem();
-            this.binderNotifyContextMenuOpenItem = new System.Windows.Forms.MenuItem();
+            this.binderNotifyContextMenu = new System.Windows.Forms.ContextMenuStrip();
+            this.binderNotifyContextMenuExitItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.binderNotifyContextMenuOpenItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -482,7 +481,7 @@ namespace SimpleBinder
             // 
             // FileStripMenu
             // 
-            this.FileStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.toolStripMenuItem2, this.exportToolStripMenuItem, this.toolStripSeparator1, this.exitToolStripMenuItem });
+            this.FileStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.toolStripMenuItem2, this.exportToolStripMenuItem, new ToolStripSeparator(), this.exitToolStripMenuItem });
             this.FileStripMenu.Name = "FileStripMenu";
             resources.ApplyResources(this.FileStripMenu, "FileStripMenu");
             // 
@@ -497,11 +496,6 @@ namespace SimpleBinder
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -510,7 +504,7 @@ namespace SimpleBinder
             // 
             // binderHotkeySettingsToolStripMenuItem
             // 
-            this.binderHotkeySettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.changeHotkeyToolStripMenuItem, this.turnOffHotkeyToolStripMenuItem, this.turnOnHotkeyToolStripMenuItem, this.setDefaultHotkeyToolStripMenuItem, this.showCurrentHotkeyToolStripMenuItem,this.toolStripSeparator1,this.SwitchMinimizeToTrayToolStripMenuItem });
+            this.binderHotkeySettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.changeHotkeyToolStripMenuItem, this.turnOffHotkeyToolStripMenuItem, this.turnOnHotkeyToolStripMenuItem, this.setDefaultHotkeyToolStripMenuItem, this.showCurrentHotkeyToolStripMenuItem,new ToolStripSeparator(),this.SwitchMinimizeToTrayToolStripMenuItem });
             this.binderHotkeySettingsToolStripMenuItem.Name = "binderHotkeySettingsToolStripMenuItem";
             resources.ApplyResources(this.binderHotkeySettingsToolStripMenuItem, "binderHotkeySettingsToolStripMenuItem");
             // 
@@ -617,26 +611,24 @@ namespace SimpleBinder
             //binderNotifyIcon
             //
             this.binderNotifyIcon.Icon = resources.GetObject("$this.Icon") as System.Drawing.Icon;
-            this.binderNotifyIcon.ContextMenu = this.binderNotifyContextMenu;
+            this.binderNotifyIcon.ContextMenuStrip = this.binderNotifyContextMenu;
             this.binderNotifyIcon.Visible = false;
             this.binderNotifyIcon.Text = this.Name;
             this.binderNotifyIcon.DoubleClick += new System.EventHandler(binderNotifyIcon_DoubleClick);
             //
             //binderNotifyContextMenu
             //
-            this.binderNotifyContextMenu.MenuItems.AddRange( new System.Windows.Forms.MenuItem[]
-                {this.binderNotifyContextMenuOpenItem,new MenuItem("-"),this.binderNotifyContextMenuExitItem});
+            this.binderNotifyContextMenu.Items.AddRange( new System.Windows.Forms.ToolStripMenuItem[]
+                {this.binderNotifyContextMenuOpenItem,this.binderNotifyContextMenuExitItem});
             //
             //binderNotifyContextMenuOpenItem
             //
-            this.binderNotifyContextMenuOpenItem.Index = 0;
             this.binderNotifyContextMenuOpenItem.Name = "binderNotifyContextMenuOpenItem"; 
             resources.ApplyResources(this.binderNotifyContextMenuOpenItem, "binderNotifyContextMenuOpenItem");
             this.binderNotifyContextMenuOpenItem.Click += new System.EventHandler(this.binderNotifyIcon_DoubleClick);
             //
             //binderNotifyContextMenuExitItem
             //
-            this.binderNotifyContextMenuExitItem.Index = 2;
             this.binderNotifyContextMenuExitItem.Name = "binderNotifyContextMenuExitItem"; 
             resources.ApplyResources(this.binderNotifyContextMenuExitItem, "binderNotifyContextMenuExitItem");
             this.binderNotifyContextMenuExitItem.Click += new System.EventHandler(this.binderNotifyContextMenuExitItem_Click);
@@ -732,7 +724,6 @@ namespace SimpleBinder
         private System.Windows.Forms.ToolStripMenuItem whiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem blackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem blackContrastToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
@@ -805,9 +796,9 @@ namespace SimpleBinder
         private System.Windows.Forms.Label bindTextLabel;
         private System.Windows.Forms.Label enabledLabel;
         private System.Windows.Forms.NotifyIcon binderNotifyIcon;
-        private System.Windows.Forms.ContextMenu binderNotifyContextMenu;
-        private System.Windows.Forms.MenuItem binderNotifyContextMenuExitItem;
-        private System.Windows.Forms.MenuItem binderNotifyContextMenuOpenItem;
+        private System.Windows.Forms.ContextMenuStrip binderNotifyContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem binderNotifyContextMenuExitItem;
+        private System.Windows.Forms.ToolStripMenuItem binderNotifyContextMenuOpenItem;
         #endregion
     }
 }
