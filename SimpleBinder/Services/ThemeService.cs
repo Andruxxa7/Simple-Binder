@@ -1,4 +1,5 @@
 using System.Drawing;
+
 namespace SimpleBinder;
 
 public partial class SimpleBinder
@@ -21,9 +22,12 @@ public partial class SimpleBinder
                 control.ForeColor = Color.DarkSlateGray;
                 continue;
             }
+
             control.BackColor = theme.ElementBackColor;
             control.ForeColor = theme.FontColor;
         }
+
+        #region Menu
 
         var Bmp = new Bitmap(1, 1);
         Bmp.SetPixel(0, 0, Color.FromArgb(theme.ElementBackColor.ToArgb()));
@@ -35,6 +39,7 @@ public partial class SimpleBinder
             item.ForeColor = theme.FontColor;
             item.Image = image;
         }
+
         image.Dispose();
         foreach (ToolStripMenuItem item in menuStrip1.Items)
         {
@@ -45,7 +50,9 @@ public partial class SimpleBinder
                 dropDownItem.ForeColor = theme.FontColor;
             }
         }
-        
+
+        #endregion
+
         statusLabel.BackColor = binderIsEnabled ? Color.LawnGreen : Color.Red;
         settings.CurrentTheme = theme.ThemeName;
         Invalidate();
