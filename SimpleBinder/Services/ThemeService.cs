@@ -29,18 +29,12 @@ public partial class SimpleBinder
 
         #region Menu
 
-        var Bmp = new Bitmap(1, 1);
-        Bmp.SetPixel(0, 0, Color.FromArgb(theme.ElementBackColor.ToArgb()));
-        Image image = Bmp;
-        Bmp.Dispose();
         foreach (ToolStripMenuItem item in binderNotifyContextMenu.Items)
         {
             item.BackColor = theme.ElementBackColor;
             item.ForeColor = theme.FontColor;
-            item.Image = image;
         }
 
-        image.Dispose();
         foreach (ToolStripMenuItem item in menuStrip1.Items)
         {
             foreach (var Item in item.DropDownItems)
