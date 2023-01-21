@@ -21,9 +21,7 @@ public partial class SimpleBinder
     }
 
     private void UpdateTextBox(TextBox textBox, string newKey)
-    {
-        textBox.Text = newKey.ToUpper();
-    }
+        => textBox.Text = newKey.ToUpper();
 
 
     private void bindKeysTextBox_GotFocus(object obj, EventArgs args)

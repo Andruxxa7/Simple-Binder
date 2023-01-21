@@ -22,6 +22,7 @@ public partial class SimpleBinder
 
         exportToolStripMenuItem.Enabled = false;
         toolStripMenuItem2.Enabled = false;
+        openTestWindowToolStripMenuItem.Enabled = true;
         Bind.bindNumber = 1;
         var error = false;
         foreach (var bind in bindsArray)
@@ -60,6 +61,7 @@ public partial class SimpleBinder
 
         exportToolStripMenuItem.Enabled = true;
         toolStripMenuItem2.Enabled = true;
+        openTestWindowToolStripMenuItem.Enabled = false;
         return Task.CompletedTask;
     }
 

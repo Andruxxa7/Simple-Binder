@@ -586,6 +586,7 @@ namespace SimpleBinder
             // 
             // openTestWindowToolStripMenuItem
             // 
+            this.openTestWindowToolStripMenuItem.Enabled = false;
             this.openTestWindowToolStripMenuItem.Name = "openTestWindowToolStripMenuItem";
             resources.ApplyResources(this.openTestWindowToolStripMenuItem, "openTestWindowToolStripMenuItem");
             this.openTestWindowToolStripMenuItem.Click += new System.EventHandler(this.openTestWindowToolStripMenuItem_Click);

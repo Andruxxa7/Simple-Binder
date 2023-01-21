@@ -12,6 +12,11 @@ public partial class SimpleBinder
         Thread.CurrentThread.CurrentUICulture = newLangCultureInfo;
     }
 
+    private void checkMinimizeToTrayToolStripMenuItem() => SwitchMinimizeToTrayToolStripMenuItem.Text =
+        (settings.CurrentIsMinimizeToTray)
+            ? MinimizeToTrayOffToolStripMenuItem
+            : MinimizeToTrayOnToolStripMenuItem;
+
     private void ChangeLanguage(string lang)
     {
         if (lang == settings.CurrentLanguage) return;
@@ -22,11 +27,10 @@ public partial class SimpleBinder
 
         var resources = new ComponentResourceManager(typeof(SimpleBinder));
         foreach (Control control in Controls) resources.ApplyResources(control, control.Name, newLangCultureInfo);
-        if (binderIsEnabled)
-            statusButton.Text =
-                statusButton_Turn_Off; //фикс того, что при смене языка, если включен, отображался текст после смены языка как-будто выключен
-        if (BinderKeyValue is >= 0x01 and <= 0xFE)
-            statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "";
+        statusButton.Text = binderIsEnabled ? statusButton_Turn_Off : statusButton.Text;
+        statusButton.Text += BinderKeyValue is >= 0x01 and <= 0xFE && BinderKeyName != null
+            ? $"({BinderKeyName})"
+            : "";
         foreach (ToolStripMenuItem item in menuStrip1.Items)
         {
             resources.ApplyResources(item, item.Name, newLangCultureInfo);
@@ -34,9 +38,8 @@ public partial class SimpleBinder
                 if (dropItem is ToolStripMenuItem Item)
                     resources.ApplyResources(Item, Item.Name, newLangCultureInfo);
         }
-        SwitchMinimizeToTrayToolStripMenuItem.Text = (settings.CurrentIsMinimizeToTray)
-            ? MinimizeToTrayOffToolStripMenuItem
-            : MinimizeToTrayOnToolStripMenuItem;
+
+        checkMinimizeToTrayToolStripMenuItem();
         foreach (var item in binderNotifyContextMenu.Items)
         {
             if (item is ToolStripMenuItem menuItem)

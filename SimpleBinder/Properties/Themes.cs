@@ -15,7 +15,7 @@ public partial class SimpleBinder
 
     private static Theme BlackTheme = new()
     {
-        ThemeName = "black", //было оба 56
+        ThemeName = "black", //or 56
         BackgroundColor = Color.FromArgb(40, 40, 40),
         ElementBackColor = Color.FromArgb(40, 40, 40),
         FontColor = Color.FromArgb(165, 165, 165)
@@ -29,6 +29,4 @@ public partial class SimpleBinder
         ElementBackColor = Color.White,
         FontColor = Color.Black
     };
-
-    private static Theme[] Themes = new[] { WhiteTheme, BlackTheme, BlackHighContrastTheme };
 }
