@@ -60,7 +60,7 @@ namespace SimpleBinder.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simple Binder is hotkey manager developed on .Net Framework 4.7.2(C#). GitHub repository is .
+        ///   Looks up a localized string similar to Simple Binder is hotkey manager developed on .Net Framework 4.7.2(C#). Do you want to visite my GitHub repository? ( link is .
         /// </summary>
         internal static string aboutProgramToolStripMenuItem_Click {
             get {
@@ -173,6 +173,15 @@ namespace SimpleBinder.Properties {
         internal static string MinimizeToTrayOnToolStripMenuItem {
             get {
                 return ResourceManager.GetString("MinimizeToTrayOnToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SimpleBinder wouldn&apos;t be turned on, because there are no enabled binds here..
+        /// </summary>
+        internal static string NoBinds_Message {
+            get {
+                return ResourceManager.GetString("NoBinds_Message", resourceCulture);
             }
         }
         

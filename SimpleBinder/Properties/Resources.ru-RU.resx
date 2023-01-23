@@ -50,7 +50,7 @@
  Номер проблемного бинда:</value>
     </data>
     <data name="aboutProgramToolStripMenuItem_Click" xml:space="preserve">
-        <value>Simple Binder - это менеджер биндов разработанный на Net Framework 4.7.2(C#). Ссылка на GitHub репозиторий: </value>
+        <value>Simple Binder - это менеджер биндов разработанный на Net Framework 4.7.2(C#). Хотите ли вы посетить мой GitHub репозиторий? (ссылка на репозиторий: </value>
     </data>
     <data name="helpToolStripMenuItem1_Click_Text" xml:space="preserve">
         <value>В этом простом биндере вы можете сделать вплоть до 10 биндов. Бинды могут быть с модификатором(Ctrl,Alt, Shift) и без.</value>
@@ -75,5 +75,8 @@
     </data>
     <data name="MinimizeToTrayOffToolStripMenuItem" xml:space="preserve">
         <value>Выключить сворачивание в трэй</value>
+    </data>
+    <data name="NoBinds_Message" xml:space="preserve">
+        <value>Биндер не будет включен, так как нету активных биндов.</value>
     </data>
 </root>

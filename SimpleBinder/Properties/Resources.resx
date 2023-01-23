@@ -153,8 +153,8 @@
     <value>Bind cannot be registered. There is another such bind but already registered. Number of bind with problem is </value>
   </data>
     <data name="aboutProgramToolStripMenuItem_Click" xml:space="preserve">
-    <value>Simple Binder is hotkey manager developed on .Net Framework 4.7.2(C#). GitHub repository is </value>
-  </data>
+        <value>Simple Binder is hotkey manager developed on .Net Framework 4.7.2(C#). Do you want to visite my GitHub repository? ( link is </value>
+    </data>
     <data name="helpToolStripMenuItem1_Click_Capation" xml:space="preserve">
     <value>Help</value>
   </data>
@@ -178,5 +178,8 @@
     </data>
     <data name="MinimizeToTrayOffToolStripMenuItem" xml:space="preserve">
         <value>Turn off minimizing to tray</value>
+    </data>
+    <data name="NoBinds_Message" xml:space="preserve">
+        <value>SimpleBinder wouldn't be turned on, because there are no enabled binds here.</value>
     </data>
 </root>

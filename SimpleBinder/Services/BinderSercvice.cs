@@ -7,6 +7,20 @@ public partial class SimpleBinder
 {
     private Task TurnOnBinder()
     {
+        {
+            var activeBinds = false;
+            foreach (CheckBox checkbox in enabledArray)
+            {
+                if (checkbox.Checked) activeBinds = true;
+            }
+
+            if (!activeBinds)
+            {
+                MessageBox.Show(NoBinds_Message, Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return Task.CompletedTask;
+            }
+        }
+        keyboardHookManager.UnregisterAll();
         binderIsEnabled = true;
         statusButton.Text = statusButton_Turn_Off;
         statusLabel.BackColor = Color.LawnGreen;
@@ -42,6 +56,7 @@ public partial class SimpleBinder
         }
 
         if (error) saveButton_Click(null, null);
+        RegisterBinderStopHotkey(BinderKeyValue, BinderKeyName);
         return Task.CompletedTask;
     }
 
@@ -62,6 +77,8 @@ public partial class SimpleBinder
         exportToolStripMenuItem.Enabled = true;
         toolStripMenuItem2.Enabled = true;
         openTestWindowToolStripMenuItem.Enabled = false;
+        keyboardHookManager.UnregisterAll();
+        RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
         return Task.CompletedTask;
     }
 
@@ -95,7 +112,7 @@ public partial class SimpleBinder
         statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
     }
 
-    private Task changeBinderHotkey(int value, string name)
+    private Task ChangeBinderHotkey(int value, string name)
     {
         if (name.Length > 6) return Task.CompletedTask;
         if (value is not (>= 0x01 and <= 0xFE)) return Task.CompletedTask;

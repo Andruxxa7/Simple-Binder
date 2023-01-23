@@ -12,7 +12,7 @@ public partial class SimpleBinder
         Thread.CurrentThread.CurrentUICulture = newLangCultureInfo;
     }
 
-    private void checkMinimizeToTrayToolStripMenuItem() => SwitchMinimizeToTrayToolStripMenuItem.Text =
+    private void СheckMinimizeToTrayToolStripMenuItem() => SwitchMinimizeToTrayToolStripMenuItem.Text =
         (settings.CurrentIsMinimizeToTray)
             ? MinimizeToTrayOffToolStripMenuItem
             : MinimizeToTrayOnToolStripMenuItem;
@@ -39,7 +39,7 @@ public partial class SimpleBinder
                     resources.ApplyResources(Item, Item.Name, newLangCultureInfo);
         }
 
-        checkMinimizeToTrayToolStripMenuItem();
+        СheckMinimizeToTrayToolStripMenuItem();
         foreach (var item in binderNotifyContextMenu.Items)
         {
             if (item is ToolStripMenuItem menuItem)

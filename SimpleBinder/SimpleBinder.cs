@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using Microsoft.VisualBasic;
 using WindowsInput;
 
@@ -73,7 +74,7 @@ public partial class SimpleBinder : Form
             textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
 
-        checkMinimizeToTrayToolStripMenuItem();
+        СheckMinimizeToTrayToolStripMenuItem();
         ChangeTheme(settings.CurrentTheme);
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
@@ -92,15 +93,11 @@ public partial class SimpleBinder : Form
     {
         if (!binderIsEnabled)
         {
-            keyboardHookManager.UnregisterAll();
             Invoke(async () => await TurnOnBinder());
-            RegisterBinderStopHotkey(BinderKeyValue, BinderKeyName);
         }
         else
         {
             Invoke(async () => await TurnOffBinder());
-            keyboardHookManager.UnregisterAll();
-            RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
         }
     }
 
@@ -150,8 +147,14 @@ public partial class SimpleBinder : Form
     }
 
     private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
-        => MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
-                           @"https://github.com/Andruxxa7/Simple-Binder", Text);
+    {
+        var gitLink = @"https://github.com/Andruxxa7/Simple-Binder";
+        var msg=
+        MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
+                        @"https://github.com/Andruxxa7/Simple-Binder", Text, MessageBoxButtons.YesNo,
+            MessageBoxIcon.Information);
+        if (msg == DialogResult.Yes) Process.Start(gitLink);
+    }
 
 
     private void russianToolStripMenuItem_Click(object sender, EventArgs e) => ChangeLanguage("ru-ru");
@@ -229,11 +232,11 @@ public partial class SimpleBinder : Form
             return;
         }
 
-        await changeBinderHotkey(hotKeyValue, hotkeyName);
+        await ChangeBinderHotkey(hotKeyValue, hotkeyName);
     }
 
     private async void setDefaultHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
-        => await changeBinderHotkey(0x74, "F5");
+        => await ChangeBinderHotkey(0x74, "F5");
 
     private void showCurrentHotkeyToolStripMenuItem_Click(object sender, EventArgs e)
         => MessageBox.Show(
@@ -246,7 +249,7 @@ public partial class SimpleBinder : Form
     private void SwitchMinimizeToTrayToolStripMenuItem_Click(object sender, EventArgs e)
     {
         settings.CurrentIsMinimizeToTray = !settings.CurrentIsMinimizeToTray;
-        checkMinimizeToTrayToolStripMenuItem();
+        СheckMinimizeToTrayToolStripMenuItem();
     }
 
     #endregion
