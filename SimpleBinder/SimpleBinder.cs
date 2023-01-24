@@ -82,6 +82,7 @@ public partial class SimpleBinder : Form
         BinderKeyValue = settings.CurrentKeyValue;
         BinderKeyName = settings.CurrentKeyName;
         RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
+        CheckStatusButtonText();
     }
 
 
@@ -149,10 +150,10 @@ public partial class SimpleBinder : Form
     private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var gitLink = @"https://github.com/Andruxxa7/Simple-Binder";
-        var msg=
-        MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
-                        @"https://github.com/Andruxxa7/Simple-Binder", Text, MessageBoxButtons.YesNo,
-            MessageBoxIcon.Information);
+        var msg =
+            MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
+                            @"https://github.com/Andruxxa7/Simple-Binder", Text, MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information);
         if (msg == DialogResult.Yes) Process.Start(gitLink);
     }
 
@@ -212,6 +213,7 @@ public partial class SimpleBinder : Form
         BinderKeyName = settings.CurrentKeyName;
         BinderKeyValue = settings.CurrentKeyValue;
         RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
+        CheckStatusButtonText();
     }
 
     private async void changeHotkeyToolStripMenuItem_Click(object sender, EventArgs e)

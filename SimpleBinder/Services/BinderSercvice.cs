@@ -21,8 +21,10 @@ public partial class SimpleBinder
             }
         }
         keyboardHookManager.UnregisterAll();
-        binderIsEnabled = true;
         statusButton.Text = statusButton_Turn_Off;
+        statusButton.Invoke(() => RegisterBinderStopHotkey(BinderKeyValue, BinderKeyName));
+        CheckStatusButtonText();
+        binderIsEnabled = true;
         statusLabel.BackColor = Color.LawnGreen;
         defaultButton.Enabled = false;
         if (saveButton.Enabled) saveButton_Click(null, null);
@@ -56,7 +58,7 @@ public partial class SimpleBinder
         }
 
         if (error) saveButton_Click(null, null);
-        RegisterBinderStopHotkey(BinderKeyValue, BinderKeyName);
+
         return Task.CompletedTask;
     }
 
@@ -78,8 +80,15 @@ public partial class SimpleBinder
         toolStripMenuItem2.Enabled = true;
         openTestWindowToolStripMenuItem.Enabled = false;
         keyboardHookManager.UnregisterAll();
-        RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
+        statusButton.Invoke(() => RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName));
+        CheckStatusButtonText();
         return Task.CompletedTask;
+    }
+
+    private void CheckStatusButtonText()
+    {
+        if (settings.CurrentHotkeyState)
+            statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
     }
 
     private void RegisterBinderStartHotkey(int key, string keyName)
@@ -94,13 +103,13 @@ public partial class SimpleBinder
                 statusButton.Invoke(async () => await TurnOnBinder());
                 RegisterBinderStopHotkey(key, keyName);
             });
-        statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
     }
 
     private void RegisterBinderStopHotkey(int key, string keyName)
     {
         if (!settings.CurrentHotkeyState) return;
         if (key is not (>= 0x01 and <= 0xFE)) return;
+        keyboardHookManager.UnregisterAll();
         keyboardHookManager.RegisterHotkey(
             key,
             () =>
@@ -109,7 +118,6 @@ public partial class SimpleBinder
                 keyboardHookManager.UnregisterAll();
                 RegisterBinderStartHotkey(key, keyName);
             });
-        statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
     }
 
     private Task ChangeBinderHotkey(int value, string name)
