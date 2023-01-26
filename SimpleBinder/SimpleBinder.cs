@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
+using SimpleBinder.Models;
 using WindowsInput;
 
 namespace SimpleBinder;
@@ -81,7 +82,7 @@ public partial class SimpleBinder : Form
         keyboardHookManager.Start();
         BinderKeyValue = settings.CurrentKeyValue;
         BinderKeyName = settings.CurrentKeyName;
-        RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
+        RegisterBinderStartHotkey(BinderKeyValue);
         CheckStatusButtonText();
     }
 
@@ -149,10 +150,10 @@ public partial class SimpleBinder : Form
 
     private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var gitLink = @"https://github.com/Andruxxa7/Simple-Binder";
+        const string gitLink = @"https://github.com/Andruxxa7/Simple-Binder";
         var msg =
             MessageBox.Show(Resources.aboutProgramToolStripMenuItem_Click +
-                            @"https://github.com/Andruxxa7/Simple-Binder", Text, MessageBoxButtons.YesNo,
+                            gitLink, Text, MessageBoxButtons.YesNo,
                 MessageBoxIcon.Information);
         if (msg == DialogResult.Yes) Process.Start(gitLink);
     }
@@ -212,7 +213,7 @@ public partial class SimpleBinder : Form
         settings.CurrentHotkeyState = true;
         BinderKeyName = settings.CurrentKeyName;
         BinderKeyValue = settings.CurrentKeyValue;
-        RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName);
+        RegisterBinderStartHotkey(BinderKeyValue);
         CheckStatusButtonText();
     }
 

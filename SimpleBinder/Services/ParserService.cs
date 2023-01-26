@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using System.Threading.Tasks;
+using SimpleBinder.Models;
 
 namespace SimpleBinder;
 

@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Threading.Tasks;
+using SimpleBinder.Models;
 
 namespace SimpleBinder;
 
@@ -22,7 +23,7 @@ public partial class SimpleBinder
         }
         keyboardHookManager.UnregisterAll();
         statusButton.Text = statusButton_Turn_Off;
-        statusButton.Invoke(() => RegisterBinderStopHotkey(BinderKeyValue, BinderKeyName));
+        statusButton.Invoke(() => RegisterBinderStopHotkey(BinderKeyValue));
         CheckStatusButtonText();
         binderIsEnabled = true;
         statusLabel.BackColor = Color.LawnGreen;
@@ -48,7 +49,7 @@ public partial class SimpleBinder
             {
                 new ActiveBind(bind).RegisterBind();
             }
-            catch (NonInvasiveKeyboardHookException) //если будут одинаковые бинды
+            catch (NonInvasiveKeyboardHookException)
             {
                 enabledArray[bind.BindNumber - 1].Checked = false;
                 MessageBox.Show(TurnOnBinder_Error_Message +
@@ -80,7 +81,7 @@ public partial class SimpleBinder
         toolStripMenuItem2.Enabled = true;
         openTestWindowToolStripMenuItem.Enabled = false;
         keyboardHookManager.UnregisterAll();
-        statusButton.Invoke(() => RegisterBinderStartHotkey(BinderKeyValue, BinderKeyName));
+        statusButton.Invoke(() => RegisterBinderStartHotkey(BinderKeyValue));
         CheckStatusButtonText();
         return Task.CompletedTask;
     }
@@ -91,33 +92,20 @@ public partial class SimpleBinder
             statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
     }
 
-    private void RegisterBinderStartHotkey(int key, string keyName)
+    private void RegisterBinderStartHotkey(int key)
     {
         if (!settings.CurrentHotkeyState) return;
         if (key is not (>= 0x01 and <= 0xFE)) return; //0x01 - min virtual key code, 0xFE - max virtual key code
-        keyboardHookManager.RegisterHotkey(
-            key,
-            () =>
-            {
-                keyboardHookManager.UnregisterAll();
-                statusButton.Invoke(async () => await TurnOnBinder());
-                RegisterBinderStopHotkey(key, keyName);
-            });
+        keyboardHookManager.RegisterHotkey(key, () => statusButton.Invoke(async () => await TurnOnBinder()));
     }
 
-    private void RegisterBinderStopHotkey(int key, string keyName)
+    private void RegisterBinderStopHotkey(int key)
     {
         if (!settings.CurrentHotkeyState) return;
         if (key is not (>= 0x01 and <= 0xFE)) return;
         keyboardHookManager.UnregisterAll();
-        keyboardHookManager.RegisterHotkey(
-            key,
-            () =>
-            {
-                statusButton.Invoke(async () => await TurnOffBinder());
-                keyboardHookManager.UnregisterAll();
-                RegisterBinderStartHotkey(key, keyName);
-            });
+        keyboardHookManager.RegisterHotkey(key, () => statusButton.Invoke(async () => await TurnOffBinder())
+        );
     }
 
     private Task ChangeBinderHotkey(int value, string name)

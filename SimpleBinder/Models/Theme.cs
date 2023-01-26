@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace SimpleBinder;
+namespace SimpleBinder.Models;
 
 public struct Theme
 {

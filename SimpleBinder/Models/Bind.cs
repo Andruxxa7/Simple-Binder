@@ -1,4 +1,4 @@
-﻿namespace SimpleBinder;
+﻿namespace SimpleBinder.Models;
 
 /// <summary>
 ///     Класс с данными бинда

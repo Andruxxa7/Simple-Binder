@@ -1,6 +1,6 @@
 namespace SimpleBinder;
 
-//In this file described minimize to tray
+//In this file described minimization to tray
 public partial class SimpleBinder
 {
     private void SimpleBinder_Resize(object sender, EventArgs e)
