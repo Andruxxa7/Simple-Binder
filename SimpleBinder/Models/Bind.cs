@@ -1,7 +1,7 @@
 ﻿namespace SimpleBinder.Models;
 
 /// <summary>
-///     Класс с данными бинда
+///     Класс с данными бинда (нужен для парса в .json)
 /// </summary>
 public class Bind
 {

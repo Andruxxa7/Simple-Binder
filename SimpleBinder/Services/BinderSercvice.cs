@@ -10,7 +10,7 @@ public partial class SimpleBinder
     {
         {
             var activeBinds = false;
-            foreach (CheckBox checkbox in enabledArray)
+            foreach (var checkbox in enabledArray)
             {
                 if (checkbox.Checked) activeBinds = true;
             }
@@ -59,7 +59,6 @@ public partial class SimpleBinder
         }
 
         if (error) saveButton_Click(null, null);
-
         return Task.CompletedTask;
     }
 

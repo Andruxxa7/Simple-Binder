@@ -75,7 +75,7 @@ public partial class SimpleBinder : Form
             textBox.LostFocus += bindKeysTextBox_LostFocus;
         }
 
-        СheckMinimizeToTrayToolStripMenuItem();
+        СheckOutTextOfMinimizeToTrayToolStripMenuItem();
         ChangeTheme(settings.CurrentTheme);
         exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
         FormClosing += Binder_FormClosing;
@@ -252,7 +252,7 @@ public partial class SimpleBinder : Form
     private void SwitchMinimizeToTrayToolStripMenuItem_Click(object sender, EventArgs e)
     {
         settings.CurrentIsMinimizeToTray = !settings.CurrentIsMinimizeToTray;
-        СheckMinimizeToTrayToolStripMenuItem();
+        СheckOutTextOfMinimizeToTrayToolStripMenuItem();
     }
 
     #endregion

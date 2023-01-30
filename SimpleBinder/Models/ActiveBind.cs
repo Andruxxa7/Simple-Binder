@@ -8,14 +8,14 @@ public class ActiveBind
 {
     public ActiveBind(Bind bind)
     {
-        Text = bind.BindText;
+        _text = bind.BindText;
         _key = bind.KeyValue;
-        Modifier = bind.SelectedModifier;
+        _modifier = bind.SelectedModifier;
     }
 
-    private string Text { get; }
+    private string _text { get; }
     private int _key { get; }
-    private string Modifier { get; }
+    private string _modifier { get; }
 
 
     private static Task SimulateTyping(string text)
@@ -28,14 +28,14 @@ public class ActiveBind
 
     public void RegisterBind()
     {
-        async void Type() => await SimulateTyping(Text);
-        if (Modifier == "None")
+        async void Type() => await SimulateTyping(_text);
+        if (_modifier == "None")
         {
             SimpleBinder.keyboardHookManager.RegisterHotkey(_key, Type);
         }
         else
             SimpleBinder.keyboardHookManager.RegisterHotkey(
-                Modifier switch
+                _modifier switch
                 {
                     "Control" => ModifierKeys.Control,
                     "Alt" => ModifierKeys.Alt,

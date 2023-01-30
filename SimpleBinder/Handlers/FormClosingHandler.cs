@@ -11,8 +11,14 @@ public partial class SimpleBinder
         var result = MessageBox.Show(exitToolStripMenuItem_Click_Text,
             exitToolStripMenuItem_Click_Warning,
             MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-        if (result == DialogResult.Yes)
-            saveButton_Click(null, null);
-        else if (result == DialogResult.Cancel) e.Cancel = true;
+        switch (result)
+        {
+            case DialogResult.Yes:
+                saveButton_Click(null, null);
+                break;
+            case DialogResult.Cancel:
+                e.Cancel = true;
+                break;
+        }
     }
 }
