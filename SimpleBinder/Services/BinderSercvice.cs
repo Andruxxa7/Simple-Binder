@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Text.Json;
 using System.Threading.Tasks;
 using SimpleBinder.Models;
 
@@ -49,11 +50,13 @@ public partial class SimpleBinder
             {
                 new ActiveBind(bind).RegisterBind();
             }
-            catch (NonInvasiveKeyboardHookException)
+            catch (NonInvasiveKeyboardHookException e)
             {
+                
                 enabledArray[bind.BindNumber - 1].Checked = false;
                 MessageBox.Show(TurnOnBinder_Error_Message +
                                 bind.BindNumber, Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionLogger.LogExceptionToFile(e.Message,e.StackTrace, e.Source);
                 error = true;
             }
         }

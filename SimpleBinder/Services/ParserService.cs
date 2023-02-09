@@ -17,10 +17,10 @@ public partial class SimpleBinder
         {
             bindsArray = await Task.Run(() => JsonSerializer.Deserialize<Bind[]>(File.ReadAllText(path2Json)));
         }
-        catch
+        catch (JsonException e)
         {
-            MessageBox.Show(ParseFromJsonToWinForms_Error_Message, Caption_Error,
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(ParseFromJsonToWinForms_Error_Message, Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ExceptionLogger.LogExceptionToFile(e.Message, e.StackTrace, e.Source);
         }
 
         keyValueArray = new int[bindsArray.Length];

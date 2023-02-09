@@ -66,6 +66,7 @@
         <Compile Include="Properties\GlobalUsings.cs" />
         <Compile Include="Properties\Themes.cs" />
         <Compile Include="Services\BinderSercvice.cs" />
+        <Compile Include="Services\ExceptionLogger.cs" />
         <Compile Include="Services\LocalizationService.cs" />
         <Compile Include="Services\ParserService.cs" />
         <Compile Include="Services\ThemeService.cs" />
