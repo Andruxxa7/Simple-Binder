@@ -1,5 +1,4 @@
 using System.Drawing;
-using System.Text.Json;
 using System.Threading.Tasks;
 using SimpleBinder.Models;
 
@@ -7,7 +6,7 @@ namespace SimpleBinder;
 
 public partial class SimpleBinder
 {
-    private Task TurnOnBinder()
+    private async Task TurnOnBinder()
     {
         {
             var activeBinds = false;
@@ -19,7 +18,7 @@ public partial class SimpleBinder
             if (!activeBinds)
             {
                 MessageBox.Show(NoBinds_Message, Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return Task.CompletedTask;
+                return;
             }
         }
         keyboardHookManager.UnregisterAll();
@@ -52,17 +51,15 @@ public partial class SimpleBinder
             }
             catch (NonInvasiveKeyboardHookException e)
             {
-                
                 enabledArray[bind.BindNumber - 1].Checked = false;
                 MessageBox.Show(TurnOnBinder_Error_Message +
                                 bind.BindNumber, Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ExceptionLogger.LogExceptionToFile(e.Message,e.StackTrace, e.Source);
+                await ExceptionLogger.LogExceptionToFile(e.Message, e.StackTrace, e.Source);
                 error = true;
             }
         }
 
         if (error) saveButton_Click(null, null);
-        return Task.CompletedTask;
     }
 
     private Task TurnOffBinder()

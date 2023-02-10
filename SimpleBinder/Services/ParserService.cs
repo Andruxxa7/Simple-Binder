@@ -19,8 +19,9 @@ public partial class SimpleBinder
         }
         catch (JsonException e)
         {
-            MessageBox.Show(ParseFromJsonToWinForms_Error_Message, Caption_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            ExceptionLogger.LogExceptionToFile(e.Message, e.StackTrace, e.Source);
+            MessageBox.Show(ParseFromJsonToWinForms_Error_Message, Caption_Error, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            await ExceptionLogger.LogExceptionToFile(e.Message, e.StackTrace, e.Source);
         }
 
         keyValueArray = new int[bindsArray.Length];
