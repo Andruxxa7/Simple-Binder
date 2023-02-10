@@ -2,9 +2,8 @@
 
 public class Bind
 {
-    public Bind()
+    public Bind() //mush be for json de/serialization
     {
-        BindNumber = bindNumber++;
     }
 
     public Bind(string keys, string text, bool enabled, int indexOfModifier, string modifier, int keyValue)
