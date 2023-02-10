@@ -49,7 +49,7 @@ public partial class SimpleBinder
             {
                 new ActiveBind(bind).RegisterBind();
             }
-            catch (NonInvasiveKeyboardHookException e)
+            catch (HotkeyAlreadyRegisteredException e)
             {
                 enabledArray[bind.BindNumber - 1].Checked = false;
                 MessageBox.Show(TurnOnBinder_Error_Message +
