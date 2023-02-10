@@ -1,8 +1,5 @@
 ﻿namespace SimpleBinder.Models;
 
-/// <summary>
-///     Класс с данными бинда (нужен для парса в .json)
-/// </summary>
 public class Bind
 {
     public Bind()
@@ -10,14 +7,6 @@ public class Bind
         BindNumber = bindNumber++;
     }
 
-    /// <summary>
-    ///     Конструктор класса Bind с параметрами
-    /// </summary>
-    /// <param name="keys">сочетание клавиш или клавиша бинда</param>
-    /// <param name="text">текст, к-й будет набран данным биндом</param>
-    /// <param name="enabled">включен ли данный бинд</param>
-    /// <param name="indexOfModifier">Индекс модификатора</param>
-    /// <param name="modifier">Модификатор бинда</param>
     public Bind(string keys, string text, bool enabled, int indexOfModifier, string modifier, int keyValue)
     {
         BindNumber = bindNumber++;
