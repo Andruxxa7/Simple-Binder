@@ -41,7 +41,7 @@ public partial class SimpleBinder
     }
 
 
-    #region Translare from Keys to string
+    #region Translate from Keys to string
 
     private string KeyCodeToUnicode(Keys key)
     {
