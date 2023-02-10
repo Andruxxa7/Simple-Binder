@@ -6,10 +6,6 @@ namespace SimpleBinder;
 
 public partial class SimpleBinder
 {
-    /// <summary>
-    ///     Парсит значения из .json в поля WinForm'ы
-    /// </summary>
-    /// <param name="path2Json">- путь до файла .json, из которого берутся значения</param>
     private async Task ParseFromJsonToWinForms(string path2Json)
     {
         if (!File.Exists(path2Json)) return;
@@ -36,11 +32,6 @@ public partial class SimpleBinder
         }
     }
 
-
-    /// <summary>
-    ///     Парс значений из полей WinForm'ы в .json
-    /// </summary>
-    /// <param name="path2Json">- путь до файла .json, в котором сохраняются значения</param>
     private async Task ParseToJson(string path2Json)
     {
         Bind.bindNumber = 1;
