@@ -2,6 +2,8 @@ using System.Threading.Tasks;
 using WindowsInput.Native;
 using static System.Threading.Thread;
 
+#pragma warning disable CS8509
+
 namespace SimpleBinder.Models;
 
 public class ActiveBind
