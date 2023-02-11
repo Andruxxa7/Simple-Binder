@@ -1,7 +1,7 @@
 using System.Drawing;
 using static SimpleBinder.Properties.BinderThemes;
 
-namespace SimpleBinder;
+namespace SimpleBinder.Services;
 
 public static class ThemeService
 {

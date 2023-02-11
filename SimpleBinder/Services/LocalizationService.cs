@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace SimpleBinder;
+namespace SimpleBinder.Services;
 
 public static class LocalizationService
 {

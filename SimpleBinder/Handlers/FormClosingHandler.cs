@@ -1,3 +1,5 @@
+using SimpleBinder.Services;
+
 namespace SimpleBinder;
 
 public partial class SimpleBinder

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using SimpleBinder.Models;
 using static SimpleBinder.SimpleBinder;
 
-namespace SimpleBinder;
+namespace SimpleBinder.Services;
 
 public static class Parser
 {

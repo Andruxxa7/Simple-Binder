@@ -3,10 +3,10 @@ using System.Diagnostics;
 using Microsoft.VisualBasic;
 using SimpleBinder.Models;
 using WindowsInput;
-using static SimpleBinder.BinderService;
-using static SimpleBinder.Parser;
-using static SimpleBinder.ThemeService;
-using static SimpleBinder.LocalizationService;
+using static SimpleBinder.Services.BinderService;
+using static SimpleBinder.Services.Parser;
+using static SimpleBinder.Services.ThemeService;
+using static SimpleBinder.Services.LocalizationService;
 
 namespace SimpleBinder;
 

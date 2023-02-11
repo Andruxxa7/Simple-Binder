@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SimpleBinder;
+namespace SimpleBinder.Services;
 
 public static class ExceptionLogger
 {
