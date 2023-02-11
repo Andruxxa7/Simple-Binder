@@ -1,11 +1,11 @@
 using System.Drawing;
 using SimpleBinder.Models;
 
-namespace SimpleBinder;
+namespace SimpleBinder.Properties;
 
-public partial class SimpleBinder
+public static class BinderThemes
 {
-    private static Theme BlackHighContrastTheme = new()
+    public static Theme BlackHighContrastTheme = new()
     {
         ThemeName = "black high contrast",
         BackgroundColor = Color.Black,
@@ -14,7 +14,7 @@ public partial class SimpleBinder
     };
 
 
-    private static Theme BlackTheme = new()
+    public static Theme BlackTheme = new()
     {
         ThemeName = "black", //or 56
         BackgroundColor = Color.FromArgb(40, 40, 40),
@@ -23,7 +23,7 @@ public partial class SimpleBinder
     };
 
 
-    private static Theme WhiteTheme = new()
+    public static Theme WhiteTheme = new()
     {
         ThemeName = "white",
         BackgroundColor = Color.White,

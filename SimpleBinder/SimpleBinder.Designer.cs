@@ -34,8 +34,8 @@ namespace SimpleBinder
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleBinder));
             this.enabledLabel = new System.Windows.Forms.Label();
             this.enabled0 = new System.Windows.Forms.CheckBox();
-            this.bindNumberLabel = new System.Windows.Forms.Label();
-            this.bindNumber0 = new System.Windows.Forms.Label();
+            this.bindNumberLabel = new();
+            this.bindNumber0 = new();
             this.bindKeysLabel = new System.Windows.Forms.Label();
             this.bindKeys0 = new System.Windows.Forms.TextBox();
             this.bindTextLabel = new System.Windows.Forms.Label();
@@ -713,10 +713,10 @@ namespace SimpleBinder
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.ToolStripMenuItem openTestWindowToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem openTestWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showCurrentHotkeyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setDefaultHotkeyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SwitchMinimizeToTrayToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem SwitchMinimizeToTrayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem turnOnHotkeyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem binderHotkeySettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeHotkeyToolStripMenuItem;
@@ -732,10 +732,10 @@ namespace SimpleBinder
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem русскийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        public System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FileStripMenu;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ListBox modifierListBox7;
         private System.Windows.Forms.ListBox modifierListBox9;
         private System.Windows.Forms.ListBox modifierListBox1;
@@ -747,11 +747,11 @@ namespace SimpleBinder
         private System.Windows.Forms.ListBox modifierListBox8;
         private System.Windows.Forms.ListBox modifierListBox0;
         private System.Windows.Forms.Label modifierLabel;
-        private System.Windows.Forms.Button defaultButton;
+        public System.Windows.Forms.Button defaultButton;
         private System.Windows.Forms.Label bindNumber0;
-        private System.Windows.Forms.Button statusButton;
-        private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.Button saveButton;
+        public System.Windows.Forms.Button statusButton;
+        public System.Windows.Forms.Label statusLabel;
+        public System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.TextBox bindKeys7;
         private System.Windows.Forms.Label bindNumber8;
@@ -797,7 +797,7 @@ namespace SimpleBinder
         private System.Windows.Forms.Label bindTextLabel;
         private System.Windows.Forms.Label enabledLabel;
         private System.Windows.Forms.NotifyIcon binderNotifyIcon;
-        private System.Windows.Forms.ContextMenuStrip binderNotifyContextMenu;
+        public System.Windows.Forms.ContextMenuStrip binderNotifyContextMenu;
         private System.Windows.Forms.ToolStripMenuItem binderNotifyContextMenuExitItem;
         private System.Windows.Forms.ToolStripMenuItem binderNotifyContextMenuOpenItem;
         #endregion

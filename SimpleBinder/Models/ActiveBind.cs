@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using WindowsInput.Native;
 using static System.Threading.Thread;
+using static SimpleBinder.SimpleBinder;
 
 #pragma warning disable CS8509
 
@@ -23,8 +24,8 @@ public class ActiveBind
     private static Task SimulateTyping(string text)
     {
         Sleep(10);
-        SimpleBinder.inputSimulator.Keyboard.KeyPress(VirtualKeyCode.BACK);
-        SimpleBinder.inputSimulator.Keyboard.TextEntry(text);
+        inputSimulator.Keyboard.KeyPress(VirtualKeyCode.BACK);
+        inputSimulator.Keyboard.TextEntry(text);
         return Task.CompletedTask;
     }
 
@@ -33,10 +34,10 @@ public class ActiveBind
         async void Type() => await SimulateTyping(_text);
         if (_modifier == "None")
         {
-            SimpleBinder.keyboardHookManager.RegisterHotkey(_key, Type);
+            keyboardHookManager.RegisterHotkey(_key, Type);
         }
         else
-            SimpleBinder.keyboardHookManager.RegisterHotkey(
+            keyboardHookManager.RegisterHotkey(
                 _modifier switch
                 {
                     "Control" => ModifierKeys.Control,

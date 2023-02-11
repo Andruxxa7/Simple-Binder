@@ -1,10 +1,11 @@
 using System.Drawing;
+using static SimpleBinder.Properties.BinderThemes;
 
 namespace SimpleBinder;
 
-public partial class SimpleBinder
+public static class ThemeService
 {
-    private void ChangeTheme(string themeName)
+    public static void ChangeTheme(string themeName, SimpleBinder binder)
     {
         var theme = themeName switch
         {
@@ -13,9 +14,9 @@ public partial class SimpleBinder
             "black high contrast" => BlackHighContrastTheme,
             _ => WhiteTheme
         };
-        ForeColor = theme.FontColor;
-        BackColor = theme.BackgroundColor;
-        foreach (Control control in Controls)
+        binder.ForeColor = theme.FontColor;
+        binder.BackColor = theme.BackgroundColor;
+        foreach (Control control in binder.Controls)
         {
             if (control is Button)
             {
@@ -29,13 +30,13 @@ public partial class SimpleBinder
 
         #region Menu
 
-        foreach (ToolStripMenuItem item in binderNotifyContextMenu.Items)
+        foreach (ToolStripMenuItem item in binder.binderNotifyContextMenu.Items)
         {
             item.BackColor = theme.ElementBackColor;
             item.ForeColor = theme.FontColor;
         }
 
-        foreach (ToolStripMenuItem item in menuStrip1.Items)
+        foreach (ToolStripMenuItem item in binder.menuStrip1.Items)
         {
             foreach (var Item in item.DropDownItems)
             {
@@ -47,8 +48,8 @@ public partial class SimpleBinder
 
         #endregion
 
-        statusLabel.BackColor = binderIsEnabled ? Color.LawnGreen : Color.Red;
-        settings.CurrentTheme = theme.ThemeName;
-        Invalidate();
+        binder.statusLabel.BackColor = binder.binderIsEnabled ? Color.LawnGreen : Color.Red;
+        binder.settings.CurrentTheme = theme.ThemeName;
+        binder.Invalidate();
     }
 }

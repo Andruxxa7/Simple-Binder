@@ -2,36 +2,38 @@ using System.ComponentModel;
 
 namespace SimpleBinder;
 
-public partial class SimpleBinder
+public static class LocalizationService
 {
-    private void ChangerCurrentCulture(string lang)
+    public static void ChangerCurrentCulture(string lang, SimpleBinder binder)
     {
-        settings.CurrentLanguage = lang;
+        binder.settings.CurrentLanguage = lang;
         var newLangCultureInfo = new CultureInfo(lang);
         Thread.CurrentThread.CurrentCulture = newLangCultureInfo;
         Thread.CurrentThread.CurrentUICulture = newLangCultureInfo;
     }
 
-    private void СheckOutTextOfMinimizeToTrayToolStripMenuItem() => SwitchMinimizeToTrayToolStripMenuItem.Text =
-        (settings.CurrentIsMinimizeToTray)
-            ? MinimizeToTrayOffToolStripMenuItem
-            : MinimizeToTrayOnToolStripMenuItem;
+    public static void СheckOutTextOfMinimizeToTrayToolStripMenuItem(SimpleBinder binder) =>
+        binder.SwitchMinimizeToTrayToolStripMenuItem.Text =
+            binder.settings.CurrentIsMinimizeToTray
+                ? MinimizeToTrayOffToolStripMenuItem
+                : MinimizeToTrayOnToolStripMenuItem;
 
-    private void ChangeLanguage(string lang)
+    public static void ChangeLanguage(string lang, SimpleBinder binder)
     {
-        if (lang == settings.CurrentLanguage) return;
-        ChangerCurrentCulture(lang);
+        if (lang == binder.settings.CurrentLanguage) return;
+        ChangerCurrentCulture(lang, binder);
         var newLangCultureInfo = new CultureInfo(lang);
 
         #region ApplyingResources
 
         var resources = new ComponentResourceManager(typeof(SimpleBinder));
-        foreach (Control control in Controls) resources.ApplyResources(control, control.Name, newLangCultureInfo);
-        statusButton.Text = binderIsEnabled ? statusButton_Turn_Off : statusButton.Text;
-        statusButton.Text += BinderKeyValue is >= 0x01 and <= 0xFE && BinderKeyName != null
-            ? $"({BinderKeyName})"
+        foreach (Control control in binder.Controls)
+            resources.ApplyResources(control, control.Name, newLangCultureInfo);
+        binder.statusButton.Text = binder.binderIsEnabled ? statusButton_Turn_Off : binder.statusButton.Text;
+        binder.statusButton.Text += binder.BinderKeyValue is >= 0x01 and <= 0xFE && binder.BinderKeyName != null
+            ? $"({binder.BinderKeyName})"
             : "";
-        foreach (ToolStripMenuItem item in menuStrip1.Items)
+        foreach (ToolStripMenuItem item in binder.menuStrip1.Items)
         {
             resources.ApplyResources(item, item.Name, newLangCultureInfo);
             foreach (var dropItem in item.DropDownItems)
@@ -39,14 +41,14 @@ public partial class SimpleBinder
                     resources.ApplyResources(Item, Item.Name, newLangCultureInfo);
         }
 
-        СheckOutTextOfMinimizeToTrayToolStripMenuItem();
-        foreach (var item in binderNotifyContextMenu.Items)
+        СheckOutTextOfMinimizeToTrayToolStripMenuItem(binder);
+        foreach (var item in binder.binderNotifyContextMenu.Items)
         {
             if (item is ToolStripMenuItem menuItem)
                 resources.ApplyResources(menuItem, menuItem.Name, newLangCultureInfo);
         }
 
-        resources.ApplyResources(this, "$this", newLangCultureInfo);
+        resources.ApplyResources(binder, "$this", newLangCultureInfo);
 
         #endregion
     }

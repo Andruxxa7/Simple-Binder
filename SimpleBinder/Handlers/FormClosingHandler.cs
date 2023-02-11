@@ -4,7 +4,7 @@ public partial class SimpleBinder
 {
     private async void Binder_FormClosing(object sender, FormClosingEventArgs e)
     {
-        await TurnOffBinder();
+        await BinderService.TurnOffBinder(this);
         settings.Save();
         keyboardHookManager.Stop();
         if (!saveButton.Enabled) return;

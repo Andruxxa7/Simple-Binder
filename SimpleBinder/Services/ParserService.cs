@@ -1,13 +1,19 @@
 ﻿using System.Text.Json;
 using System.Threading.Tasks;
 using SimpleBinder.Models;
+using static SimpleBinder.SimpleBinder;
 
 namespace SimpleBinder;
 
-public partial class SimpleBinder
+public static class Parser
 {
-    private async Task ParseFromJsonToWinForms(string path2Json)
+    public static async Task ParseFromJsonToWinForms(string path2Json)
     {
+        if (string.IsNullOrEmpty(path2Json))
+        {
+            throw new ArgumentNullException($"{path2Json} can't be null or empty.", nameof(path2Json));
+        }
+
         if (!File.Exists(path2Json)) return;
         try
         {
@@ -32,13 +38,18 @@ public partial class SimpleBinder
         }
     }
 
-    private async Task ParseToJson(string path2Json)
+    public static async Task ParseToJson(string path2Json)
     {
+        if (string.IsNullOrEmpty(path2Json))
+        {
+            throw new ArgumentNullException($"{path2Json} can't be null or empty.", nameof(path2Json));
+        }
+
         Bind.bindNumber = 1;
         for (var i = 0; i < bindKeysArray.Length; i++)
         {
             bindsArray[i] = null;
-            bindsArray[i] = new Bind(bindKeysArray[i].Text, bindTextArray[i].Text, enabledArray[i].Checked,
+            bindsArray[i] = new(bindKeysArray[i].Text, bindTextArray[i].Text, enabledArray[i].Checked,
                 modifierArray[i].SelectedIndex, (string)modifierArray[i].SelectedItem, keyValueArray[i]);
             enabledArray[i].Checked = bindsArray[i].IsEnabled;
         }

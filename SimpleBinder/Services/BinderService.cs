@@ -1,12 +1,13 @@
 using System.Drawing;
 using System.Threading.Tasks;
 using SimpleBinder.Models;
+using static SimpleBinder.SimpleBinder;
 
 namespace SimpleBinder;
 
-public partial class SimpleBinder
+public static class BinderService
 {
-    private async Task TurnOnBinder()
+    public static async Task TurnOnBinder(SimpleBinder binder)
     {
         {
             var activeBinds = false;
@@ -22,13 +23,13 @@ public partial class SimpleBinder
             }
         }
         keyboardHookManager.UnregisterAll();
-        statusButton.Text = statusButton_Turn_Off;
-        statusButton.Invoke(() => RegisterBinderStopHotkey(BinderKeyValue));
-        CheckStatusButtonText();
-        binderIsEnabled = true;
-        statusLabel.BackColor = Color.LawnGreen;
-        defaultButton.Enabled = false;
-        if (saveButton.Enabled) saveButton_Click(null, null);
+        binder.statusButton.Text = statusButton_Turn_Off;
+        binder.statusButton.Invoke(() => RegisterBinderStopHotkey(binder.BinderKeyValue, binder));
+        CheckStatusButtonText(binder);
+        binder.binderIsEnabled = true;
+        binder.statusLabel.BackColor = Color.LawnGreen;
+        binder.defaultButton.Enabled = false;
+        if (binder.saveButton.Enabled) binder.saveButton.PerformClick();
         for (var i = 0; i < bindKeysArray.Length; i++)
         {
             bindKeysArray[i].Enabled = false;
@@ -37,9 +38,9 @@ public partial class SimpleBinder
             modifierArray[i].Enabled = false;
         }
 
-        exportToolStripMenuItem.Enabled = false;
-        toolStripMenuItem2.Enabled = false;
-        openTestWindowToolStripMenuItem.Enabled = true;
+        binder.exportToolStripMenuItem.Enabled = false;
+        binder.toolStripMenuItem2.Enabled = false;
+        binder.openTestWindowToolStripMenuItem.Enabled = true;
         Bind.bindNumber = 1;
         var error = false;
         foreach (var bind in bindsArray)
@@ -59,15 +60,15 @@ public partial class SimpleBinder
             }
         }
 
-        if (error) saveButton_Click(null, null);
+        if (error) binder.saveButton.PerformClick();
     }
 
-    private Task TurnOffBinder()
+    public static Task TurnOffBinder(SimpleBinder binder)
     {
-        binderIsEnabled = false;
-        statusButton.Text = statusButton_Turn_On;
-        statusLabel.BackColor = Color.Red;
-        defaultButton.Enabled = true;
+        binder.binderIsEnabled = false;
+        binder.statusButton.Text = statusButton_Turn_On;
+        binder.statusLabel.BackColor = Color.Red;
+        binder.defaultButton.Enabled = true;
         for (var i = 0; i < bindKeysArray.Length; i++)
         {
             bindKeysArray[i].Enabled = true;
@@ -76,45 +77,48 @@ public partial class SimpleBinder
             modifierArray[i].Enabled = true;
         }
 
-        exportToolStripMenuItem.Enabled = true;
-        toolStripMenuItem2.Enabled = true;
-        openTestWindowToolStripMenuItem.Enabled = false;
+        binder.exportToolStripMenuItem.Enabled = true;
+        binder.toolStripMenuItem2.Enabled = true;
+        binder.openTestWindowToolStripMenuItem.Enabled = false;
         keyboardHookManager.UnregisterAll();
-        statusButton.Invoke(() => RegisterBinderStartHotkey(BinderKeyValue));
-        CheckStatusButtonText();
+        binder.statusButton.Invoke(() => RegisterBinderStartHotkey(binder.BinderKeyValue, binder));
+        CheckStatusButtonText(binder);
         return Task.CompletedTask;
     }
 
-    private void CheckStatusButtonText()
+    public static void CheckStatusButtonText(SimpleBinder binder)
     {
-        if (settings.CurrentHotkeyState)
-            statusButton.Invoke(() => statusButton.Text += BinderKeyName != null ? $"({BinderKeyName})" : "");
+        if (binder.settings.CurrentHotkeyState)
+            binder.statusButton.Invoke(() =>
+                binder.statusButton.Text += binder.BinderKeyName != null ? $"({binder.BinderKeyName})" : "");
     }
 
-    private void RegisterBinderStartHotkey(int key)
+    public static void RegisterBinderStartHotkey(int key, SimpleBinder binder)
     {
-        if (!settings.CurrentHotkeyState) return;
+        if (!binder.settings.CurrentHotkeyState) return;
         if (key is not (>= 0x01 and <= 0xFE)) return; //0x01 - min virtual key code, 0xFE - max virtual key code
-        keyboardHookManager.RegisterHotkey(key, () => statusButton.Invoke(async () => await TurnOnBinder()));
+        keyboardHookManager.RegisterHotkey(key,
+            () => binder.statusButton.Invoke(async () => await TurnOnBinder(binder)));
     }
 
-    private void RegisterBinderStopHotkey(int key)
+    private static void RegisterBinderStopHotkey(int key, SimpleBinder binder)
     {
-        if (!settings.CurrentHotkeyState) return;
+        if (!binder.settings.CurrentHotkeyState) return;
         if (key is not (>= 0x01 and <= 0xFE)) return;
         keyboardHookManager.UnregisterAll();
-        keyboardHookManager.RegisterHotkey(key, () => statusButton.Invoke(async () => await TurnOffBinder())
+        keyboardHookManager.RegisterHotkey(key,
+            () => binder.statusButton.Invoke(async () => await TurnOffBinder(binder))
         );
     }
 
-    private Task ChangeBinderHotkey(int value, string name)
+    public static Task ChangeBinderHotkey(int value, string name, SimpleBinder binder)
     {
         if (name.Length > 6) return Task.CompletedTask;
         if (value is not (>= 0x01 and <= 0xFE)) return Task.CompletedTask;
-        settings.CurrentKeyName = name;
-        settings.CurrentKeyValue = value;
-        turnOffHotkeyToolStripMenuItem_Click(null, null);
-        turnOnHotkeyToolStripMenuItem_Click(null, null);
+        binder.settings.CurrentKeyName = name;
+        binder.settings.CurrentKeyValue = value;
+        binder.turnOffHotkeyToolStripMenuItem_Click(null, null);
+        binder.turnOnHotkeyToolStripMenuItem_Click(null, null);
         return Task.CompletedTask;
     }
 }
