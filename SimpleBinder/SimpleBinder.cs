@@ -14,7 +14,7 @@ public partial class SimpleBinder : Form
 {
     #region Data and arrays of components declaration
 
-    private const string PathToJson = "binds.json";
+    private readonly string PathToJson = Application.LocalUserAppDataPath + "/binds.json";
     public static readonly InputSimulator inputSimulator = new();
     public static readonly KeyboardHookManager keyboardHookManager = new();
     public static TextBox[] bindKeysArray;
