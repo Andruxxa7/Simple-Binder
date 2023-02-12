@@ -11,7 +11,7 @@ public class Bind
         BindNumber = bindNumber++;
         BindKeys = keys;
         BindText = text;
-        IsEnabled = string.Concat(modifier, keys).Replace(" ", "") != string.Empty && text != string.Empty && enabled;
+        IsEnabled = keys.Trim() != string.Empty && text != string.Empty && enabled;
         IndexOfSelectedModifier = indexOfModifier;
         SelectedModifier = modifier == "Ctrl" ? "Control" : modifier;
         KeyValue = keyValue;
