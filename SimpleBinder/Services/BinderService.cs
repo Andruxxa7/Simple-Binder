@@ -9,6 +9,7 @@ public static class BinderService
 {
     public static async Task TurnOnBinder(SimpleBinder binder)
     {
+        binder.saveButton.PerformClick();
         {
             var activeBinds = false;
             foreach (var checkbox in enabledArray)
@@ -29,7 +30,6 @@ public static class BinderService
         binder.binderIsEnabled = true;
         binder.statusLabel.BackColor = Color.LawnGreen;
         binder.defaultButton.Enabled = false;
-        if (binder.saveButton.Enabled) binder.saveButton.PerformClick();
         for (var i = 0; i < bindKeysArray.Length; i++)
         {
             bindKeysArray[i].Enabled = false;
