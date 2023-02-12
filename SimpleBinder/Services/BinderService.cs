@@ -118,7 +118,7 @@ public static class BinderService
         binder.settings.CurrentKeyName = name;
         binder.settings.CurrentKeyValue = value;
         binder.turnOffHotkeyToolStripMenuItem_Click(null, null);
-        binder.turnOnHotkeyToolStripMenuItem_Click(null, null);
+        if (binder.settings.CurrentHotkeyState) binder.turnOnHotkeyToolStripMenuItem_Click(null, null);
         return Task.CompletedTask;
     }
 }
