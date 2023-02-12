@@ -117,8 +117,9 @@ public static class BinderService
         if (value is not (>= 0x01 and <= 0xFE)) return Task.CompletedTask;
         binder.settings.CurrentKeyName = name;
         binder.settings.CurrentKeyValue = value;
+        var tempHotKeyState = binder.settings.CurrentHotkeyState;
         binder.turnOffHotkeyToolStripMenuItem_Click(null, null);
-        if (binder.settings.CurrentHotkeyState) binder.turnOnHotkeyToolStripMenuItem_Click(null, null);
+        if (tempHotKeyState) binder.turnOnHotkeyToolStripMenuItem_Click(null, null);
         return Task.CompletedTask;
     }
 }
